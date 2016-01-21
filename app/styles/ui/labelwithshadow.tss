@@ -1,0 +1,26 @@
+"#labelWrapper":{
+  width: Ti.UI.SIZE,
+  height: Ti.UI.SIZE,
+  layout: 'absolute', 
+  touchEnabled: false 
+},
+"Label":{
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE,
+    font: {
+        fontSize: "14dp",
+        fontWeight: "normal"
+    },
+    touchEnabled: false 
+},
+"#label":{
+    color: "white",
+    touchEnabled: false 
+},
+"#shadow":{
+    opacity: 0.8,
+    color: "black",
+    top: "0.6dp",
+    left: "0.6dp",
+    touchEnabled: false 
+}

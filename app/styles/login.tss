@@ -1,0 +1,97 @@
+"#loginView":{
+    width: Ti.UI.Fill,
+    height: Ti.UI.Fill,
+    backgroundColor: "white",
+    backgroundImage: "/images/background.png",
+    layout: "absolute"
+},
+"#loginWrapper":{
+    width: Ti.UI.Fill,
+    height: "400dp",
+    layout: 'vertical',
+},
+".textFieldWrapper":{
+    top: "10dp",
+    height: "50dp",
+    borderRadius:"4dp",
+    borderWidth:"1dp",
+    borderColor: "#BDC3C7",
+    backgroundImage: "/images/whitener.png",
+    right: "30dp",
+    left: "30dp",
+},
+"#logo":{
+    width: "100dp",
+    height: "100dp",
+    backgroundImage: "/images/playground-logo.png",
+    borderRadius: "5dp",
+    opacity: 0.8,
+},
+"#logoWrapper":{
+    height: "110dp",
+},
+".TfLogin":{
+    height: "40dp",
+    left: "20dp",
+    right: "20dp",
+    borderWidth: 0,
+    backgroundImage: "none",
+    color: "#423f37",
+},
+".TfLogin[platform=ios]":{
+    keyboardToolbarColor: "#999",
+    keyboardToolbarHeight: "40dp"
+},
+"#TfUsername":{
+    hintText: L( "emailTextFieldHint"),
+    keyboardType: Titanium.UI.KEYBOARD_EMAIL,
+},
+"#TfUsernameWrapper": {
+	top:"20dp",
+},
+"#TfPassword":{
+    hintText: L( "passwordTextFieldHint"),
+    passwordMask: true
+},
+"#forgotPasswordLink":{
+	top: "15dp",
+	font: {
+		fontSize: "20dp"
+	},
+	color: Alloy.Globals.CustomColor1,
+	text: L("forgotPassword")
+},
+
+".loginViewBtn":{
+    borderRadius: "4dp",
+    height: "50dp",
+    left: "30dp",
+    right: "30dp",
+    top: "10dp",
+    font: {
+		fontFamily: 'Roboto',
+		fontStyle: 'normal',
+		fontWeight: 'normal',
+		fontSize: '16dp'
+	},
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+    textPaddingLeft: "10dp",
+    touchEnabled: true,
+    iconWidth: "25dp",
+    iconHeight: "25dp",
+    titleShadowDisabled: true,
+    titleColor: "white",
+    backgroundColor: Alloy.Globals.CustomColor3,
+    backgroundSelectedColor: Alloy.Globals.CustomColor3Light
+},
+
+"#btnCreateNew":{
+    iconImage: "/images/icons/add-user-#ffffff.png",
+    backgroundColor: Alloy.Globals.CustomColor1,
+    backgroundSelectedColor: Alloy.Globals.CustomColor1Light,
+    title: L( "BtnCreateNewTitle")
+},
+"#btnLogin":{
+    iconImage: "/images/icons/open-lock-#ffffff.png",
+    title: L( "BtnLoginTitle")
+}

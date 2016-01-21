@@ -1,0 +1,6 @@
+<Alloy>
+    <View id="mainView" onClick="onClick">
+        <Require type="view" src="header" id="header" />
+        <View id="mainContent"></View>
+    </View>
+</Alloy>

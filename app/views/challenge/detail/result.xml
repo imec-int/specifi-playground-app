@@ -1,0 +1,38 @@
+<Alloy>
+	<View id="detailWrapper">
+		<View id="challengeDetailWrapperOuter">
+			<View id="titleWrapper" >
+				<View  id="titleWrapperInner">
+					<Label autoStyle="true" id="challengeTitle"/>
+				</View>
+			</View>
+			<ScrollView class="scrollWrapper">
+				<View id="challengeDetailWrapper">
+					<Label id="completedIcon" class="centered" icon = "fa-trophy"/>
+					<Label id="messageText" class="centered" textid="challengeCompletedTitle"/>
+					<Label id="youEarned" class="centered" textid="challengeCompletedSubTitle"/>
+					<View class="row">
+						<View class="rowInner">
+							<Label id="tokensNumber"/>
+							<Label class="tokenIcon" icon = "fa-dot-circle-o"/>
+						</View>
+					</View>
+					<Label id="youEarnedEnd" class="centered" textid="challengeCompletedFinish" />
+					
+					<View id="footerWrapper">
+						<View id="innerFooterWrapper">
+							<!--
+							<Require autoStyle="true" type="view" src="ui/extendedbutton" class="footerButton" id="btnFacebook" onClick="onClick"/>
+							<Require autoStyle="true" type="view" src="ui/extendedbutton" class="footerButton" id="btnTwitter" onClick="onClick"/>
+							-->
+							
+							<Require autoStyle="true" type="view" src="ui/extendedbutton" class="footerButton" id="btnMoreChallenges" onClick="onClick"/>
+						</View>
+					</View>
+
+				</View>
+			</ScrollView>
+		</View>
+		<Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+	</View>
+</Alloy>

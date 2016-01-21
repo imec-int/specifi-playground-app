@@ -1,0 +1,149 @@
+".detailWrapper": {
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
+	layout: "absolute",
+	backgroundColor: "white",
+	backgroundImage: "/images/background-arrow.png"
+},
+
+"Label":{
+	font:{
+		fontSize: "18dp"
+	}
+},
+
+".scrollWrapper": {
+	heigth: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	showVerticalScrollIndicator: true,
+	layout: "vertical",
+	contentWidth: "99%",
+	disableBounce: false,
+	bottom: Alloy.Globals.appConfig.headerHeight
+},
+
+"#description": {
+	left:"1dp",
+	autoLink: Titanium.UI.AUTOLINK_EMAIL_ADDRESSES,
+	backgroundColor: 'transparent',
+	heigth: Titanium.UI.SIZE,
+	focusable: false,
+	editable: false,
+	color: 'black',
+	font:{
+		fontSize: "18dp"
+	},
+	bottom: "0dp"
+},
+
+"#description[platform=ios]":{
+	left:"12dp",
+	autoLink: Titanium.UI.AUTOLINK_EMAIL_ADDRESSES,
+	backgroundColor: 'transparent',
+	heigth: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL,
+	focusable: false,
+	editable: false,
+	color: 'black',
+	font:{
+		fontSize: "18dp"
+	}
+}
+
+"#helloLabel": {
+	top: '20dp',
+	width: Titanium.UI.FILL,
+	color: Alloy.Globals.CustomColor7
+},
+
+"#sloganLabel": {
+	top: '10dp',
+	text: L('welcome_user_end'),
+	width: Titanium.UI.FILL,
+	color: Alloy.Globals.CustomColor7
+},
+"#creditsLabel": {
+	top: '10dp',
+	text: L('welcome_user_credits'),
+	width: Titanium.UI.FILL,
+	color: Alloy.Globals.CustomColor7
+},
+"#actionLabel": {
+	top: '10dp',
+	text: L('welcome_user_action'),
+	width: Titanium.UI.FILL
+},
+"#disclaimerTitleLabel": {
+	top: '20dp',
+    font:{
+    	fontSize: "20dp"
+    },
+    text: L('welcome_user_disclaimer_title'),
+    width: Ti.UI.FILL,
+    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+},
+"#disclaimer": {
+	autoLink: Titanium.UI.AUTOLINK_URLS,
+	value: L('welcome_user_disclaimer_google'),
+	left:"1dp",
+	backgroundColor: 'transparent',
+	heigth: Titanium.UI.SIZE,
+	focusable: false,
+	editable: false,
+	color: 'black',
+	font:{
+		fontSize: "18dp"
+	},
+	bottom: "0dp"
+},
+
+"#disclaimer[platform=ios]":{
+	autoLink: Titanium.UI.AUTOLINK_URLS,
+	value: L('welcome_user_disclaimer_apple'),
+	left:"12dp",
+	backgroundColor: 'transparent',
+	heigth: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL,
+	focusable: false,
+	editable: false,
+	color: 'black',
+	font:{
+		fontSize: "18dp"
+	}
+}
+"#footerWrapper":{
+	height: Alloy.Globals.appConfig.headerHeight
+},
+"#innerFooterWrapper":{
+	height: Titanium.UI.FILL
+},
+".footerButton": {
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL
+},
+"#btnChallenges":{
+	title: L("btnToChallenges"),
+	backgroundColor: Alloy.Globals.CustomColor3,
+	backgroundSelectedColor: Alloy.Globals.CustomColor3Light,
+	iconImage: "/images/icons/next-#ffffff.png"
+}
+
+'#versionLabel':{
+	top: '5dp',
+    font:{
+        fontWeight: "bold"
+    },
+    text: L('version_label'),
+    width: Ti.UI.FILL,
+    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#poweredByLabel":{
+	top: '10dp',
+    font:{
+        fontWeight: "bold"
+    },
+    text: L('powered_by_crea_city'),
+    width: Ti.UI.FILL,
+    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+}

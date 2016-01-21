@@ -1,0 +1,133 @@
+<Alloy>
+    <View id="sliderMenu">
+    	
+        <View id="userInfo">
+        	
+            <View id="userPictureWrapper">
+                <ImageView id="userPictureImage"></ImageView>
+            </View>
+            
+            <View id="userNameWrapper">
+                <Label id="userNameLabel"/>
+            </View>
+
+			<View id="userTokensWrapper">
+				<Label id="tokensIcon" class="rowIcon" icon="fa-dot-circle-o"/>
+				<Label id="tokenNumberLabel"/>
+			</View>
+        	
+        </View>
+        
+        <TableView class="menuTable" id="menuTable" onSingletap="menuOnClick">
+        	<TableViewRow id="scan" class="tableRow">
+                <View class="rowContainer activeItem">
+                    <View class="rowIconWrapper">
+                        <Label class="rowIcon" icon='fa-qrcode'></Label>
+                    </View>
+                    <View class="rowLabelWrapper">
+                        <Label id="scanLabel" class="rowLabel" ></Label>
+                    </View>
+                </View>
+                <View class="rowSeparator" />
+                <Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+            </TableViewRow>
+            <TableViewRow id="nearbyChallenges" class="tableRow">
+                <View class="rowContainer activeItem">
+                    <View class="rowIconWrapper">
+                        <Label class="rowIcon" icon='fa-compass'></Label>
+                    </View>
+                    <View class="rowLabelWrapper">
+                        <Label id="nearbyChallengesLabel" class="rowLabel" ></Label>
+                    </View>
+                </View>
+                <View class="rowSeparator" />
+                <Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+            </TableViewRow>
+            <TableViewRow id="myChallenges" class="tableRow">
+                <View class="rowContainer activeItem">
+                    <View class="rowIconWrapper">
+                        <Label class="rowIcon" icon="fa-location-arrow"></Label>
+                    </View>
+                    <View class="rowLabelWrapper">
+                        <Label id="myChallengesLabel" class="rowLabel" ></Label>
+                    </View>
+                </View>
+                <View class="rowSeparator" />
+                <Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+            </TableViewRow>
+            <TableViewRow id="completedChallenges" class="tableRow">
+                <View class="rowContainer activeItem">
+                    <View class="rowIconWrapper">
+                        <Label class="rowIcon" icon="fa-check"></Label>
+                    </View>
+                    <View class="rowLabelWrapper">
+                        <Label id="completedChallengesLabel" class="rowLabel" ></Label>
+                    </View>
+                </View>
+                <View class="rowSeparator" />
+                <Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+            </TableViewRow>
+            <TableViewRow id="experienceStore" class="tableRow">
+                <View class="rowContainer activeItem">
+                    <View class="rowIconWrapper">
+                        <Label class="rowIcon" icon='fa-user'></Label>
+                    </View>
+                    <View class="rowLabelWrapper">
+                        <Label id="experienceStoreLabel" class="rowLabel" ></Label>
+                    </View>
+                </View>
+                <View class="rowSeparator" />
+                <Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+            </TableViewRow>
+            <TableViewRow id="myTickets" class="tableRow">
+                <View class="rowContainer activeItem">
+                    <View class="rowIconWrapper">
+                        <Label class="rowIcon" icon='fa-user'></Label>
+                    </View>
+                    <View class="rowLabelWrapper">
+                        <Label id="myTicketsLabel" class="rowLabel" ></Label>
+                    </View>
+                </View>
+                <View class="rowSeparator" />
+                <Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+            </TableViewRow>
+            <TableViewRow id="highscores" class="tableRow">
+				<View class="rowContainer activeItem">
+					<View class="rowIconWrapper">
+						<Label class="rowIcon" icon="fa-users"/>
+					</View>
+					<View class="rowLabelWrapper">
+						<Label id="highscoresLabel" class="rowLabel"></Label>
+					</View>
+				</View>
+				<View class="rowSeparator" />
+				<Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+			</TableViewRow>
+            <TableViewRow id="about" class="tableRow">
+				<View class="rowContainer activeItem">
+					<View class="rowIconWrapper">
+						<Label class="rowIcon" icon="fa-question"/>
+					</View>
+					<View class="rowLabelWrapper">
+						<Label id="aboutLabel" class="rowLabel"></Label>
+					</View>
+				</View>
+				<View class="rowSeparator" />
+				<Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+			</TableViewRow>
+         	<TableViewRow id="logout" class="tableRow">
+                <View class="rowContainer activeItem">
+                    <View class="rowIconWrapper">
+                        <Label class="rowIcon" icon='fa-power-off'></Label>
+                    </View>
+                    <View class="rowLabelWrapper">
+                        <Label  id="logoutLabel" class="rowLabel" ></Label>
+                    </View>
+                </View>
+                <View class="rowSeparator" />
+                <Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+            </TableViewRow>
+        </TableView>
+        <Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+    </View>
+</Alloy>

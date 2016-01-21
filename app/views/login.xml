@@ -1,0 +1,18 @@
+<Alloy>
+	<View id="loginView">
+		<View id="loginWrapper">
+			<View id="logoWrapper">
+				<View id="logo"></View>
+			</View>
+			<View class="textFieldWrapper" id="TfUsernameWrapper">
+				<TextField class="TfLogin" id="TfUsername" onBlur="onBlur" onFocus="onFocus" onReturn="onReturn"/>
+			</View>
+			<View class="textFieldWrapper">
+				<TextField class="TfLogin" id="TfPassword" onBlur="onBlur" onFocus="onFocus" onReturn="onReturn"/>
+			</View>
+			<Require type="view" src="ui/extendedbutton" class ="loginViewBtn" id="btnLogin" onClick="onClick"/>
+			<Require type="view" src="ui/extendedbutton" class ="loginViewBtn" id="btnCreateNew" onClick="onClick"/>
+			<Label id="forgotPasswordLink" onClick="onClick"></Label>
+		</View>
+	</View>
+</Alloy>

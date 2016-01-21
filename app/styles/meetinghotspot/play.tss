@@ -1,0 +1,234 @@
+"#titleWrapperInner":{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE
+},
+"#challengeDetailWrapper":{
+	heigth: Ti.UI.SIZE,
+	width: Ti.UI.FILL,
+	showVerticalScrollIndicator: false,
+	layout: "vertical",
+	contentWidth: "99%",
+	disableBounce: false
+},
+"#btnDetails":{
+	selected: true,
+	title: L( "btnDetails")
+},
+
+
+".circlesWrapper":{
+	top: "20dp",
+	height: Ti.UI.SIZE,
+	width: Titanium.UI.FILL,
+	layout: 'absolute',
+	bottom: "10dp"
+},
+
+"#leftWrapper": {
+	left: '0dp'
+},
+
+"#rightWrapper": {
+	right: '0dp'
+},
+
+".halfWrapper": {
+	top: '0dp',
+	height: Titanium.UI.SIZE,
+	width: "50%"
+},
+
+"#playersOnRouteWrapper":{
+	height: "100dp",
+	width: "100dp",
+	borderRadius: "50dp",
+	borderColor: Alloy.Globals.CustomColor4,
+	borderWidth: '5dp',
+	backgroundColor: "transparent",
+	layout: "vertical"
+},
+"#onRouteNumber":{
+	color: "#808080",
+	top: "5dp",
+	font: {
+		fontSize: "28dp",
+		fontWeight: "bold"
+	},
+	height: Ti.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+},
+"#onRouteMessage":{
+	color: "#808080",
+	text: L("other_players_en_route"),
+	font: {
+		fontSize: "14dp",
+		fontWeight: "bold"
+	},
+	bottom: "10dp",
+	height: Ti.UI.SIZE,
+	width: '100dp',
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+},
+"#timeRemainingWrapper":{
+	height: "100dp",
+	width: "100dp",
+	borderRadius: "5dp",
+	borderRadius: "50dp",
+	borderColor: Alloy.Globals.CustomColor4,
+	borderWidth: '5dp',
+	backgroundColor: "transparent",
+	layout: "vertical"
+},
+"#timeRemainingCountDown":{
+	font: {
+		fontSize: "20dp",
+		fontWeight: "bold"
+	},
+	height: Ti.UI.SIZE,
+	color: "#808080",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+},
+"#timeRemainingText":{
+	text: L("Time_remaining"),
+	top: '10dp',
+	width: '80dp',
+	color: "#808080",
+	font: {
+		fontSize: "14dp",
+		fontWeight: "bold"
+	},
+	height: Ti.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+},
+
+".icon": {
+	font: {
+		fontSize: "18dp"
+	},
+	right: "4dp"
+},
+
+
+".rounded":{
+	borderRadius: "5dp"
+},
+
+"#scannedWrapper":{
+	backgroundColor: Alloy.Globals.CustomColor4,
+	layout: "vertical",
+	height: Titanium.UI.SIZE,
+	width: '50%'
+},
+
+"#scannedNumberWrapper":{
+	height: Ti.UI.SIZE,
+	layout: "horizontal",
+	width: Ti.UI.SIZE
+},
+
+"#scannedNumber":{
+	font: {
+		fontSize: "28dp",
+		fontWeight: "bold"
+	},
+	height: Ti.UI.SIZE
+},
+
+"#scannedText":{
+	text: L('players_scanned'),
+	font: {
+		fontSize: "14dp",
+		fontWeight: "bold"
+	},
+	bottom: "10dp",
+	height: Ti.UI.SIZE
+},
+
+"#scoreWrapper":{
+	width: '50%',
+	height: Titanium.UI.SIZE,
+	backgroundColor: Alloy.Globals.CustomColor4,
+	layout: "absolute"
+},
+
+"#bonusWrapper":{
+	left: '0dp',
+	layout: "vertical",
+	height: Titanium.UI.SIZE,
+	width: '0dp'
+},
+
+"#bonusNumberWrapper":{
+	height: Ti.UI.SIZE,
+	layout: "horizontal",
+	width: Ti.UI.SIZE
+},
+
+"#bonusNumber":{
+	font: {
+		fontSize: "28dp",
+		fontWeight: "bold"
+	},
+	height: Ti.UI.SIZE
+},
+
+"#bonusText":{
+	text: L('bonus_tokens'),
+	font: {
+		fontSize: "14dp",
+		fontWeight: "bold"
+	},
+	bottom: "10dp",
+	height: Ti.UI.SIZE
+},
+
+"#tokensWrapper":{
+	right: '0dp',
+	layout: "vertical",
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+},
+
+"#tokensNumberWrapper":{
+	height: Ti.UI.SIZE,
+	layout: "horizontal",
+	width: Ti.UI.SIZE
+},
+
+"#tokensNumber":{
+	font: {
+		fontSize: "28dp",
+		fontWeight: "bold"
+	},
+	height: Ti.UI.SIZE
+},
+
+"#tokensText":{
+	text: L('tokens_won'),
+	font: {
+		fontSize: "14dp",
+		fontWeight: "bold"
+	},
+	bottom: "10dp",
+	height: Ti.UI.SIZE
+},
+
+".infoAndIcon":{
+	top: "3dp"
+},
+
+"#btnScan":{
+	width: "20%"
+},
+
+".centerWrapper": {
+	layout: 'vertical',
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.SIZE,
+	top: "20dp"
+}
+
+".spacer": {
+	width: Titanium.UI.FILL,
+	height: '20dp'
+}

@@ -1,0 +1,35 @@
+"#iconWrapper": {
+    width: 0,
+    height: 0,
+    layout: 'absolute',
+    touchEnabled: false
+},
+"#icon":{
+    height: 0,
+    width: 0,
+    touchEnabled: false
+},
+"#textWrapper":{
+    layout: 'absolute',
+    width: Ti.UI.SIZE,
+    touchEnabled: false
+},
+"#buttonLabel":{
+    textColor: "white",
+    shadowColor: "black",
+    font: {
+        fontSize: "14dp",
+        fontWeight: "bold"
+    },
+    touchEnabled: false,
+    shadowOffset: {
+        x: 1,
+        y: 1
+    }
+},
+"#layoutWrapper": {
+    height: Ti.UI.SIZE,
+    width: Ti.UI.SIZE,
+    layout: 'horizontal',
+    touchEnabled: false
+}

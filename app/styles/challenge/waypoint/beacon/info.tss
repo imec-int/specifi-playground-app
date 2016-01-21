@@ -1,0 +1,111 @@
+"Label":{
+	font:{
+		fontSize: "14dp"
+	}
+},
+"#challengeDetailWrapper":{
+	top: 0,
+	height: Alloy.Globals.appConfig.contentHeight,
+	layout: "vertical",
+	backgroundColor: "white",
+	backgroundImage: "/images/background-arrow.png",
+},
+"#challengeDetailWrapper[platform=ios]":{
+	disableBounce: true
+},
+"#currentWaypoint":{
+	top: "15dp",
+	font:{
+		fontSize: "18dp",
+		fontWeight: "bold",
+	},
+	color: Alloy.Globals.CustomColor7,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+},
+".innerInfo":{
+	left: "10dp",
+	right: "10dp",
+	layout: 'horizontal'
+},
+"#waypointDescription":{
+	top: "5dp",
+	font:{
+		fontSize: "16dp"
+	}
+},
+"#waypointTextWrapperFooterSpace":{
+	height: "30dp"
+},
+"#footerWrapper":{
+	bottom: "-100dp"
+},
+
+".footerButton": {
+	height: Alloy.Globals.appConfig.headerHeight,
+	font: {
+		fontSize: "17dp"
+	},
+	width: "20%",
+	textPaddingLeft: "0",
+	noTitle: true
+},
+"#btnScan":{
+	selected: true
+},
+".row":{
+	height: Ti.UI.SIZE,
+	layout: 'horizontal'
+},
+"#waypointInstructions":{
+	text: L('beacon_description')
+},
+
+".circlesWrapper":{
+	top: "20dp",
+	height: Ti.UI.SIZE,
+	layout: 'horizontal',
+	bottom: "10dp"
+},
+
+".thirdWrapper": {
+	height: Titanium.UI.SIZE,
+	width: "33%"
+},
+
+".beaconRange": {
+	height: "100dp",
+	width: "100dp",
+	borderRadius: "50dp",
+	opacity: 0.2,
+	layout: 'vertical'
+},
+
+"#beaconNotFound":{
+	backgroundColor: Alloy.Globals.CustomColor6
+},
+"#beaconFar":{
+	backgroundColor: Alloy.Globals.CustomColor3Light
+},
+"#beaconNear":{
+	backgroundColor: Alloy.Globals.CustomColor3Light
+},
+
+".beaconLabel": {
+	top: '40%',
+	width: '100dp',
+	height: Ti.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	color: "#000000",
+	font:{
+        fontWeight: "bold"
+    }
+},
+"#beaconNotFoundLabel":{
+	text: L("beacon_not_detected")
+},
+"#beaconFarLabel":{
+	text: L("beacon_far")
+},
+"#beaconNearLabel":{
+	text: L("beacon_near")
+}

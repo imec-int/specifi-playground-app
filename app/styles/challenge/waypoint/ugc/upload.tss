@@ -1,0 +1,167 @@
+"#challengeDetailWrapper":{
+	top: 0,
+	height: Alloy.Globals.appConfig.contentHeight,
+	layout: "vertical",
+	backgroundColor: "white"
+},
+"#challengeDetailWrapper[platform=ios]":{
+	disableBounce: true
+},
+
+".scrollView":{
+	top: "0dp",
+	bottom: Alloy.Globals.appConfig.headerHeight,
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	scrollType: "vertical",
+	disableBounce: false,
+	showVerticalScrollIndicator: false,
+	contentWidth: "99%",
+	layout: "vertical"
+},
+".contentWrapper":{
+	layout: 'vertical',
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+},
+
+"#topWrapper":{
+	top: "10dp",
+	height: Ti.UI.SIZE,
+	layout: "vertical"
+},
+
+"#details":{
+	top: "10dp",
+	height: Ti.UI.SIZE,
+	layout: "vertical"
+}
+
+".innerInfo":{
+	height: Ti.UI.SIZE
+},
+
+"#waypointDescription":{
+	top: "5dp",
+	font:{
+		fontSize: "16dp"
+	}
+},
+"#currentWaypoint":{
+	font:{
+		fontSize: "18dp",
+		fontWeight: "bold",
+	},
+	color: Alloy.Globals.CustomColor7,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+},
+"#footerWrapper":{
+	height: Alloy.Globals.appConfig.headerHeight
+},
+".footerButton": {
+	height: Ti.UI.FILL,
+	width: "0dp"
+},
+
+"#btnUpload":{
+	title: L("btnUpload"),
+	titleColor: "#FFFFFF",
+	backgroundColor: Alloy.Globals.CustomColor3,
+	backgroundSelectedColor: Alloy.Globals.CustomColor3Light,
+	backgroundDisabledColor: "#C4C4C4",
+	iconImage: "/images/icons/upload-#ffffff.png",
+	visible: false
+},
+"#btnRecord":{
+	title: L("btnRecord"),
+	titleColor: "#FFFFFF",
+	backgroundColor: Alloy.Globals.CustomColor3,
+	backgroundSelectedColor: Alloy.Globals.CustomColor3Light,
+	backgroundDisabledColor: "#C4C4C4",
+	iconImage: "/images/icons/camera-#ffffff.png",
+	visible: false
+},
+"#btnNext":{
+	width: "0dp",
+	visible: false
+},
+"#ugcTitle":{
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	width: Titanium.UI.FILL,
+	color: Alloy.Globals.CustomColor7,
+	font: {
+		fontSize: "25dp"
+	}
+},
+".ugcTypeIcon":{
+	width: Titanium.UI.FILL,
+	height: "70dp",
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	color: Alloy.Globals.CustomColor4,
+	font: {
+		fontSize: "70dp",
+		fontWeight: 'normal'
+	}
+},
+".row":{
+	height: Ti.UI.SIZE,
+	layout: 'horizontal'
+},
+
+"#playButton":{
+	opacity: 0.5
+},
+"#uploadMessage":{
+	visible: false,
+	height: '0dp',
+	top: "5dp",
+	font:{
+		fontSize: "16dp"
+	},
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	text: L('ugcReadyForUpload')
+},
+
+//WARNING FIELD
+"#warningWrapper":{
+	top: "0dp",
+	layout: "horizontal",
+	backgroundColor: Alloy.Globals.CustomColor6,
+	height: Titanium.UI.SIZE,
+	horizontalWrap: false
+},
+"#warningLeft":{
+	height: Titanium.UI.SIZE,
+	width: "50dp",
+	layout: "vertical"
+},
+"#warningIcon":{
+	height: "35dp",
+	width: "35dp",
+	color: "white",
+	font:{
+		fontSize: "35dp"
+	}
+},
+"#warningRight":{
+	height: Titanium.UI.SIZE,
+	left: "10dp",
+	width: Ti.UI.FILL,
+	color: "white",
+	left: 0,
+	right: "5dp",
+	top: "5dp",
+	bottom: "5dp"
+},
+"#warningDetails":{
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	font:{
+		fontSize: "14dp"
+	},
+	height: Titanium.UI.SIZE,
+	color: "white",
+	text: L("ugc_data_warning")
+},
+"#waypointInstructions":{
+	text: L("ugcInstructions")
+}

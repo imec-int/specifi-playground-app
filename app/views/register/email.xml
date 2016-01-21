@@ -1,0 +1,14 @@
+<Alloy>
+	<View id="registerEmail">
+		<View id="registerEmailWrapper">
+			<View class="textFieldWrapper">
+				<TextField class="TfRegister" id="TfTop" onChange = "onTfTopChange"/>
+			</View>
+			<View class="labelWrapper">
+				<Label class="LabelRegister" id="LabelTop"></Label>
+			</View>
+			<Require type="view" src="ui/extendedbutton" class="registerButton" id="BtnNext" onClick="onClick"/>
+			<Require type="view" src="ui/extendedbutton" class="registerButton" id="BtnCancel" onClick="onClick"/>
+		</View>
+	</View>
+</Alloy>

@@ -1,0 +1,99 @@
+"Label": {
+	color: "white"
+}
+
+"#row":{
+	height: Titanium.UI.SIZE,
+	width: Ti.UI.FILL,
+	backgroundColor: "#E0E5E7",
+	backgroundFocusedColor: "#E0E5E7",
+	backgroundSelectedColor: "#E0E5E7"
+},
+
+"#rowWrapper" :{
+	height: '85dp',
+	layout: "absolute",
+	width: Titanium.UI.FILL,
+},
+
+"#backgroundWrapper":{
+	top:"0dp",
+	left: "0dp",
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
+	layout: "absolute"
+},
+
+".backgroundLayer": {
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
+	opacity: '0.60',
+	backgroundGradient: {
+        type: 'linear',
+        startPoint: { x: '0%', y: '50%' },
+        endPoint: { x: '100%', y: '50%' },
+        colors: [ { color: '#000000', offset: 0.0}, { color: '#ffffff', offset: 1.0 } ]
+    }
+}
+
+"#expImageThumb":{
+	top: "0dp",
+	left: '0dp',
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL
+},
+			
+"#leftSideWrapper":{
+	top:"0dp",
+	right: "10dp",
+	left:"10dp",
+	height: Ti.UI.SIZE,
+	layout:"vertical",
+	bottom:"3dp"
+},
+
+
+"#title":{
+	top:"3dp",
+	left:"0dp",
+	font: {
+		fontSize: "18dp",
+	},
+},
+"#offeredBy":{
+	left:"0dp",
+	font: {
+		fontSize: "12dp",
+		fontStyle: "italic",
+	},
+},
+"#bottomTextFooter":{
+	height: Ti.UI.SIZE,
+	layout: "vertical",
+	bottom: "3dp",
+},
+".footerRow":{
+	height: Ti.UI.SIZE,
+	left:"0dp",
+	layout: "horizontal"
+},
+".footerRowText":{
+	left:"3dp",
+	font: {
+		fontSize: "12dp",
+	}
+},
+				
+".footerRowIcon" :{
+	font: {
+		fontSize: "12dp",
+	}
+},
+
+"#scheduleWrapper":{
+	top:"3dp",
+},
+
+"#ticketsWrapper":{
+	top: "0dp",
+}					

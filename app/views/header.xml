@@ -1,0 +1,12 @@
+<Alloy>
+    <View autoStyle="true" id="header">
+        <View id="mainHeaderWrapper">
+            <View id="sliderButtonWrapper">
+                <Require autoStyle="true" type="view" src="headermenubutton" id="sliderButton"/>
+            </View>
+            <View id="labelWrapper">
+                <Label id="pageTitle" text=""/>
+            </View>
+        </View>
+    </View>
+</Alloy>

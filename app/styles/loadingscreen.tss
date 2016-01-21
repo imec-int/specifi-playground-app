@@ -1,0 +1,30 @@
+"#loadingWrapper":{
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL,
+    backgroundColor: "white",
+    backgroundImage: "/default.png",
+    layout: 'absolute',
+},
+
+"#messageWrapper":{
+    height: Ti.UI.SIZE,
+    left: "20dp",
+    right:"20dp",
+    top:"330dp"
+},
+
+"#messageWrapper[if=Alloy.Globals.iPhoneTall]":{
+    top:"400dp"
+},
+
+"#loadingTextLabel":{
+	color:"white",
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+},
+
+"#flipBook":{
+	top:"100dp",
+    width: "10%",
+    duration:40, // in milliseconds, the time before next frame is shown
+    repeatCount:0,  // 0 means animation repeats indefinitely, use > 1 to control repeat count
+}

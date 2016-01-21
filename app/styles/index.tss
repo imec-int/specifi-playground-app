@@ -1,0 +1,26 @@
+".container": {
+    backgroundColor: "white",
+    modal: false,
+    layout: 'absolute'
+},
+".container[platform=android]":{
+    windowSoftInputMode : Ti.UI.Android.SOFT_INPUT_ADJUST_PAN,
+    navBarHidden: true,
+    fullscreen: false,
+    orientationModes: [Ti.UI.PORTRAIT]
+},
+"#wholeWrapper":{
+	top:0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL,
+    backgroundColor: "white",
+    layout:"absolute"
+},
+"#wholeWrapper[platform=ios]":{
+    top: Alloy.Globals.appConfig.statusBarHeight
+},
+".container[platform=ios]":{
+    tabBarHidden : true,
+    backgroundColor : Alloy.Globals.CustomColor1,
+    statusBarStyle : Titanium.UI.iPhone.StatusBar.TRANSLUCENT_BLACK
+}

@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+
+<!-- ERROR CODES  START -->
+	<!-- general errors -->
+	<string name="err1000">Database error!</string>
+	<string name="err1010">You have to be logged in for that!</string>
+	<string name="err1020">Missing fields!</string>
+	<string name="err1040">Can't retrieve the game settings!</string>
+	
+	<!-- User errors -->
+	<string name="err1001">You must provide a name, email address and password!</string>
+	<string name="err1002">We already have a user for that email!</string>
+	<string name="err1003">Error creating user!</string>
+	<string name="err1004">No account found!</string>
+	<string name="err1005">Couldn't log you in! Try again.</string>
+	<string name="err1006">Old password does not match!</string>
+	<string name="err1007">Username is not unique!</string>
+	<string name="err1008">Username must be between 5 an 12 characters long!</string>
+	<string name="err1009">Photo upload failed!</string>
+	<string name="err1011">Duplicate file on MediaHaven!</string>
+	<string name="err1012">Password can not be empty!</string>
+	<string name="err1013">Password has to be more than 5 characters!</string>
+	<string name="err1014">Can't change user info!</string>
+	<string name="err1015">Empty form!</string>
+	<string name="err1016">You can't change those fields!</string>
+	<string name="err1017">Could not send you a reset password email!</string>
+	
+	<!-- Challenge errors -->
+	<string name="err1021">Challenge not found!</string>
+	<string name="err1022">Challenge already started!</string>
+	<string name="err1023">Challenge already stopped!</string>
+	<string name="err1024">Challenge already completed!</string>
+	<string name="err1025">You're not playing this challenge!</string>
+	<string name="err1026">Not a valid location!</string>
+	<string name="err1027">That's not the next waypoint to complete!</string>
+	<string name="err1028">You don't have enough tokens to buy a hint!</string>
+	<string name="err1029">Hint already used!</string>
+	<string name="err1030">Challenge can not be played more than once!</string>
+	
+	<!-- Waypoint errors -->
+	<string name="err1031">Waypoint not found!</string>
+	<string name="err1032">Waypoint already completed!</string>
+	<string name="err1033">Waypoint is not part of the challenge!</string>
+	
+	<!-- UserGeneratedContent errors -->
+	<string name="err1041">User generated content not found!</string>
+	<string name="err1042">You have to upload a file to complete the waypoint!</string>
+	<string name="err1043">Could not upload user generated content!</string>
+	<string name="err1044">That's not the right type of content!</string>
+	<string name="err1045">Can't rate your own content!</string>
+	<string name="err1046">Can't rate the same content twice!</string>
+	
+	<!-- Personal marker errors -->
+	<string name="err1051">Couldn't retrieve personal markers</string>
+	<string name="err1052">Couldn't find that personal marker</string>
+	<string name="err1053">You're not allowed to flag a personal marker as inappropriate!</string>
+	<string name="err1054">You can't scan the personal marker again before the cooldown runs out.</string>
+	<string name="err1055">Couldn't add points for scanning the personal marker.</string>
+	<string name="err1056">You can't scan your own personal marker.</string>
+	<string name="err1057">Can't retrieve your scanned personal markers.</string>
+	<string name="err1058">We can't determine your location!</string>
+	<string name="err1059">You are too far from the real location of the personal marker to scan it!</string>
+	
+	<!-- Meeting Hotspot errors -->
+	<string name="err1061">Couldn't retrieve meeting hotspots!</string>
+	<string name="err1062">Couldn't find that meeting hotspot!</string>
+	<string name="err1063">Meeting hotspot is no longer active!</string>
+	<string name="err1064">You are not close enough to the meeting hotspot!</string>
+	<string name="err1065">You are already participating in this meeting hotspot!</string>
+	<string name="err1066">Your exact location couldn't be established!</string>
+	<string name="err1067">Invalid QR code!</string>
+	<string name="err1068">Couldn't assign points for your scan!</string>
+	<string name="err1069">You're not participating in this meeting hotspot!</string>
+	<string name="err1070">Scanned player is not participating in this meeting hotspot!</string>
+	<string name="err1071">Couldn't assign points for scanning!</string>
+	<string name="err1072">You have already scanned each other at this meeting hotspot!</string>
+	<string name="err1073">You have already received bonus points for this meeting hotspot!</string>
+	<string name="err1074">Cannot assign bonus points!</string>
+	<string name="err1075">You have already received super bonus points for this meeting hotspot!</string>
+	<string name="err1076">You cannot scan yourself!</string>
+	<string name="err1077">There are no bonus points for this meeting hotspot!</string>
+	
+	<!-- Experience errors -->
+	<string name="err1081">Couldn't retrieve the experience!</string>
+	<string name="err1082">Couldn't retrieve experiences!"</string>
+	<string name="err1083">There are no more tickets available!</string>
+	<string name="err1084">There was a problem with your booking!</string>
+	<string name="err1085">There are not enough tickets left to fill your order!</string>
+	<string name="err1086">You don't have enough tokens to reserve tickets for this experience!</string>
+	<string name="err1087">It's too late to buy tickets for that experience!</string>
+	<string name="err1088">Couldn't retrieve any tickets!</string>
+	<string name="err1089">Your don't have enough tickets!</string>
+	<string name="err1091">There was a problem validating your tickets, please try again!</string>
+	<string name="err1092">That's not a valid amount!</string>
+	
+	<!-- Highscores errors -->
+	<string name="err1101">Couldn't retrieve highscores!</string>
+	<string name="err1102">Couldn't retrieve weekly highscores!</string>
+	<string name="err1103">Couldn't retrieve personal highscores!</string>
+	
+	<!-- Scan errors -->
+	<string name="err1111">Couldn't retrieve a personal marker with that id!</string>
+	<string name="err1112">Couldn't retrieve scan information!</string>
+	<string name="err1113">Cooldown for that QR code isn't over yet!</string>
+	<string name="err1114">Couldn't save scan!</string>
+	<string name="err1115">Couldn't assign tokens for that scan!</string>
+	<string name="err1116">Couldn't retrieve a waypoint with that id!</string>
+	<string name="err1117">You can't scan your own marker!</string>
+	
+	
+	<!-- App errors -->
+	<string name="errorGetImage">Can't get image!</string>
+	
+	
+	<!-- ERROR CODES  END -->
+	
+	<!-- login -->
+	<string name="no_connection">There is no connection with the server</string>
+	<string name="userNameTextFieldHint">Username</string>
+	<string name="passwordTextFieldHint">Password</string>
+	<string name="emailTextFieldHint">E-Mail Address</string>
+	<string name="forgotPassword">Forgot password?</string>
+	<string name="BtnLoginTitle">Login</string>
+	<string name="BtnCreateNewTitle">New player? Sign up!</string>
+	
+	<!-- register -->
+	<string name="firstNameTfHint">First name</string>
+	<string name="lastNameTfHint">Last name</string>
+	<string name="birthDateTfHint">Birth date</string>
+	<string name="zipCodeTfHint">Zip code</string>
+	<string name="genderPickTitle">Gender</string>
+	<string name="BtnBackTitle">Back</string>
+	<string name="BtnNextTitle">Next</string>
+	<string name="BtnCancelTitle">Cancel</string>
+	<string name="birthYearTextFieldHint">Birth Year</string>
+	<string name="BtnTakePhotoTitle">Pick(or take) a photo !</string>
+	<string name="BtnSaveProfileTitle">Save your profile !</string>
+	<string name="repeatPasswordTextFieldHint">Repeat Password</string>
+	<string name="registerUsernameHelp">A unique username.The only information about you we'll show to other players.</string>
+	<string name="registerEmailHelp">Your E-Mail address. We won't expose this to anyone else. We use this to get in touch you about PlayGround related stuff only.</string>
+	<string name="registerGenderHelp">Your gender is not shared with other players. We use it to get a better understanding of who is playing the game and make it better.</string>
+	<string name="yearFormat">Are you sure that's correct?</string>
+	<string name="yearFormatError">Our apologies. We forgot to tell you we were expecting 4 digits. Try again. Thanks!</string>
+	<string name="emailFormatError">That doesn't seem to be a valid email address. Could you try again? Thanks!</string>
+	<string name="Email_not_unique">Uh oh. Seems like this email address was already taken by another user. Could that be? Try another one!</string>
+	<string name="Username_not_unique">Someone already has this username it seems. Popular choice! Try another option. You can do it!</string>
+	<string name="password_empty_error">We really need a password here :)</string>
+	<string name="oldPasswordTextFieldHint">Old password</string>
+	<string name="newPasswordTextFieldHint">New password</string>
+	<string name="BtnChangePasswordTitle">Change password</string>
+	<string name="repeatNewPasswordTextFieldHint">Confirm new password</string>
+	<string name="Register_E_mail">What's your email?</string>
+	<string name="Register_gender">And your gender?</string>
+	<string name="Register_password">Enter a secure password!</string>
+	<string name="Register_Last_step">Last step!</string>
+	<string name="Register_as_a_new_player">Find a cool username!</string>
+	<string name="Register_birth_year">Your year of birth?</string>
+	<string name="LabelRegisterText">Your birth year is not shared with other players. We use it to get a better understanding of who is playing the game and make it better. You can leave this empty if you like.'</string>
+	<string name="LabelPhotoText">Last step! Take a cool picture to go along with your username. Entirely optional!</string>
+	
+	<!-- challenges -->
+	<string name="Nearby_challenges">Challenges</string>
+	<string name="btnUserList">List</string>
+	<string name="btnMap">Map</string>
+	<string name="More_than_max_length_allowed">That's longer than we were expecting! Try something shorter!</string>
+	<string name="Less_than_min_length_allowed">Try something longer!</string>
+	<string name="password_too_short">Password too short</string>
+	<string name="password_dont_match">Password and repeat don't match</string>
+	<string name="username_length_errror">Your username has to be less than 12 and more than 5 characters. We're picky, we know.</string>
+	<string name="registration_succesfull">Registration successful. You can login with your email/password. Yay!</string>
+	<string name="tokens">%1$d tokens</string>
+	<string name="Challenges">Challenges</string>
+	<string name="expectedDuration">Expected duration</string>
+	<string name="minutes">minutes</string>
+	<string name="tokensToBeEarned">%1$d tokens to win</string>
+	<string name="btnDetails">Info</string>
+	<string name="btnShowOnMap">Show on map</string>
+	<string name="Play">START</string>
+	<string name="You_are_here">You are here</string>
+	<string name="challengeStarted">The challenge has started</string>
+	<string name="challengeStartFailed">Awch. Somehow the challenge failed to start. Our bad. Try again!</string>
+	<string name="btnShowAMap">Show a map</string>
+	<string name="btnHints">btnHints</string>
+	<string name="btnStop">Stop</string>
+	<string name="btnScan">Scan</string>
+	<string name="challengeStopped">The challenge has stopped</string>
+	<string name="challengeStopFailed">Awch. Somehow the challenge failed to stop. Our bad. Try again!</string>
+	<string name="btnMapView">Map</string>
+	<string name="btnListView">List</string>
+	<string name="playAboutLabel">About this challenge</string>
+	<string name="Challenge">Challenge</string>
+	<string name="from_your_current_location">%s from your location</string>
+	<string name="Checking_distance">Checking distance</string>
+	<string name="Challenge_details">Challenge details</string>
+	<string name="Play_this_challenge">Play this challenge!</string>
+	<string name="Resume_challenge">Resume challenge</string>
+	<string name="waypoint_qr_error">This is not the correct waypoint!</string>
+	<string name="noAccessDetails">This waypoint is not available right now. Tap to check its availability.</string>
+	<string name="waypointInstructions">Find &amp; Scan the QR code that belongs to this step of the challenge to continue.</string>
+	<string name="ajaxUserChallengeError">Something went wrong. Our bad. Try again!</string>
+	<string name="Starting_point">Starting point</string>
+	<string name="Starting_location">Starting location</string>
+	<string name="Challenge_starts_here">The challenge starts here</string>
+	<string name="Play_challenge">Playing Challenge</string>
+	<string name="completed_challenges">Completed challenges</string>
+	<string name="Current_waypoint_detail">Current waypoint detail</string>
+	<string name="Change_password">Change your password</string>
+	<string name="completed_x_times">Completed %1$d times</string>
+	<string name="password_change_success_alert">Password changed sucessfully !</string>
+	<string name="Challenge_ended">Challenge ended</string>
+	<string name="btnShareViaFacebook">Share via Facebook</string>
+	<string name="btnShareViaTwitter">Share via Twitter</string>
+	<string name="btnMoreChallenges">More challenges</string>
+	<string name="btnHint">Hint</string>
+	<string name="btnAccess">Access</string>
+	<string name="btnShowMap">Show on map</string>
+	<string name="btnBeScan">Scan</string>
+	<string name="btnPlay">Play</string>
+	<string name="close">Close</string>
+	<string name="press_and_listen">Press and listen</string>
+	<string name="Reset_password">Reset password</string>
+	<string name="forgot_password_question">Forgot password?</string>
+	<string name="passwordResetTokenTextFieldHint">E-mail received code</string>
+	<string name="challengeDetailsMapExplanation">You are the green circle. Move to the starting location, marked by the flag. Press play to begin the challenge. Have fun!</string>
+	<string name="challengePlayMapExplanation">The green circle is your start location. The location you should be at is marked by the flag. Be safe!</string>
+	<string name="btnRecord">Record</string>
+	<string name="btnRecord_picture">Take picture</string>
+	<string name="btnUpload">Upload</string>
+	<string name="waypoint_ugc_capture_photo_err">Couldn't retrieve your photo!</string>
+	<string name="waypoint_ugc_capture_video_err">Couldn't start video capture!</string>
+	<string name="waypoint_ugc_wrong_type">Wrong type of file!</string>
+	<string name="waypoint_ugc_no_camera">Your device has no camera!</string>
+	<string name="ugcInstructions">Upload your creation to continue playing the challenge!</string>
+	<string name="ugc_upload_failed">Upload failed! Try again please.</string>
+	<string name="ugcUploading">Uploading...</string>
+	<string name="btnNext">Next</string>
+	<string name="ugcPicture">Snap a picture!</string>
+	<string name="ugcVideo">Record a video!</string>
+	<string name="ugcText">Write a message for the next player!</string>
+	<string name="ugcGoodJob">Good job!</string>
+	<string name="ugcReadyForUpload">Press upload to continue with the challenge or record to try again.</string>
+	<string name="ugc_load_error">Content download failed!</string>
+	<string name="PreviousUserContentLabel">Player %s was the last to leave something here. Check it out! If you think he or she deserves an extra token for this effort, be sure to press the thumbs up button!</string>
+	<string name="rate_ugc_success">You gave a thumbs up to this player, earning him an extra token!</string>
+	<string name="rate_ugc_fail">Rating failed!</string>
+	<string name="rate_ugc_twice">You have already rated this content once.</string>
+	<string name="no_ugc_text">You have to provide a piece of text!</string>
+	<string name="ugc_data_warning">Uploading on mobile networks may incur data charges! Your content will be publicly visible!</string>
+	<string name="lastUgcDesc">Player %s was the last to leave something here. Look at what he made!</string>
+	<string name="playWaypointNumberOf">There are %d steps in this challenge</string>
+	<string name="playWaypointNumber">You are currently playing step %d</string>
+	<string name="playSingleWaypointOf">There is just one step in this challenge. That means you're almost there! Woohoo!</string>
+	<string name="waypoint_location_hidden_error">This step's location is hidden! If you can't gather it's location from the description, then you can cheat ;) Press the Hints button (the lightbulb) at the bottom to unlock this step's location. For a price!'</string>
+	<string name="challengeCompletedTitle">Well done!</string>
+	<string name="challengeCompletedSubTitle">You have earned</string>
+	<string name="challengeCompletedFinish">because you did such an outstanding job playing this challenge</string>
+	<string name="challengeOpenUpGameOn">Open Up! Game On!</string>
+	<string name="error_get_challenges">Error retrieving your challenges!</string>
+	<string name="error_get_completed_challenges">Error retrieving your completed challenges!</string>
+	<string name="earned">%d earned</string>
+	
+	
+	<!-- days of the week -->
+	<string name="monday">Monday</string>
+	<string name="tuesday">Tuesday</string>
+	<string name="wednesday">Wednesday</string>
+	<string name="thursday">Thursday</string>
+	<string name="friday">Friday</string>
+	<string name="saturday">Saturday</string>
+	<string name="sunday">Sunday</string>
+	<string name="all_day">Available all day</string>
+	<string name="Need_some_help_question">Need some help?</string>
+	<string name="Need_some_help_explanation">Having trouble finding out what to do in this waypoint or where you need to be at? You can buy a hint for 1 token.\n\nClick the button below to unlock the hint.</string>
+	<string name="BtnGetHintTitle">Buy a hint for 1 token</string>
+	<string name="sure_to_spend_to_unlock_hint">Are you sure you want to spend a token for a hint ?</string>
+	<string name="Unlock_hint_question">Unlock a hint?</string>
+	<string name="Hint_unlocked_exclamation">Hint unlocked!</string>
+	<string name="Hint_unlocked_explanation">The location of this waypoint is now available via the map button.</string>
+	<string name="Registering">Registering</string>
+	<string name="Waypoint_avalilability">Location Availability</string>
+	<string name="Waypoint_availability_explanation">This screen shows you when this step's location is available (green) and when it isn't (gray).</string>
+	<string name="WaypointAvailabilityAlways">Good news !</string>
+	<string name="WaypointAvailabilityAlwaysExplanation">The location for this step of the challenge is always available. Or should be. There's no locked doors, sleeping people or anything to hold you back. So go ahead and enjoy!</string>
+	<string name="Not_available">Not available</string>
+	<string name="Available_from">Available from</string>
+	<string name="Available_until">Available until</string>
+	<string name="to">to</string>
+	<string name="and">and</string>
+	<string name="challenges_around_me_menu_item">Challenges</string>
+	<string name="my_challenges_menu_item">My challenges</string>
+	<string name="logout_menu_item">Logout</string>
+	<string name="My_challenges">My challenges</string>
+	<string name="experience_store">Experiences</string>
+	<string name="my_tickets">My Experiences</string>
+	  <string name="powered_by_crea_city">Powered by CreaCity</string>
+	  <string name="Connection_error_retry_message">There was an error connecting to the server.\nWe will retry in %d seconds.</string>
+	  <string name="Checking_connection">Checking the connection to the server.</string>
+	  <string name="Personal_marker">Personal marker</string>
+	  <string name="btnScanContinue">Continue</string>
+	  <string name="Player_marker">Player marker</string>
+	  <string name="Find_and_scan_player_marker">Find and scan %s's Player Marker</string>
+	  <string name="btnScanMarker">Scan marker</string>
+	  <string name="PM_Scanned_x_Times">You have scanned this player %d times so far</string>
+	  <string name="PM_Not_scanned_yet">You have not scanned this player before !</string>
+	  <string name="before_you_can_scan_again">before you can scan again</string>
+	  <string name="PM_scan_cooldown_message">You can scan a personal marker once every 24 hours. Try again later !</string>
+	  <string name="This_player_has_updated_his_personal_message">This player has updated his personal message</string>
+	  <string name="PM_qr_error">This is not the correct qr for this PM</string>
+	  <string name="Hurray">Hurray !</string>
+	  <string name="PM_Result_received_message">You scanned %s's personal marker and received %d token(s).</string>
+	  <string name="PM_result_check_message">Check out %s's message for you</string>
+	  <string name="Player_markers">Player markers</string>
+	  <string name="PM_list_cd_complete">Cooldown complete. Go scan!</string>
+	  <string name="Meeting_hotspot">Meeting hotspot</string>
+	  <string name="about">About this %s</string>
+	  <string name="Active_right_now_exclamation">Active right now!</string>
+	  <string name="other_players_en_route">players en route</string>
+	  <string name="Time_remaining">Time remaining</string>
+	  <string name="You_re_too_late_exclamation">You're too late!</string>
+	  <string name="other_players">other players</string>
+	  <string name="players_scanned">players scanned</string>
+	  <string name="bonus_tokens">bonus tokens</string>
+	  <string name="tokens_won">tokens won</string>
+	  <string name="ugcUploadFailed">Upload failed! Please try again.</string>
+	  <string name="Scan">Scan</string>
+	  <string name="Be_scanned">Be scanned</string>
+	  <string name="Meeting_hotspot_scan_question">Do you want to scan another player or be scanned ?</string>
+	  <string name="Meeting_hotspot_scan">Meeting Hotspot Scan</string>
+	  <string name="btnRate">Cool</string>
+	  <string name="Ok">Ok</string>
+	  <string name="Error">Error</string>
+	  <string name="Meeting_hotspot_ended">Meeting hotspot ended</string>
+	  <string name="Meeting_hotspot_ended_explanation">This meeting hotspot has come to and end. We hope you met some inspiring people and we'd love to see you again next time !</string>
+	  <string name="Be_scanned_by_another_player">Be scanned by another player</string>
+	  <string name="Be_scanned_by_another_player_explanation">Hook up with other players and either scan their code or have them scan you. It's all the same, as both of you get tokens for the action. Show this QR code to a player that wants to scan you.</string>
+	  <string name="Experience_store">Experiences</string>
+	  <string name="Tokens">Tokens</string>
+	  <string name="you_have_number_tickets">You have %d ticket(s)</string>
+	  <string name="tickets_available">%d tickets available</string>
+	  <string name="Offered_by">Offered by %s</string>
+	  <string name="From_date_to_date">From %s to %s</string>
+	  <string name="Experience">Experience</string>
+	  <string name="Costs_number_tokens">Costs %d tokens</string>
+	  <string name="My_Tickets">My Experiences</string>
+	  <string name="experience_tickets_bought">Tickets reserved successfully! We will send you a confirmation email shortly.</string>
+	  <string name="Use">Use</string>
+	  <string name="Are_you_sure_you_want_to_use_number_tickets">Are you sure you want to use %d tickets?</string>
+	  <string name="Are_you_sure_you_want_to_buy_number_tickets">Are you sure you want to buy %d tickets?</string>
+	  <string name="Confirm_tickets_buy_dialog_title">Confirm ticket purchase!</string>
+	  <string name="Buy">Buy</string>
+	  <string name="Confirm">Confirm</string>
+	  <string name="Cancel">Cancel</string>
+	  <string name="Choose_from_gallery">Choose from gallery</string>
+	  <string name="Take_a_new_photo">Take a new photo</string>
+	  <string name="Register_photo_dialog_message">How about a nice picture to go along with your fancy username? Great idea! Pick an existing one from the gallery or take a new one, right here, right now!</string>
+	  <string name="Register_photo_dialog_title">Take a nice picture!</string>
+	  <string name="Exit_application_message">Exit application</string>
+	  <string name="Exit_application_questionmark">Exit application ?</string>
+	  <string name="Exit">Exit</string>
+	  <string name="extra_difficulty_explanation_not_started">%d bonus tokens if you finish in %d minutes</string>
+	  <string name="extra_difficulty_explanation_started">%d bonus tokens if you finish by %s</string>
+	  <string name="expected_duration">Will probably take you around %d minutes</string>
+	  <string name="Meeting_hotspot_not_available_yet">Meeting hotspot not available yet</string>
+	  <string name="Retry">Retry</string>
+	  <string name="There_is_no_data_coverage">Uh oh. No data connection!</string>
+	  <string name="Internet_connection_is_lost">Oh dear. It seems you have lost a connection to the internet. How about moving around a bit until you are back online?</string>
+	  <string name="you_used_number_tickets">You used up %d ticket(s). Enjoy the experience!!</string>
+	  <string name="No_challenges_found_refresh_explanation">Uh oh. It seems we can't find any challenges around your current location! Move around the city to find challenges to play! Have fun!</string>
+	  <string name="btnRefresh">Search for nearby challenges</string>
+	  <string name="btnRefreshHighscores">Refresh highscores</string>
+	  <string name="Refreshing">Searching</string>
+	  <string name="No_my_challenges_found_refresh_explanation">Uh oh. You are not playing any challenge!</string>
+	  <string name="no_completed_challenges">Uh oh. You haven't completed any challenges yet! Start playing now and earn tokens!</string>
+	  <string name="No_player_markers_found_refresh_explanation">Uh oh. No player markers found!</string>
+	  <string name="You_can_play_this_challenge_at_a_later_time">You can play this later</string>
+	  <string name="You_can_play_this_challenge_right_now">You can play this now</string>
+	  <string name="No_experiences_found">Uh oh. No experiences found!</string>
+	  <string name="No_experience_tickets_found">Uh oh. No experience tickets found! Buy some on the experiences screen.</string>
+	  
+	  <!-- Meeting hotspot screen -->
+	  <string name="scan_hotspot_title">Scan another player</string>
+  	  <string name="scan_hotspot_description">Scan the QR code of another player playing the meeting hotspot. Both of you will receive tokens for your scan.</string>
+	  
+	  <!-- Welcome screen -->
+	  <string name="welcome_user_menu">About Playground</string>
+	  <string name="welcome_user_title">Hi %s,</string>
+	  <string name="welcome_user_text">Welcome to our Playground experiment! You play this game with us and we reward you with unique experiences in and around the city. We already put some 30 challenges in place you can earn tokens with, which you can exchange for your favorite experience(s).</string>
+	  <string name="welcome_user_end">Open up, game on!</string>
+	  <string name="welcome_user_credits">The PLAYGROUND team</string>
+	  <string name="welcome_user_action">Press the button below or use the menu to the left to browse challenges now.</string>
+	  <string name="welcome_user_disclaimer_title">-- Disclaimer --</string>
+	  <string name="welcome_user_disclaimer_apple">Apple Inc. is in no way or form involved as a sponsor in this app. Tokens earned are not transferable and have no monetary value and cannot be exchanged or sold as such. Tickets for experiences are not transferable and cannot be sold. Tokens can only be earned through official Playground media, such as the app and the website.</string>
+	  <string name="welcome_user_disclaimer_google">Google Inc. is in no way or form involved as a sponsor in this app. Tokens earned are not transferable and have no monetary value and cannot be exchanged or sold as such. Tickets for experiences are not transferable and cannot be sold. Tokens can only be earned through official Playground media, such as the app and the website.</string>
+	  <string name="version_label">Version: %s</string>
+	  <string name="btnToChallenges">Go to Challenges</string>
+	  
+	  <!-- Highscores screen -->
+	  <string name="highscores_title">Highscores</string>
+	  <string name="weekly_title">Weekly highscores</string>
+	  <string name="relative_title">Personal highscores</string>
+	  <string name="btnHighscores">Top players</string>
+	  <string name="btnWeeklyHighscores">This week</string>
+	  <string name="btnRelativeHighscores">My score</string>
+	  <string name="unknown_user">Unknown player</string>
+	  <string name="tokens_earned">%d tokens earned</string>
+	  <string name="no_highscores_refresh">Uh oh. No highscores yet. That means you can easily be first right?</string>
+	  
+	  <!-- Scan screen -->
+  	  <string name='scan_title'>Scan QR code</string>
+  	  <string name='scanning_instructions'>Found a QR code you think might be from %s? Scan it and receive tokens.</string>
+	  <string name='scan_unknown_type'>Can't determine if this is a Playground QR code!</string>
+	  <string name='scan_success'>You successfully scanned a %s and earned %d tokens for it. You can scan this marker again on %s.</string>
+  	  <string name='scan_type_wp'>Waypoint</string>
+  	  <string name='scan_type_pm'>Player Marker</string>
+  	  <string name='btnTryAgain'>Scan again</string>
+  	    
+  	  <!-- Beacon screen -->
+	  <string name='qr_or_beacon_question'>Would you like to scan a QR code, or look for an iBeacon?</string>
+	  <string name='scan_qr_btn'>Scan a QR code</string>
+	  <string name='scan_beacon_btn'>Scan for iBeacons</string>
+	  <string name='scanning_type_title'>Choose scanning type</string>
+	  <string name='beacon_description'>Try to get near the beacon. If you're close enough you will automatically complete this waypoint.</string>
+	  <string name='beacon_not_detected'>Not detected</string>
+	  <string name='beacon_far'>Close</string>
+	  <string name='beacon_near'>Almost there</string>
+	  <string name='beacon_immediate'>Gotcha</string>
+  	  
+  	  <!-- Social -->
+	  <string name='share_fb'>Share to Facebook</string>
+  	  <string name='share_twitter'>Tweet it</string>
+  	  <string name='tweet_challenge_completed'>I just completed the %s challenge in %s!</string>
+  	  <string name='tweet_success'>Tweet sent!</string>
+  	  <string name='tweet_error'>Couldn't send tweet!</string>
+
+	  <!-- Constant strings -->
+  	  <string name="app_name">Playground</string>
+</resources>

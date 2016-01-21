@@ -1,0 +1,12 @@
+<Alloy>
+    <View id="buttonWrapper">
+        <View id="layoutWrapper">
+            <View id="iconWrapper">
+                <View id="icon"></View>
+            </View>
+            <View id="textWrapper">
+                <Label id="buttonLabel"/>
+            </View>
+        </View>
+    </View>
+</Alloy>

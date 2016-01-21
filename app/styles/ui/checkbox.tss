@@ -1,0 +1,16 @@
+"#checkboxWrapper":{
+    layout: 'horizontal',
+    height: Ti.UI.SIZE,
+    width: Ti.UI.SIZE
+},
+"#checkboxImage":{
+    width: '20dp',
+    height: '20dp',
+    backgroundImage: '/images/ui/checkbox-unchecked.png',
+    touchEnabled: false,
+},
+"#checkboxLabel":{
+    left: "10dp",
+    color: 'white',
+    shadowColor: 'black',
+}

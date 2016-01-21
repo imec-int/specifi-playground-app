@@ -1,0 +1,4 @@
+<Alloy>
+    <!-- We don't need a wrapper for android we do all in the controller -->
+    <View id="videoWrapper" platform="ios" ></View>
+</Alloy>

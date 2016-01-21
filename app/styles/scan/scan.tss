@@ -1,0 +1,97 @@
+"#scanDetailWrapper":{
+	top: 0,
+	height: Titanium.UI.FILL,
+	layout: "vertical",
+	backgroundColor: "white",
+	backgroundImage: "/images/background-arrow.png",
+},
+"#scanDetailWrapper[platform=ios]":{
+	disableBounce: true
+},
+
+"#scrollWrapper": {
+	height: Ti.UI.FILL,
+	scrollType: "vertical",
+	disableBounce: false,
+	showVerticalScrollIndicator: false,
+	contentWidth: "99%",
+	layout: "vertical",
+	bottom: '0dp'
+},
+
+"#scannerWrapper": {
+	backgroundColor: "transparent",
+	height: '60%',
+	width: Titanium.UI.FILL
+	
+},
+
+"#scannerWrapper[platform=ios]":{
+	height: '50%',
+	layout: 'absolute',
+	left: '0dp',
+	top: '0dp'
+},
+
+"#scanningInstructions": {
+	height: Titanium.UI.SIZE,
+	font: {
+		fontSize: "16dp",
+		fontWeight: "bold"
+	},
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+},
+
+"#completedIcon": {
+	height: 0,
+	visible: false,
+	font: {
+		fontSize: "80dp",
+	},
+	color: Alloy.Globals.CustomColor4,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	top: "40dp",
+},
+"#tokenRow":{
+	bottom: '20dp',
+    top: "20dp",
+    left: 0,
+    width: Ti.UI.FILL,
+    height: 0,
+    layout: 'absolute'
+},
+"#tokenIcon":{
+    left: "10dp",
+    width: "40dp",
+    height: "0dp",
+    visible: false,
+    font:{
+        fontSize: "40dp",
+		fontWeight: 'normal'
+    },
+    color: Alloy.Globals.CustomColor4
+},
+"#tokenNumber":{
+    left: "5dp",
+    font:{
+        fontSize: "50dp"
+    },
+    color: Alloy.Globals.CustomColor4
+},
+
+"#footerWrapper":{
+	height: 0
+},
+"#innerFooterWrapper":{
+	height: Titanium.UI.FILL
+},
+".footerButton": {
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL
+},
+"#btnTryAgain":{
+	title: L("btnTryAgain"),
+	backgroundColor: Alloy.Globals.CustomColor3,
+	backgroundSelectedColor: Alloy.Globals.CustomColor3Light,
+	iconImage: "/images/icons/next-#ffffff.png"
+}

@@ -1,0 +1,35 @@
+"#header":{
+    height: 0,
+    width: Ti.UI.FILL,
+    backgroundColor: Alloy.Globals.CustomColor1,
+},
+"#mainHeaderWrapper":{
+    layout: 'absolute',
+    width: Ti.UI.FILL
+},
+"#sliderButtonWrapper":{
+    height: Ti.UI.SIZE,
+    width: "15%",
+    layout:'absolute',
+    left: 0,
+},
+
+"#labelWrapper":{
+    width: "70%",
+    layout: 'absolute',
+    left: "14.99%"
+},
+
+"Label":{
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE,
+    color: "white",
+    font: {
+        fontWeight: "normal",
+        fontSize: "20dp"
+    }
+},
+"#pageTitle":{
+	width: Titanium.UI.FILL,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,	
+}

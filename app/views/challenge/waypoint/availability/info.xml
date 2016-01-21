@@ -1,0 +1,39 @@
+<Alloy>
+    <View id="detailWrapper">
+        <View id="challengeDetailWrapper">
+            <View id="titleWrapper" >
+                <Label id="challengeTitle"/>
+            </View>
+            <View id="waypointWrapper">
+                 <View id="waypointStatusWrapper">
+                    <View id="waypointTitleWrapper">
+                        <Label id="currentWaypoint"/>
+                    </View>
+                </View>
+                <ScrollView id="waypointTextWrapper">
+                    <View id="waypointTextWrapperHeaderSpace"></View>
+                    <View id="bigIcon">
+                        <View id="bigIconImage"></View>
+                    </View>
+                    <Label autoStyle="true" id="viewTitle" class="innerInfo"/>
+                    <Label autoStyle="true" id="viewExplanation" class="innerInfo"/>
+                    <Label autoStyle="true" id="startDateLabel" class="innerInfo"/>
+                    <Label autoStyle="true" id="endDateLabel" class="innerInfo"/>
+                    <TableView id="scheduleTable" class="innerInfo">
+                        
+                    </TableView>
+                    <View id="waypointTextWrapperFooterSpace"></View>
+                </ScrollView>
+            </View>
+        </View>
+        <View id="footerWrapper">
+            <View id="innerFooterWrapper">
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnDetails" onClick="onClick"/>
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnLocation" onClick="onClick"/>
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnScan" onClick="onClick"/>
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnHint" onClick="onClick"/>
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnAccess" onClick="onClick"/>
+            </View>
+        </View>
+    </View>
+</Alloy>

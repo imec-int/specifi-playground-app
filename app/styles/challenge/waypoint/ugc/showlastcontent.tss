@@ -1,0 +1,61 @@
+"#challengeDetailWrapper":{
+	top: 0,
+	height: Alloy.Globals.appConfig.contentHeight,
+	layout: "vertical",
+	backgroundColor: "white"
+},
+"#challengeDetailWrapper[platform=ios]":{
+	disableBounce: true
+},
+"#ugcUser":{
+	top: "15dp",
+	font:{
+		fontSize: "18dp",
+		fontWeight: "18dp",
+	},
+	color: Alloy.Globals.CustomColor7,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+},
+".innerInfo":{
+	left: "10dp",
+	top: "5dp",
+	height: Ti.UI.SIZE
+},
+
+"#waypointTextWrapper":{
+	top: "1dp"
+},
+"#footerWrapper":{
+	height: Alloy.Globals.appConfig.headerHeight
+},
+".footerButton": {
+	height: Ti.UI.FILL,
+	width: "50%"
+},
+
+"#btnRate":{
+	title: L("btnRate"),
+	titleColor: "#FFFFFF",
+	backgroundColor: Alloy.Globals.CustomColor3,
+	backgroundSelectedColor: Alloy.Globals.CustomColor3Light,
+	backgroundDisabledColor: "#C4C4C4",
+	iconImage: "/images/icons/thumbs-up-#ffffff.png"
+},
+"#playButton":{
+	opacity: 0.5
+},
+"#ugcText":{
+	left: '15dp',
+	right: '15dp',
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.SIZE,
+  	font: {
+  		fontSize: '14dp',
+  		fontStyle: 'italic'
+  		
+  	}
+},
+".row":{
+	height: Ti.UI.SIZE,
+	layout: 'horizontal'
+}

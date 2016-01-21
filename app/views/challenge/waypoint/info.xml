@@ -1,0 +1,76 @@
+<Alloy>
+	<View id="detailWrapper">
+		<View id="challengeDetailWrapper">
+			<View id="titleWrapper" >
+				<Label id="challengeTitle"/>
+			</View>
+			<View id="waypointWrapper">
+				<ScrollView id="waypointTextWrapper">
+					
+					<View id="noAccessWrapper" onClick="accessClick">
+						<View id="noAccessLeft">
+							<View id="noAccessIcon"></View>
+						</View>
+						<View id="noAccessRight">
+							<Label id="noAccessDetails"/>
+						</View>
+					</View>
+					<ImageView class = "waypointMedia" id="waypointImage" onClick="imageClick"/>
+					<Label id="currentWaypoint" class="innerInfo"/>
+					<Label id="waypointDescription" class="innerInfo"/>
+					
+					<View id="innerInfoWrapper">
+						<View class="row innerInfo">
+							<Label class="detailIcon" icon = "fa-search"/>
+							<View class="detailTextWrapper">
+								<Label class="detailText"  id="waypointInstructions"/>
+							</View>
+						</View>
+						<View class="row innerInfo">
+							<Label class="detailIcon" icon = "fa-flag"/>
+							<View class="detailTextWrapper">
+								<Label class="detailText"  id="waypointNumber"/>
+							</View>
+						</View>
+						<View class="row innerInfo">
+							<Label class="detailIcon" icon = "fa-flag-checkered"/>
+							<View class="detailTextWrapper">
+								<Label class="detailText"  id="waypointNumberOf"/>
+							</View>
+						</View>
+					</View>
+					
+					<View class = "waypointMedia innerInfo" id="waypointVideo" onClick="videoClick">
+						<ImageView class = "waypointMedia" id="waypointVideoPreview" ></ImageView>
+						<View id="playButton">
+							<View id="playButtonIcon"></View>
+						</View>
+					</View>
+					<View class = "waypointMedia innerInfo" id="waypointAudio" onClick="audioClick">
+						<View id="audioPlay" onClick="audioPlayerPauseClick">
+							<View id="audioPlayButtonIcon"></View>
+						</View>
+						<View id="audioPause" onClick="audioPlayerPauseClick">
+							<View id="audioPauseButtonIcon"></View>
+						</View>
+						<View id="audioStop" onClick="audioPlayerStopClick">
+							<View id="audioStopButtonIcon"></View>
+						</View>
+						<Label id="audioLabel"/>
+					</View>
+					<View id="waypointTextWrapperFooterSpace"></View>
+				</ScrollView>
+			</View>
+		</View>
+		<View id="footerWrapper">
+			<View id="innerFooterWrapper">
+				<Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnDetails" onClick="onClick"/>
+				<Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnLocation" onClick="onClick"/>
+				<Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnScan" onClick="onClick"/>
+				<Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnHint" onClick="onClick"/>
+				<Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnAccess" onClick="onClick"/>
+			</View>
+		</View>
+		<Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+	</View>
+</Alloy>

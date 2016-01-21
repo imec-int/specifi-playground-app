@@ -1,0 +1,12 @@
+"#mainHeaderSliderButton":{
+    width:"30dp",
+    height: "30dp",
+    backgroundColor: "transparent",
+    titleShadowDisabled: true,
+    iconWidth: "30dp",
+    iconHeight: "30dp",
+    iconImage: "/images/icons/menu-button-#ffffff.png",
+    iconTop: 0,
+    iconBottom: 0,
+    left:"10dp",
+}

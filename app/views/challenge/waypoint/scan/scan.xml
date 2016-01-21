@@ -1,0 +1,52 @@
+<Alloy>
+	<View id="detailWrapper">
+		<View id="challengeDetailWrapper">
+			<View id="titleWrapper" >
+				<Label id="challengeTitle"/>
+			</View>
+			<View id="waypointWrapper">
+				
+				<View id="scannerWrapper"></View>
+				
+				<ScrollView id="waypointTextWrapper">
+					
+					<Label id="currentWaypoint" class="innerInfo"/>
+					<Label id="waypointDescription" class="innerInfo"/>
+					
+					<View id="innerInfoWrapper">
+						<View class="row innerInfo">
+							<Label class="detailIcon" icon = "fa-search"/>
+							<View class="detailTextWrapper">
+								<Label class="detailText"  id="waypointInstructions"/>
+							</View>
+						</View>
+						<View class="row innerInfo">
+							<Label class="detailIcon" icon = "fa-flag"/>
+							<View class="detailTextWrapper">
+								<Label class="detailText"  id="waypointNumber"/>
+							</View>
+						</View>
+						<View class="row innerInfo">
+							<Label class="detailIcon" icon = "fa-flag-checkered"/>
+							<View class="detailTextWrapper">
+								<Label class="detailText"  id="waypointNumberOf"/>
+							</View>
+						</View>
+					</View>
+					
+					<View id="waypointTextWrapperFooterSpace"></View>
+				</ScrollView>
+			</View>
+		</View>
+		<View id="footerWrapper">
+			<View id="innerFooterWrapper">
+				<Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnDetails" onClick="onClick"/>
+				<Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnLocation" onClick="onClick"/>
+				<Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnScan" onClick="onClick"/>
+				<Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnHint" onClick="onClick"/>
+				<Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnAccess" onClick="onClick"/>
+			</View>
+		</View>
+		<Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+	</View>
+</Alloy>

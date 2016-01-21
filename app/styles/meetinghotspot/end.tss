@@ -1,0 +1,170 @@
+"Label":{
+	font:{
+		fontSize: "14dp"
+	}
+},
+
+"#titleWrapperInner":{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE
+},
+"#challengeDetailWrapper":{
+	heigth: Ti.UI.SIZE,
+	width: Ti.UI.FILL,
+	showVerticalScrollIndicator: false,
+	layout: "vertical",
+	contentWidth: "99%",
+	disableBounce: false
+},
+
+"#about":{
+	top: "20dp",
+	text: L('Meeting_hotspot_ended'),
+	font:{
+		fontSize: "18dp",
+		fontWeight: "bold",
+	},
+	color: Alloy.Globals.CustomColor7
+},
+
+"#description": {
+	text:L('Meeting_hotspot_ended_explanation'),
+	top: '10dp',
+	height: Titanium.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	font: {
+		fontSize: "16dp"
+	},
+	color: Alloy.Globals.BlackText
+}
+
+"#btnDetails":{
+	title: L( "btnDetails")
+},
+
+
+".icon": {
+	font: {
+		fontSize: "18dp"
+	},
+	right: "4dp"
+},
+
+
+".rounded":{
+	borderRadius: "5dp"
+},
+
+"#scannedWrapper":{
+	backgroundColor: Alloy.Globals.CustomColor4,
+	layout: "vertical",
+	height: Titanium.UI.SIZE,
+	width: '50%'
+},
+
+"#scannedNumberWrapper":{
+	height: Ti.UI.SIZE,
+	layout: "horizontal",
+	width: Ti.UI.SIZE
+},
+
+"#scannedNumber":{
+	font: {
+		fontSize: "28dp",
+		fontWeight: "bold"
+	},
+	height: Ti.UI.SIZE
+},
+
+"#scannedText":{
+	text: L('players_scanned'),
+	font: {
+		fontSize: "14dp",
+		fontWeight: "bold"
+	},
+	bottom: "10dp",
+	height: Ti.UI.SIZE
+},
+
+"#scoreWrapper":{
+	width: '50%',
+	height: Titanium.UI.SIZE,
+	backgroundColor: Alloy.Globals.CustomColor4,
+	layout: "horizontal"
+},
+
+"#bonusWrapper":{
+	layout: "vertical",
+	height: Titanium.UI.SIZE,
+	width: '0dp'
+},
+
+"#bonusNumberWrapper":{
+	height: Ti.UI.SIZE,
+	layout: "horizontal",
+	width: Ti.UI.SIZE
+},
+
+"#bonusNumber":{
+	font: {
+		fontSize: "28dp",
+		fontWeight: "bold"
+	},
+	height: Ti.UI.SIZE
+},
+
+"#bonusText":{
+	text: L('bonus_tokens'),
+	font: {
+		fontSize: "14dp",
+		fontWeight: "bold"
+	},
+	bottom: "10dp",
+	height: Ti.UI.SIZE
+},
+
+"#tokensWrapper":{
+	layout: "vertical",
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL
+},
+
+"#tokensNumberWrapper":{
+	height: Ti.UI.SIZE,
+	layout: "horizontal",
+	width: Ti.UI.SIZE
+},
+
+"#tokensNumber":{
+	font: {
+		fontSize: "28dp",
+		fontWeight: "bold"
+	},
+	height: Ti.UI.SIZE
+},
+
+"#tokensText":{
+	text: L('tokens_won'),
+	font: {
+		fontSize: "14dp",
+		fontWeight: "bold"
+	},
+	bottom: "10dp",
+	height: Ti.UI.SIZE
+},
+
+".infoAndIcon":{
+	top: "3dp"
+},
+
+".centerWrapper": {
+	layout: 'vertical',
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.SIZE,
+	top: "20dp"
+}
+
+".spacer": {
+	width: Titanium.UI.FILL,
+	height: '20dp'
+}

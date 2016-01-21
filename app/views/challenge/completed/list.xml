@@ -1,0 +1,16 @@
+<Alloy>
+    <View id="challengesList" class="listWrapper">
+        <View id="contentWrapper">
+            <TableView id="challengesTable"/>
+            <View id="refreshWrapper">
+        		<View id="middleWrapper">
+        			<View id="messageWrapper">
+        				<Label id="refreshMessageIcon" icon="fa-exclamation-triangle" />
+        				<Label id="refreshMessage"/>
+        			</View>
+        		</View>
+        	</View>
+        </View>
+    	<Widget id="fa" src="com.mattmcfarland.fontawesome"/>    
+    </View>
+</Alloy>

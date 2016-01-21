@@ -1,0 +1,83 @@
+".challengeTableViewRow":{
+    allowsSelection: false,
+    editable: false,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    bubbleParent: true,
+    touchEnabled: true,
+    layout: "vertical",
+    backgroundSelectedColor: Alloy.Globals.CustomColor1Lighter,
+},
+"#rowWrapper":{
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    layout: "horizontal",
+},
+"#leftSide":{
+    width: "15%",
+    height: "65dp",
+    layout: "absolute"
+},
+"#infoWrapper":{
+    height: Ti.UI.SIZE,
+    top: "10dp",
+    bottom: "5dp",
+    layout: "vertical",
+    width: "70%"
+},
+"#titleLabel":{
+    left: 0,
+    font:{
+        fontSize: "18dp",
+        fontWeight: "normal"
+    }
+},
+"#typeLabel":{
+    left: 0,
+    font:{
+        fontSize: "14dp",
+        fontWeight: "normal",
+        fontStyle: "italic"
+    }
+},
+//hiding available label because we will show it only for challenges
+"#availableLabel":{
+	left: 0,
+    font:{
+        fontSize: "14dp",
+        fontWeight: "normal"
+    },
+    height: "0dp",
+    visible: false,
+    bottom: "5dp"
+}
+"#distanceLabel":{
+    left: 0,
+    font:{
+        fontSize: "14dp",
+        fontWeight: "normal"
+    },
+},
+"#rightSide":{
+    width: "15%",
+    height: "65dp",
+    layout: "absolute"
+},
+"#leftIcon":{
+    width: "30dp",
+    height: "40dp",
+    font:{
+        fontSize: "30dp",
+    },
+    color: Alloy.Globals.CustomColor7,
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+},
+"#rightIcon": {
+    width: "30dp",
+    height: "40dp",
+    font:{
+        fontSize: "30dp",
+    },
+    color: Alloy.Globals.CustomColor3Light,
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+}

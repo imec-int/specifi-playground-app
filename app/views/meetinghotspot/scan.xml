@@ -1,0 +1,25 @@
+<Alloy>
+	<View id="detailWrapper">
+		<View id="challengeDetailWrapper">
+            <View id="titleWrapper" >
+            	<Label autoStyle="true" id="challengeTitle"/>
+            </View>
+	       	<View id="waypointWrapper">
+	       		<View id="scannerWrapper"></View>
+		       	<ScrollView id="waypointTextWrapper">
+					<Label id="title" class="innerInfo"/>
+					<Label id="description" class="innerInfo"/>
+				</ScrollView>
+	       	</View>
+		</View>
+		
+		<View id="footerWrapper">
+			<View id="innerFooterWrapper">
+				<Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnDetails" onClick="onClick"/>
+				<Require autoStyle="true" type="view" src="ui/extendedbutton" id="btnScan" onClick="onClick"/>
+				<Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnMap" onClick="onClick"/>
+			</View>
+		</View>
+		<Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+	</View>
+</Alloy>

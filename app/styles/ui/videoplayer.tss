@@ -1,0 +1,7 @@
+"#videoWrapper" : {
+  top:0,
+  left: 0,
+  width:Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: "black",
+}

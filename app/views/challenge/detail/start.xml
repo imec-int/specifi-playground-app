@@ -1,0 +1,63 @@
+<Alloy>
+	<View id="detailWrapper">
+		<View id="challengeDetailWrapperOuter">
+			<View id="titleWrapper" >
+				<View  id="titleWrapperInner">
+					<Label autoStyle="true" id="challengeTitle"/>
+				</View>
+			</View>
+			<ScrollView id="challengeDetailWrapper">
+				<View id="imageWrapper">
+					<ImageView id="challengeImage" onClick="imageClick"/>
+				</View>
+				<Label id="about" class="innerInfo" textid="playAboutLabel" />
+				<Label id="description" class="innerInfo"/>
+				<View id="challengeTypeWrapper" class="row innerInfo">
+					<Label class="detailIcon" icon = "fa-map-marker"></Label>
+					<View class="detailTextWrapper">
+						<Label class="detailText" id="challengeType"/>
+					</View>
+				</View>
+				<View class="row innerInfo">
+					<Label class="detailIcon" icon = "fa-location-arrow"></Label>
+					<View class="detailTextWrapper">
+						<Label class="detailText" id="distanceLabel"/>
+					</View>
+				</View>
+				<View class="row innerInfo">
+					<Label class="detailIcon" icon = "fa-calendar"></Label>
+					<View class="detailTextWrapper">
+						<Label class="detailText" id="availableLabel"/>
+					</View>
+				</View>
+				<View class="row innerInfo">
+					<Label class="detailIcon" icon = "fa-dot-circle-o"></Label>
+					<View class="detailTextWrapper">
+						<Label class="detailText"  id="tokensNumber"/>
+					</View>
+				</View>
+				<View class="row innerInfo">
+					<Label class="detailIcon" id="expectedDurationIcon" />
+					<View class="detailTextWrapper">
+						<Label class="detailText"  id="expectedDuration" />
+					</View>
+				</View>
+				<View id="extraDifficulty" class="row innerInfo">
+					<Label class="detailIcon" id="extraTokenIcon" />
+					<View class="detailTextWrapper">
+						<Label class="detailText"  id="extraTokenNumber"/>
+					</View>
+				</View>
+				<View class="spacer" ></View>
+			</ScrollView>
+		</View>
+		<View id="footerWrapper">
+			<View id="innerFooterWrapper">
+				<Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnDetails" onClick="onClick"/>
+				<Require autoStyle="true" type="view" src="ui/extendedbutton" id="btnPlayChallenge" onClick="onClick"/>
+				<Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnMap" onClick="onClick"/>
+			</View>
+		</View>
+		<Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+	</View>
+</Alloy>

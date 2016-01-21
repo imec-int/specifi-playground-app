@@ -1,0 +1,45 @@
+"#titleWrapperInner":{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE
+},
+"#challengeDetailWrapper":{
+	heigth: Ti.UI.SIZE,
+	width: Ti.UI.FILL,
+	showVerticalScrollIndicator: false,
+	layout: "vertical",
+	contentWidth: "99%",
+	disableBounce: false
+},
+
+".row":{
+	height: Ti.UI.SIZE,
+	layout: 'horizontal'
+},
+
+"#about":{
+	text: L('Be_scanned_by_another_player'),
+	top:"10dp",
+	font:{
+		fontSize: "18dp",
+		fontWeight: "bold"
+	}
+},
+
+"#description":{
+	text: L('Be_scanned_by_another_player_explanation'),
+	font: {
+		fontSize: "14dp"
+	}
+},
+
+"#userQr": {
+	top: '10dp'
+},
+
+"#btnDetails":{
+	title: L( "btnDetails")
+},
+
+"#btnScan":{
+	width: "20%"
+}

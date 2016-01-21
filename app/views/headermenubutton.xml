@@ -1,0 +1,3 @@
+<Alloy>
+        <Require type="view" src="ui/extendedbutton" id="mainHeaderSliderButton" onClick="onClick" />
+</Alloy>

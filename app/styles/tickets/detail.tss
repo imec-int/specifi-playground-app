@@ -1,0 +1,90 @@
+"#experienceDetailWrapperOuter":{
+    top: "0dp",
+    bottom:Alloy.Globals.appConfig.headerHeight,
+    height: Titanium.UI.FILL,
+    layout: "vertical",
+    backgroundColor: "white",
+    backgroundImage: "/images/background-arrow.png"
+},
+"#experienceTitle":{
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	top: "8dp",
+	font: {
+		fontSize: "18dp"
+	},
+	bottom: "8dp",
+	height: Ti.UI.SIZE,
+	left: "8dp",
+	right: "8dp",
+	color: "white"
+},
+"#experienceDetailWrapper":{
+	top: "0dp",
+    heigth: Ti.UI.FILL,
+    width: Ti.UI.FILL,
+    showVerticalScrollIndicator: true,
+    layout: "vertical",
+    contentWidth: "99%",
+    disableBounce: false
+},
+".row":{
+    height: Ti.UI.SIZE,
+    layout: 'horizontal'
+},
+"#about":{
+    top: "15dp",
+	font:{
+		fontSize: "18dp"
+	},
+	color: Alloy.Globals.CustomColor7
+},
+"#description":{
+	top:"5dp",
+    font: {
+        fontSize: "16dp"
+    },
+    bottom: "0dp"
+},
+"#experienceImage":{
+	top: "0dp",
+	width: Ti.UI.FILL,
+	height: Titanium.UI.SIZE
+},
+".ticketBulkButton":{
+	width: "35dp",
+	height: "25dp",
+	iconWidth:"25dp",
+	iconHeight: "25dp",
+	height: Titanium.UI.FILL
+},
+
+
+"#btnAddToUse":{
+	iconImage: "/images/icons/plus.png"
+},
+
+"#btnSubstractFromUse":{
+	iconImage: "/images/icons/minus.png"
+},
+
+"#footerWrapper":{
+	bottom: "-100dp"
+},
+
+".footerButton": {
+	width: Ti.UI.FILL
+},
+"#btnUse":{
+	touchEnabled: false,
+	title: L('Use'),
+	titleColor: "#FFFFFF",
+	backgroundColor: Alloy.Globals.CustomColor3,
+	backgroundSelectedColor: Alloy.Globals.CustomColor3Light,
+	backgroundDisabledColor: "#C4C4C4",
+	iconImage: "/images/icons/next-#ffffff.png"
+},
+".column": {
+	height: "50dp",
+	layout:"vertical",
+	width: "33%"
+}

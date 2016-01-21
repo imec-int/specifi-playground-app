@@ -1,0 +1,31 @@
+"#drawermenuview":{
+    left:"0dp",
+	height: Ti.UI.FILL,
+	width: "210dp",
+},
+"#drawermainview":{
+    left:"0dp",
+	backgroundColor:"white",
+	height: Ti.UI.FILL,
+	width: Ti.UI.FILL,
+	viewShadowColor: "#000000",
+	viewShadowOffset: {
+	    x:-1,
+	    y: 5
+	},
+	viewShadowRadius : 1,
+},
+"#mainviewheader":{
+	top: "0",
+	height: "20dp",
+	width: Ti.UI.FILL,
+	backgroundColor: "#cacaca"
+},
+"#menubutton":{
+	left: "0",
+	borderWidth: 1,
+	borderColor: "#000",
+	width: "20dp",
+	height: "20dp",
+	visible:true
+}

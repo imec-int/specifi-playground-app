@@ -1,0 +1,20 @@
+<Alloy>
+	<View class="detailWrapper">
+		<ScrollView class="scrollWrapper">
+			<Label id="helloLabel" class="innerInfo"></Label>
+			<TextArea id="description" class="innerInfo"></TextArea>
+			<Label id="actionLabel" class="innerInfo"></Label>
+			<Label id="sloganLabel" class="innerInfo"></Label>
+			<Label id="creditsLabel" class="innerInfo"></Label>
+			<Label id="disclaimerTitleLabel" class="innerInfo"></Label>
+			<TextArea id="disclaimer" class="innerInfo"></TextArea>
+            <Label id="poweredByLabel" class="innerInfo"></Label>
+            <Label id="versionLabel" class="innerInfo"></Label>
+		</ScrollView>
+		<View id="footerWrapper">
+            <View id="innerFooterWrapper">
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class="footerButton" id="btnChallenges" onClick="onClick"/>
+            </View>
+        </View>
+	</View>
+</Alloy>

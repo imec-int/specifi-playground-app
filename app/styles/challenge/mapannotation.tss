@@ -1,0 +1,96 @@
+".challengeTableViewRow":{
+    top: 0,
+    allowsSelection: false,
+    editable: false,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    bubbleParent: true,
+    touchEnabled: true
+},
+"Label":{
+    touchEnabled: false
+},
+"#row":{
+    backgroundImage: "/images/whitener.png",
+    height: "65dp",
+    height: Ti.UI.SIZE,
+},
+"#rowWrapper":{
+    width: Ti.UI.FILL,
+    layout: "horizontal",
+    backgroundImage: "/images/whitener.png",
+    height: Ti.UI.SIZE,
+    touchEnabled: false
+},
+"#leftSide":{
+    width: "15%",
+    height: "65dp",
+    layout: "absolute",
+    touchEnabled: false
+},
+"#infoWrapper":{
+    height: Ti.UI.SIZE,
+    top: "5dp",
+    bottom: "5dp",
+    layout: "vertical",
+    width: "70%",
+    touchEnabled: false,
+},
+"#titleLabel":{
+    left: 0,
+    font:{
+        fontSize: "18dp",
+        fontWeight: "normal"
+    }
+},
+"#typeLabel":{
+    left: 0,
+    font:{
+        fontSize: "11dp",
+        fontWeight: "normal",
+        fontStyle: "italic"
+    }
+},
+"#distanceLabel":{
+    left: 0,
+    font:{
+        fontSize: "11dp",
+        fontWeight: "normal"
+    },
+    bottom: "5dp"
+},
+"#rightSide":{
+    width: "15%",
+    height: "65dp",
+    layout: "absolute",
+    touchEnabled: false
+},
+"#leftIcon":{
+    width: "30dp",
+    height: "40dp",
+    font:{
+        fontSize: "30dp",
+    },
+    color: Alloy.Globals.CustomColor7,
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+},
+"#rightIcon": {
+    width: "30dp",
+    height: "40dp",
+    font:{
+        fontSize: "30dp",
+    },
+    color: Alloy.Globals.CustomColor3Light,
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+},
+"#availabilityLabel":{
+	left: 0,
+    font:{
+        fontSize: "11dp",
+        fontWeight: "normal",
+        fontStyle: "italic"
+    },
+    height: "0dp",
+    visible: false,
+    bottom: "5dp"
+}

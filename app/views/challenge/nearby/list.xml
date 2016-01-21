@@ -1,0 +1,23 @@
+<Alloy>
+    <View id="challengesList" class="listWrapper">
+        <View id="contentWrapper">
+            <TableView id="challengesTable" onClick="challengeListOnClick"/>
+            <View id="refreshWrapper">
+        		<View id="middleWrapper">
+        			<View id="messageWrapper">
+        				<Label id="refreshMessageIcon" icon="fa-exclamation-triangle" />
+        				<Label id="refreshMessage"/>
+        			</View>
+        			<Require autoStyle="true" type="view" src="ui/extendedbutton" id="btnRefresh" onClick="onClick"/>
+        		</View>
+        	</View>
+        </View>
+        <View id="footerWrapper">
+            <View id="innerFooterWrapper">
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnMap" onClick="onClick"/>
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnList" onClick="onClick"/>
+            </View>
+        </View>
+    <Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+    </View>
+</Alloy>

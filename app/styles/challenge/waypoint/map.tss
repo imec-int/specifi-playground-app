@@ -1,0 +1,64 @@
+"Label":{
+	font:{
+		fontSize: "14dp"
+	}
+},
+"#challengeDetailWrapper":{
+    top: 0,
+    height: Alloy.Globals.appConfig.contentHeight,
+    layout: "vertical"
+},
+"#challengeDetailWrapper[platform=ios]":{
+    disableBounce: true
+},
+"#currentWaypoint":{
+    top: "5dp",
+    font: {
+        fontSize: "16dp"
+    },
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+    color: "white",
+    width: Ti.UI.SIZE,
+    bottom: "5dp"
+},
+
+"#buttonWrapper":{
+  height: Ti.UI.SIZE,  
+},
+"#overMapInfo":{
+    top: "0dp",
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    backgroundColor: "white",
+    opacity: 0.5,
+    zindex:10000,
+},
+"#explanation":{
+	text: L("challengePlayMapExplanation"),
+    opacity: 1,
+    left: "10dp",
+    top: "10dp",
+    right: "10dp",
+    bottom: "10dp",
+    height: Ti.UI.SIZE,
+    font:{
+        fontSize: "14dp"
+    },
+    color: "black"
+},
+
+"#footerWrapper":{
+	zindex:10000
+},
+".footerButton": {
+	height: Alloy.Globals.appConfig.headerHeight,
+	font: {
+		fontSize: "17dp"
+	},
+	width: "20%",
+	textPaddingLeft: "0",
+	noTitle: true
+},
+"#btnLocation":{
+	selected: true
+}

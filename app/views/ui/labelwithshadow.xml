@@ -1,0 +1,6 @@
+<Alloy>
+    <View id="labelWrapper">
+        <Label id="shadow"/>
+        <Label id="label"/>
+    </View>
+</Alloy>

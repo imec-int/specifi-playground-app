@@ -1,0 +1,6 @@
+<Alloy>
+    <View id="checkboxWrapper">
+        <View id="checkboxImage"></View>
+        <Require type="view" src="ui/labelwithshadow" id="checkboxLabel"/>
+    </View>
+</Alloy>

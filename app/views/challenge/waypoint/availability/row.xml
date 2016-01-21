@@ -1,0 +1,15 @@
+<Alloy>
+    <TableViewRow id="row" class="wpAvailTableViewRow">
+        <View id="rowWrapper">
+            <View id="bullet">
+                <View id="leftBullet" autoStyle="true"></View>/>
+            </View>
+            <View id="day">
+                <Label id="dayLabel"/>
+            </View>
+            <View id="schedule">
+                <Label id="scheduleLabel"/>
+            </View>
+        </View>
+    </TableViewRow>
+</Alloy>

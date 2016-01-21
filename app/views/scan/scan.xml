@@ -1,0 +1,23 @@
+<Alloy>
+	<View class="detailWrapper">
+		<View id="scanDetailWrapper">
+				<View id="scannerWrapper"></View>
+				<ScrollView id="scrollWrapper">
+					<Label id="completedIcon" class="centered" icon = "fa-trophy"/>
+					<View id="tokenRow">
+						<View class="rowInner">
+							<Label id="tokenNumber"/>
+							<Label id="tokenIcon" icon = "fa-dot-circle-o"/>
+						</View>
+					</View>
+					<Label id="scanningInstructions" class="innerInfo"></Label>				
+				</ScrollView>
+		</View>
+		<View id="footerWrapper">
+            <View id="innerFooterWrapper">
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnTryAgain" onClick="btnTryAgainClick"/>
+            </View>
+        </View>
+		<Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+	</View>
+</Alloy>

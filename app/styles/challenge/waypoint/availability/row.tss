@@ -1,0 +1,62 @@
+".wpAvailTableViewRow":{
+	allowsSelection: false,
+	editable: false,
+	width: "100%",
+	height: Ti.UI.SIZE,
+	bubbleParent: true,
+	touchEnabled: true,
+	backgroundColor: "transparent"
+},
+"#row":{
+	backgroundColor: "white",
+	separatorColor: "transparent"
+},
+"#rowWrapper":{
+	top: "5dp",
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	layout: "horizontal",
+	backgroundColor: "white",
+	separatorColor: "transparent",
+	bottom: "5dp"
+},
+"#bullet":{
+    top:"3dp",
+	width: "15%",
+	height: Ti.UI.SIZE,
+	layout: "absolute",
+	backgroundColor: "transparent",
+	bottom:"3dp"
+},
+"#leftBullet":{
+	borderRadius: "7dp",
+	width: "14dp",
+	height: "14dp",
+	backgroundCollor: "#00aaad"
+},
+"#day":{
+	height: Ti.UI.SIZE,
+	layout: "absolute",
+	width: "30%",
+},
+"#dayLabel":{
+    left: "0dp",
+	font:{
+		fontSize: "11dp",
+		fontWeight: "bold"
+	},
+	color: "black"
+},
+"#schedule":{
+	height: Ti.UI.SIZE,
+	width: "50%",
+	layout: "absolute",
+},
+"#scheduleLabel":{
+	left: 0,
+	font:{
+		fontSize: "11dp",
+		fontWeight: "normal"
+	},
+	color: "black"
+}

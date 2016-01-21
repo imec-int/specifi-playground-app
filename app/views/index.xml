@@ -1,0 +1,7 @@
+<Alloy>
+	<Window class="container">
+	    <View id="wholeWrapper">
+	       <Require type="widget" src="com.alcoapps.drawermenu" id="sliderMenu"/>
+	    </View>
+	</Window>
+</Alloy>

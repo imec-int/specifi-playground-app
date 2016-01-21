@@ -1,0 +1,105 @@
+"Label":{
+    left: 0,
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+    font: {
+        fontSize: "12dp"
+    }
+},
+
+"#challengeDetailWrapperOuter": {
+	height: Titanium.UI.FILL
+},
+
+".scrollWrapper": {
+	heigth: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	showVerticalScrollIndicator: true,
+	layout: "vertical",
+	contentWidth: "99%",
+	disableBounce: false
+},
+
+".centered":{
+    width: Ti.UI.FILL,
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+    font: {
+        fontSize: "20dp"
+    }
+},
+"#messageText":{
+    top: "20dp",
+    font: {
+        fontSize: "24dp",
+        fontWeight: "bold"
+    }
+},
+"#youEarnedEnd":{
+    top: "15dp"
+},
+"#youEarned": {
+	top: "5dp"
+},
+"#challengeDetailWrapper":{
+    top: "10dp",
+    heigth: Ti.UI.SIZE,
+    width: Ti.UI.FILL,
+    layout: "vertical"
+},
+".row":{
+    top: "20dp",
+    left: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    layout: 'absolute'
+},
+"#titleWrapperInner":{
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE
+},
+".tokenIcon":{
+    left: "10dp",
+    width: "40dp",
+    height: "40dp",
+    font:{
+        fontSize: "40dp",
+		fontWeight: 'normal'
+    },
+    color: Alloy.Globals.CustomColor4
+},
+"#tokensNumber":{
+    left: "5dp",
+    font:{
+        fontSize: "25dp"
+    }
+},
+
+"#completedIcon": {
+	font: {
+		fontSize: "50dp",
+	},
+	color: Alloy.Globals.CustomColor4,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	top: "10dp",
+},
+
+"#footerWrapper":{
+	top: "15dp"
+},
+
+"#footerWrapper[platform=ios]":{
+	horizontalWrap: true
+},
+
+"#innerFooterWrapper":{
+	horizontalWrap: true
+},
+
+".footerButton": {
+	bottom: '15dp'
+}
+
+"#btnMoreChallenges":{
+    width: "70%",
+    left: "15%",
+    right: "15%"
+}

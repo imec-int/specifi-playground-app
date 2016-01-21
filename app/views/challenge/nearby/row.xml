@@ -1,0 +1,19 @@
+<Alloy>
+    <TableViewRow id="row" class="challengeTableViewRow">
+        <View id="rowWrapper">
+            <View id="leftSide">
+                <Label id="leftIcon" />
+            </View>
+            <View id="infoWrapper">
+                <Label id="titleLabel"/>
+                <Label id="typeLabel"/>
+                <Label id="distanceLabel"/>
+                <Label id="availableLabel"/>
+            </View>
+            <View id="rightSide">
+                <Label id="rightIcon" icon="fa-angle-right" />
+            </View>
+        </View>
+        <Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+    </TableViewRow>
+</Alloy>

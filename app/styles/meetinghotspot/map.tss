@@ -1,0 +1,45 @@
+"#challengeDetailWrapper":{
+    top: 0,
+    height: Alloy.Globals.appConfig.contentHeight,
+    layout: "vertical",
+    backgroundColor: "white",
+},
+"#titleWrapperInner":{
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE
+},
+"#overMapInfo":{
+    top: "0dp",
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    backgroundColor: "white",
+    opacity: 0.5,
+    zindex:10000,
+},
+
+"#explanation":{
+    opacity: 1,
+    left: "10dp",
+    top: "10dp",
+    right: "10dp",
+    bottom: "10dp",
+    height: Ti.UI.SIZE,
+    font:{
+        fontSize: "14dp"
+    },
+    color: "black",
+    text: L("challengeDetailsMapExplanation")
+},
+"Label":{
+    left: 0,
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT
+},
+"#challengeDetailWrapper[platform=ios]":{
+    disableBounce: true
+},
+"#btnDetails":{
+    title: L( "btnDetails")
+},
+"#btnMap":{
+	selected: true
+}

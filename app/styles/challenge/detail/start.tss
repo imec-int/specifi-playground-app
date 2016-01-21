@@ -1,0 +1,70 @@
+"Label":{
+	font:{
+		fontSize: "14dp"
+	}
+},
+"#titleWrapperInner":{
+	width: Titanium.UI.SIZE,
+	height: Titanium.UI.SIZE
+},
+"#challengeDetailWrapper":{
+	heigth: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL,
+	showVerticalScrollIndicator: false,
+	layout: "vertical",
+	contentWidth: "99%",
+	disableBounce: false
+},
+".innerInfo":{
+	left: "10dp"
+},
+".row":{
+	height: '24dp',
+	layout: 'horizontal',
+},
+"#challengeType":{
+	text: L("Challenge")
+},
+"#extraTokenIcon":{
+	height: "0dp"
+},
+
+"#about":{
+	top: "15dp",
+	font:{
+		fontSize: "18dp",
+		fontWeight: "bold",
+	},
+	color: Alloy.Globals.CustomColor7
+},
+"#description":{
+	height: Titanium.UI.SIZE,
+	font: {
+		fontSize: "16dp"
+	},
+	top: "5dp",
+	color: Alloy.Globals.BlackText
+},
+".spacer":{
+	top: "10dp",
+	bottom: "10dp",
+	height: "10dp",
+	width: "100%"
+},
+"#footerWrapper":{
+	bottom: "-100dp"
+},
+"#btnDetails":{
+	title: L( "btnDetails"),
+	selected: true
+},
+"#imageWrapper":{
+	height: Titanium.UI.SIZE,
+	layout: "vertical"
+},
+"#challengeImage":{
+	width: Titanium.UI.FILL
+},
+"#extraDifficulty":{
+	height: "0dp"
+}

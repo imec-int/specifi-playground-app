@@ -1,0 +1,71 @@
+"Label":{
+	font:{
+		fontSize: "14dp"
+	}
+},
+"#challengeDetailWrapper":{
+	top: 0,
+	height: Alloy.Globals.appConfig.contentHeight,
+	layout: "vertical",
+	backgroundColor: "white",
+	backgroundImage: "/images/background-arrow.png",
+},
+"#challengeDetailWrapper[platform=ios]":{
+	disableBounce: true
+},
+"#currentWaypoint":{
+	top: "15dp",
+	font:{
+		fontSize: "18dp",
+		fontWeight: "bold",
+	},
+	color: Alloy.Globals.CustomColor7,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+},
+".innerInfo":{
+	left: "10dp",
+	right: "10dp",
+	layout: 'horizontal'
+},
+"#waypointDescription":{
+	top: "5dp",
+	font:{
+		fontSize: "16dp"
+	}
+},
+"#waypointTextWrapperFooterSpace":{
+	height: "30dp"
+},
+"#footerWrapper":{
+	bottom: "-100dp"
+},
+
+".footerButton": {
+	height: Alloy.Globals.appConfig.headerHeight,
+	font: {
+		fontSize: "17dp"
+	},
+	width: "20%",
+	textPaddingLeft: "0",
+	noTitle: true
+},
+"#btnScan":{
+	selected: true
+},
+".row":{
+	height: Ti.UI.SIZE,
+	layout: 'horizontal'
+},
+"#waypointInstructions":{
+	text:  L("waypointInstructions")
+},
+
+"#scannerWrapper": {
+	height: '60%',
+	width: Titanium.UI.FILL
+},
+"#scannerWrapper[platform=ios]":{
+	layout: 'absolute',
+	left: '0dp',
+	top: '0dp'
+}

@@ -1,0 +1,13 @@
+<Alloy>
+	<View id="registerPhoto">
+		<View id="registerPhotoWrapper">
+			<ImageView id="image" image="/images/ui/person_ph.png" />
+			<View class="labelWrapper">
+				<Label class="LabelRegister" id="LabelTop" textid="LabelPhotoText"/>
+			</View>
+			<Require type="view" src="ui/extendedbutton" class="registerButton" id="BtnPhoto" onClick="onClick"/>
+			<Require type="view" src="ui/extendedbutton" class="registerButton" id="BtnSave" onClick="onClick"/>
+			<Require type="view" src="ui/extendedbutton" class="registerButton" id="BtnCancel" onClick="onClick"/>
+		</View>
+	</View>
+</Alloy>

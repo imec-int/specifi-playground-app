@@ -1,0 +1,105 @@
+"Label":{
+	font:{
+		fontSize: "14dp"
+	}
+},
+"#challengeDetailWrapper":{
+	top: 0,
+	height: Alloy.Globals.appConfig.contentHeight,
+	layout: "vertical",
+	backgroundColor: "white",
+	backgroundImage: "/images/background-arrow.png",
+},
+"#challengeDetailWrapper[platform=ios]":{
+	disableBounce: true
+},
+"#currentWaypoint":{
+	top: "15dp",
+	font:{
+		fontSize: "18dp",
+		fontWeight: "bold",
+	},
+	color: Alloy.Globals.CustomColor7,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+},
+".innerInfo":{
+	left: "10dp",
+	right: "10dp",
+	layout: 'horizontal'
+},
+"#noAccessWrapper":{
+	layout: "horizontal",
+	backgroundColor: Alloy.Globals.CustomColor6,
+	height: "50dp",
+	horizontalWrap: false
+},
+"#noAccessLeft":{
+	height: "50dp",
+	borderRadius: "0dp",
+	width: "50dp"
+},
+"#noAccessIcon":{
+	height: "35dp",
+	width: "35dp",
+	backgroundImage: "/images/icons/exclamation-#ffffff.png"
+},
+"#noAccessRight":{
+	height: "50dp",
+	left: "10dp",
+	width: Ti.UI.FILL,
+	color: "white"
+},
+"#noAccessDetails":{
+	left: 0,
+	right: "5dp",
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	font:{
+		fontSize: "14dp"
+	},
+	height: "35dp",
+	color: "white"
+},
+"#waypointDescription":{
+	top: "5dp",
+	font:{
+		fontSize: "16dp"
+	}
+},
+".waypointMedia":{
+	width: 0,
+	height: 0
+},
+"#waypointVideo":{
+	layout: 'absolute'
+},
+"#waypointVideoPreview":{
+	touchEnabled: false
+},
+"#waypointTextWrapperFooterSpace":{
+	height: "30dp"
+},
+"#footerWrapper":{
+	bottom: "-100dp",
+},
+
+".footerButton": {
+	height: Alloy.Globals.appConfig.headerHeight,
+	font: {
+		fontSize: "17dp"
+	},
+	width: "20%",
+	textPaddingLeft: "0",
+	noTitle: true
+},
+"#btnDetails":{
+	selected: true
+},
+
+".row":{
+	height: Ti.UI.SIZE,
+	layout: 'horizontal'
+},
+"#waypointInstructions":{
+	text:  L("waypointInstructions")
+}
+

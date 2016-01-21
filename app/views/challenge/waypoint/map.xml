@@ -1,0 +1,30 @@
+<Alloy>
+    <View id="detailWrapper">
+        <View id="challengeDetailWrapper">
+            <View id="titleWrapper" >
+                <Label id="challengeTitle"/>
+            </View>
+            <View id="waypointWrapper">
+                <View id="waypointStatusWrapper">
+                    <View id="waypointTitleWrapper">
+                        <Label id="currentWaypoint"/>
+                    </View>
+                </View>
+                <View id="mapWrapper">
+                    <View id="overMapInfo">
+                        <Label autoStyle="true" id="explanation"/>
+                    </View>
+                </View>
+            </View>
+        </View>
+        <View id="footerWrapper">
+            <View id="innerFooterWrapper">
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnDetails" onClick="onClick"/>
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnLocation" onClick="onClick"/>
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnScan" onClick="onClick"/>
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnHint" onClick="onClick"/>
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnAccess" onClick="onClick"/>
+            </View>
+        </View>
+    </View>
+</Alloy>

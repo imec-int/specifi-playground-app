@@ -1,0 +1,103 @@
+"#registerGender":{
+	width: Ti.UI.Fill,
+    height: Ti.UI.Fill,
+    backgroundColor: Alloy.Globals.CustomColor1,
+    layout: "absolute"
+},
+"#registerGenderWrapper":{
+    height: Ti.UI.Fill,
+    width: Ti.UI.Fill,
+    layout: 'vertical',
+},
+".radiosWrapper":{
+	height: Ti.UI.SIZE,
+	width: Ti.UI.SIZE,
+	top: "25dp",
+    right:"40dp",
+    left: "40dp" ,
+    layout:'absolute',
+},
+".innerRadiosWrapper":{
+	height: Ti.UI.SIZE,
+	width: Ti.UI.Fill,
+    layout:'horizontal',
+},
+"#maleRadio":{
+	height: Ti.UI.SIZE,
+	width: Ti.UI.SIZE,
+	value:false,
+	left:'0dp',
+	type:'radio',
+	color: "white",
+	font:{
+        fontSize: "14dp"
+    },
+	titleShadowDisabled: true
+},
+"#femaleRadio":{
+	height: Ti.UI.SIZE,
+	width: Ti.UI.SIZE,
+	value:false,
+	left:'30dp',
+	type:'radio',
+	color: "white",
+	font:{
+        fontSize: "14dp"
+    },
+	titleShadowDisabled: true
+},
+".labelWrapper":{
+	height: Ti.UI.SIZE,
+	top:'25dp',
+	right:"40dp",
+    left: "40dp",
+    color: "white",
+},
+".LabelRegister":{
+	height: Ti.UI.SIZE,
+    left: "0dp",
+    right: "0dp",
+    color: "white",
+    font:{
+        fontSize: "13dp"
+    },
+},
+"#LabelTop":{
+	left:0,
+	right:0,
+    color:" white",
+},
+
+".registerButton":{
+    borderRadius: "4dp",
+    height: "40dp",
+    left: "30dp",
+    right: "30dp",
+    top: "10dp",
+    font:{
+        fontSize: "16dp",
+        fontWeight: "bold"
+    },
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+    textPaddingLeft: "10dp",
+    touchEnabled: true,
+    iconWidth: "25dp",
+    iconHeight: "25dp",
+    titleShadowDisabled: true,
+    titleColor: "white",
+    backgroundColor: Alloy.Globals.CustomColor3,
+    backgroundSelectedColor: Alloy.Globals.CustomColor3Light
+},
+
+"#BtnNext":{
+	top: "20dp",
+    iconImage: "/images/icons/next-#ffffff.png",
+    titleColor: "white",
+    title: L( "BtnNextTitle")
+},
+"#BtnCancel":{
+    iconImage: "/images/icons/cancel-#ffffff.png",
+    title: L( "BtnCancelTitle"),
+    backgroundColor: Alloy.Globals.CustomColor4,
+    backgroundSelectedColor: Alloy.Globals.CustomColor4Light
+}

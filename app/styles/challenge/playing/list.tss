@@ -1,0 +1,29 @@
+"#refreshMessage":{
+	text: L("No_my_challenges_found_refresh_explanation")
+},
+"#footerWrapper":{
+	height: Alloy.Globals.appConfig.headerHeight
+},
+"#innerFooterWrapper":{
+	layout: 'absolute',
+	height: Titanium.UI.FILL
+},
+".footerButton": {
+	height: Titanium.UI.FILL,
+	width: "50%"
+},
+"#btnMap":{
+	top: '0dp',
+	left: '0dp'
+},
+"#btnList":{
+	top: '0dp',
+	right: '0dp',
+	selected: true
+},
+"#btnRefresh": {
+	text: L("btnRefresh")
+},
+"#contentWrapper":{
+	bottom: Alloy.Globals.appConfig.headerHeight
+}

@@ -1,0 +1,77 @@
+"#registerPhoto":{
+    width: Ti.UI.Fill,
+    height: Ti.UI.Fill,
+    backgroundColor: Alloy.Globals.CustomColor1,
+    layout: "absolute"
+},
+"#registerPhotoWrapper":{
+    height: Ti.UI.Fill,
+    width: Ti.UI.Fill,
+    layout: 'vertical',
+},
+
+"#image":{
+    top: "25dp",
+    height: "120dp",
+    width: "120dp",
+    borderRadius: "60dp"
+},
+".labelWrapper":{
+    height: Ti.UI.SIZE,
+    top: '25dp',
+    right: "30dp",
+    left: "30dp"
+},
+".LabelRegister":{
+    height: Ti.UI.SIZE,
+    left: "0dp",
+    right: "0dp",
+    color: "white",
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+},
+"#LabelTop":{
+    left: 0,
+    right: 0,
+    font:{
+        fontSize: "12dp"
+    }
+}
+
+".registerButton":{
+    borderRadius: "4dp",
+    height: "40dp",
+    left: "30dp",
+    right: "30dp",
+    top: "10dp",
+    font:{
+        fontSize: "16dp",
+        fontWeight: "bold"
+    },
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+    textPaddingLeft: "10dp",
+    touchEnabled: true,
+    iconWidth: "25dp",
+    iconHeight: "25dp",
+    titleShadowDisabled: true,
+    titleColor: "white",
+    backgroundColor: Alloy.Globals.CustomColor3,
+    backgroundSelectedColor: Alloy.Globals.CustomColor3Light
+},
+"#BtnPhoto":{
+    iconImage: "/images/icons/photo-cam-#ffffff.png",
+    title: L( "BtnTakePhotoTitle"),
+    backgroundColor: Alloy.Globals.CustomColor5Light,
+    backgroundSelectedColor: Alloy.Globals.CustomColor5
+},
+"#BtnSave":{
+	top: "40dp",
+    iconImage: "/images/icons/next-#ffffff.png",
+    titleColor: "white",
+    title: L( "BtnSaveProfileTitle")
+},
+"#BtnCancel":{
+    iconImage: "/images/icons/cancel-#ffffff.png",
+    title: L( "BtnCancelTitle"),
+    backgroundColor: Alloy.Globals.CustomColor4,
+    backgroundSelectedColor: Alloy.Globals.CustomColor4Light
+}

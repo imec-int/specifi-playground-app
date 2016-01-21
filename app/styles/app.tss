@@ -1,0 +1,533 @@
+"Window":{
+	font: {
+		fontFamily: 'Roboto',
+		fontStyle: 'normal',
+		fontWeight: 'normal',
+	}
+},
+
+"TextField":{
+	autocorrect: false,
+	autocapitalization: Titanium.UI.TEXT_AUTOCAPITALIZATION_NONE,
+	color: Alloy.Globals.BlackText,
+},
+
+"Label":{
+	color: Alloy.Globals.BlackText,
+},
+
+"TableView":{
+	height: Ti.UI.Fill,
+	top: 0,
+	separatorInsets: {
+		left: 0,
+		right: 0
+	},
+	scrollable: true,
+	separatorColor: "#d9e5ec"
+},
+
+"TableView[platform=ios]":{
+	scrollIndicatorStyle: Titanium.UI.iPhone.ScrollIndicatorStyle.BLACK
+},
+
+"#waypointWrapper":{
+    width: Ti.UI.FILL,
+    layout: "vertical"
+},
+
+"#detailWrapper":{
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL,
+    layout: "absolute"
+},
+
+"#titleWrapper":{
+	backgroundColor: Alloy.Globals.CustomColor5,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    layout: "absolute",
+	color: "white",
+},
+
+"#waypointStatusWrapper":{
+	width: "100%",
+	layout: 'horizontal',
+	height: Alloy.Globals.appConfig.headerHeight,
+	backgroundColor: Alloy.Globals.CustomColor1Light,
+},
+
+"#challengeTitle":{
+   	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	top: "8dp",
+	font: {
+		fontSize: "18dp"
+	},
+	bottom: "8dp",
+	height: Ti.UI.SIZE,
+	left: "8dp",
+	right: "8dp",
+	color: "white",
+},
+
+"#challengeDetailWrapperOuter":{
+    top: 0,
+	height: Alloy.Globals.appConfig.contentHeight,
+	layout: "vertical",
+	backgroundColor: "white",
+	backgroundImage: "/images/background-arrow.png"
+},
+
+"#waypointTitleWrapper":{
+    height: Ti.UI.FILL,
+    layout: "absolute",
+    left: "10dp",
+    width: Ti.UI.FILL,
+    color: "white",
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+},
+
+"#playButton":{
+    touchEnabled: false,
+    width: "50dp",
+    height: "50dp",
+    backgroundColor: "#F2C200",
+    borderRadius: "5dp"
+},
+"#playButtonIcon":{
+    width: "35dp",
+    height: "35dp",
+    backgroundImage: "/images/icons/go-location-#ffffff.png",
+    touchEnabled: false
+},
+
+"#map":{
+	width: Ti.UI.Fill,
+	height: Ti.UI.Fill,
+	layout: "absolute",
+	userLocation: true,
+},
+
+"#contentWrapper":{
+	top: "0dp",
+	width: Ti.UI.FILL,
+	height: Titanium.UI.FILL,
+	backgroundColor: "white"
+},
+
+"#refreshWrapper":{
+	top:"0dp",
+	height:"0dp",
+	visible: false,
+	layout: "absolute",
+	backgroundColor: "white",
+    backgroundImage: "/images/background.png",
+},
+
+"#middleWrapper":{
+	height: Ti.UI.SIZE,
+	width: "100%",
+	layout: "vertical",
+},
+
+
+"#refreshMessageIcon": {
+	font: {
+		fontSize: "40dp",
+	},
+	top:"10dp",
+	height: "40dp",
+},
+
+"#refreshMessage":{
+	font: {
+		fontSize: "16dp",
+	},
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	top: "5dp",
+	left: "10dp",
+	right: "10dp",
+	bottom: "10dp",
+	height: Ti.UI.SIZE
+},
+
+"#btnRefresh":{
+	height: "60dp",
+	width: "80%",
+	title: L( "btnRefresh"),
+	backgroundColor: Alloy.Globals.CustomColor5,
+	backgroundSelectedColor:Alloy.Globals.CustomColor5Light,
+	backgroundDisabledColor: Alloy.Globals.DisabledColor,
+	titleShadowDisabled: true,
+	titleColor: "white"
+},
+
+
+"#messageWrapper":{
+	height: "160dp",
+	borderRadius:"0dp",
+    borderWidth:"0dp",
+    borderColor: "#BDC3C7",
+    backgroundImage: "/images/whitener.png",
+	bottom:"20dp",
+	layout: "vertical",
+	color: Alloy.Globals.BlackText,
+},
+
+
+".rowInner":{
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE,
+    layout: "horizontal"
+},
+
+"#description":{
+	width: Ti.UI.FILL,
+	textAlign: "left",
+	font: {
+		fontSize: "12dp",
+		fontWeight: "normal"
+	},
+	bottom: "10dp"
+},
+
+"#audioLabel":{
+    touchEnabled: false,
+    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+},
+"#audioPlayButtonIcon":{
+	width: "35dp",
+	height: "35dp",
+	backgroundImage: "/images/icons/go-location-#ffffff.png",
+	touchEnabled: false
+},
+
+"#btnDetails":{
+    iconImage: "/images/icons/info-#ffffff.png",
+    backgroundColor: Alloy.Globals.CustomColor3Light,
+    backgroundSelectedColor: Alloy.Globals.CustomColor3,
+    backgroundDisabledColor: Alloy.Globals.DisabledColor
+},
+"#btnLocation":{
+	iconImage: "/images/icons/pin-#ffffff.png",
+	backgroundColor: Alloy.Globals.CustomColor3Light,
+	backgroundSelectedColor: Alloy.Globals.CustomColor3,
+	backgroundDisabledColor: Alloy.Globals.DisabledColor
+}
+"#btnHint":{
+	iconImage: "/images/icons/hint-#ffffff.png",
+	backgroundColor: Alloy.Globals.CustomColor3Light,
+	backgroundSelectedColor: Alloy.Globals.CustomColor3,
+	backgroundDisabledColor: Alloy.Globals.DisabledColor
+},
+"#btnAccess":{
+	iconImage: "/images/icons/schedule-#ffffff.png",
+	backgroundColor: Alloy.Globals.CustomColor3Light,
+	backgroundSelectedColor: Alloy.Globals.CustomColor3,
+	backgroundDisabledColor: Alloy.Globals.DisabledColor
+},
+
+"#btnScan":{
+	title: L( "btnScan"),
+	height: Alloy.Globals.appConfig.footerExtendedHeight,
+	backgroundColor: Alloy.Globals.CustomColor1,
+	backgroundSelectedColor: Alloy.Globals.CustomColor1Light,
+	backgroundDisabledColor: Alloy.Globals.DisabledColor,
+	borderRadius: "4dp",
+	titleShadowDisabled: true,
+	titleColor: "white",
+	iconHeight: "50dp",
+	iconWidth: "50dp",
+	iconImage: "/images/icons/scan.png",
+	font:{
+		fontSize: "16dp",
+		fontWeight: "bold"
+	},
+	bottom: "-5dp"
+},
+
+"#btnMap":{
+	title: L("btnMapView"),
+	backgroundColor: Alloy.Globals.CustomColor3Light,
+	backgroundSelectedColor: Alloy.Globals.CustomColor3,
+	backgroundDisabledColor: Alloy.Globals.DisabledColor,
+	iconImage: "/images/icons/pin-#ffffff.png"
+},
+"#btnList":{
+	title: L( "btnListView"),
+	backgroundColor: Alloy.Globals.CustomColor3Light,
+	backgroundSelectedColor: Alloy.Globals.CustomColor3,
+	backgroundDisabledColor: Alloy.Globals.DisabledColor,
+	iconImage: "/images/icons/list-view-#ffffff.png"
+},
+"#btnMoreChallenges":{
+	title: L( "btnMoreChallenges"),
+	backgroundColor: Alloy.Globals.CustomColor3,
+	backgroundSelectedColor: Alloy.Globals.CustomColor3Light,
+	iconImage: "/images/icons/next-#ffffff.png"
+},
+"#btnPlayChallenge":{
+    width: "20%",
+	height: Alloy.Globals.appConfig.footerExtendedHeight,//double of icon height
+	backgroundColor: Alloy.Globals.CustomColor1,
+	backgroundSelectedColor: Alloy.Globals.CustomColor1Light,
+	iconImage: "/images/icons/play-arrow.png",
+	noTitle: true,
+	borderRadius: "4dp",
+	bottom: "-5dp",
+	iconHeight: "50dp",
+	iconWidth: "50dp",
+},
+"#btnPlayHotspot":{
+    width: "20%",
+	height: Alloy.Globals.appConfig.footerExtendedHeight,//double of icon height
+	backgroundColor: Alloy.Globals.CustomColor1,
+	backgroundSelectedColor: Alloy.Globals.CustomColor1Light,
+	iconImage: "/images/icons/play-arrow.png",
+	noTitle: true,
+	borderRadius: "4dp",
+	bottom: "-5dp",
+	iconHeight: "50dp",
+	iconWidth: "50dp",
+},
+
+"#challengesTable":{
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	top: 0,
+	left: 0,
+	separatorInsets: {
+		left: 0,
+		right: 0
+	},
+	scrollable: true
+},
+
+".listWrapper":{
+	width: Ti.UI.Fill,
+	height: Ti.UI.Fill,
+	layout: "absolute"
+},
+
+
+"#mapWrapper":{
+	top:0,
+	width: Ti.UI.Fill,
+	height: Titanium.UI.FILL,
+	backgroundColor: 'transparent'
+},
+
+"#footerWrapper":{
+	bottom: "0dp",
+	width: Titanium.UI.FILL,
+	backgroundColor: "transparent",
+	layout: "absolute",
+	height: Titanium.UI.SIZE,
+	horizontalWrap: false
+},
+"#innerFooterWrapper":{
+	height: Titanium.UI.SIZE,
+	backgroundColor: "transparent",
+	layout: "horizontal",
+	horizontalWrap: false
+},
+".footerButton": {
+    height: Alloy.Globals.appConfig.headerHeight,
+	width: Alloy.Globals.appConfig.footerTwoButtonsPlusCenterWidth,
+	font: {
+		fontSize: "18dp"
+	},
+	titleShadowDisabled: true,
+	textPaddingLeft: "10dp",
+	titleColor: "white",
+	touchEnabled: true,
+	iconWidth: Alloy.Globals.appConfig.twoThirdsIconHeight,
+	iconHeight: Alloy.Globals.appConfig.twoThirdsIconHeight,
+	bottom: "0dp"
+},
+
+"#waypointAudio":{
+    width: Ti.UI.FILL,
+    backgroundColor: "#999999",
+    borderRadius: "5dp",
+    layout: "horizontal"
+},
+"#audioPlay":{
+	touchEnabled: false,
+	width: "50dp",
+	height: "50dp",
+	backgroundColor: "#F2C200",
+	borderRadius: "5dp",
+	bubbleParent: false
+},
+"#audioStop":{
+    backgroundColor: "#F2C200",
+    borderRadius: "5dp",
+    width: "0dp",
+    height: "0dp",
+    bubbleParent: false
+},
+"#audioStopButtonIcon":{
+    width: "35dp",
+    height: "35dp",
+    backgroundImage: "/images/icons/stop-#ffffff.png",
+    touchEnabled: false
+},
+"#audioPause":{
+    backgroundColor: "#F2C200",
+    borderRadius: "5dp",
+    width: "0dp",
+    height: "0dp",
+    bubbleParent: false
+},
+"#audioPauseButtonIcon":{
+    width: "35dp",
+    height: "35dp",
+    backgroundImage: "/images/icons/pause-#ffffff.png",
+    touchEnabled: false
+},
+
+
+"#waypointTextWrapperFooterSpace":{
+    height: "10dp",
+    width: Ti.UI.FILL
+},
+"#waypointTextWrapperHeaderSpace":{
+    height: "10dp",
+    width: Ti.UI.FILL
+},
+
+".detailTextWrapper":{
+	left:'10dp',
+	width:Titanium.UI.FILL,
+	height: Titanium.UI.SIZE
+},
+
+"#challengeTypeWrapper":{
+	top: "10dp"
+},
+
+"#waypointInstructions": {
+	font:{
+		fontSize: "14dp",
+		fontStyle: "italic",
+	},
+},
+
+".detailText": {
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.SIZE,
+	color: Alloy.Globals.BlackText,
+	font: {
+		fontSize: "14dp",
+		fontWeight: 'normal'
+	},
+},
+
+"#bulkNumber":{
+	maxLength:2,
+	font: {
+		fontSize: "25dp"
+	},
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	touchEnabled: false,
+	editable: false,
+	focusable: false,
+	height: Titanium.UI.FILL,
+	width: '60dp'
+},
+
+".detailIcon":{
+	left: 0,
+	width: "20dp",
+	height: Titanium.UI.SIZE,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	color: Alloy.Globals.CustomColor7,
+	font: {
+		fontSize: "18dp",
+		fontWeight: 'normal'
+	}
+},
+
+".innerInfo":{
+    left: "15dp",
+    right: "15dp"
+},
+"#innerInfoWrapper":{
+	top: "10dp",
+	height: Ti.UI.SIZE,
+	layout: "vertical"
+},
+
+"#waypointTextWrapper":{
+	height: Ti.UI.FILL,
+	scrollType: "vertical",
+	disableBounce: false,
+	showVerticalScrollIndicator: false,
+	contentWidth: "99%",
+	layout: "vertical"
+},
+
+"#ugcImage": {
+	borderWidth: '4dp',
+	borderRadius: "4dp",
+	borderColor: Alloy.Globals.CustomColor4
+},
+"#ugcImageWrapper": {
+	width: 0,
+	height: 0
+},
+"#ugcTextArea":{
+	width:Ti.UI.FILL,
+	height:'0dp',
+	visible:false,
+	borderWidth: 3,
+  	borderColor: '#bbb',
+  	borderRadius: 5,
+  	color: '#888',
+  	font: {fontSize:'16dp', fontWeight:'bold'},
+  	top: '5dp',
+  	left: '10dp',
+  	right: '10dp'
+},
+".ugcMedia":{
+	width: 0,
+	height: 0
+},
+"#ugcVideo":{
+	layout: 'absolute'
+},
+"#ugcVideoPreview":{
+	touchEnabled: false,
+	borderWidth: '4dp',
+	borderRadius: "4dp",
+	borderColor: Alloy.Globals.CustomColor4
+},
+"#btnNext":{
+	title: L("btnNext"),
+	titleColor: "#FFFFFF",
+	backgroundColor: Alloy.Globals.CustomColor3,
+	backgroundSelectedColor: Alloy.Globals.CustomColor3Light,
+	backgroundDisabledColor: "#C4C4C4",
+	iconImage: "/images/icons/next-#ffffff.png"
+},
+
+'#btnFacebook':{
+	text: L('share_fb'),
+	width: "70%",
+    left: "15%",
+    right: "15%",
+    backgroundColor: "#3B4F94",
+	backgroundSelectedColor: "#5A76D7",
+	iconImage: "/images/icons/facebook-#ffffff.png"
+},
+
+'#btnTwitter':{
+	text: L('share_twitter'),
+	width: "70%",
+    left: "15%",
+    right: "15%",
+    backgroundColor: "#3EAAE7",
+	backgroundSelectedColor: "#8CC5E6",
+	iconImage: "/images/icons/twitter-#ffffff.png"
+}

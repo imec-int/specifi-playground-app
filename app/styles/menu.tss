@@ -1,0 +1,184 @@
+"#sliderMenu":{
+    left: "0dp",
+    backgroundColor: "#33495F",
+    layout: 'absolute',
+    width: "210dp"
+},
+"#userInfo":{
+    top:"0dp",
+    height: "85dp",
+    backgroundColor: "#33495F",
+    width: Ti.UI.FILL
+},
+"#userPictureWrapper":{
+	left:"10dp",
+    height: "44dp",
+    width: "44dp",
+    layout: "absolute",
+    backgroundColor: "white",
+    borderRadius: "22dp",
+    borderWidth: "1dp",
+    borderColor: "white"
+},
+"#userPictureImage":{
+    left:"-10dp",
+    right: "-10dp",
+    image: "/images/icons/user-#00aaad.png"
+},
+"#userNameWrapper":{
+    height: Ti.UI.FILL,
+    left: "55dp",
+    layout: "absolute",
+    right: "40dp"
+},
+"#userNameLabel":{
+    textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+    left: "5dp",
+    right: "10dp",
+    font:{
+        fontSize: "16dp",
+        fontWeight: "bold"
+    },
+    color: "white"
+},
+".tableRow":{
+    height: "40dp",
+    backgroundSelectedColor: "#5b6d7f"
+},
+".rowContainer":{
+	top: '5dp',
+	bottom: '5dp',
+    height: Titanium.UI.SIZE,
+    layout: 'horizontal',
+    touchEnabled: false
+},
+".rowIcon":{
+    touchEnabled: false,
+    color: '#f2c200',
+    height: '18dp',
+    width: '18dp',
+    font:{
+    	fontSize: "18dp",
+    	fontWeight: 'normal'
+    }
+},
+".rowIconWrapper":{
+    left: "7dp",
+    width: "23dp",
+    height: Ti.UI.FILL,
+    layout: "absolute",
+    touchEnabled: false
+},
+".rowLabelWrapper":{
+    left: "10dp",
+    height: Ti.UI.FILL,
+    layout: "absolute",
+    width: Ti.UI.SIZE,
+    touchEnabled: false
+},
+".rowLabelWrapper[platform=ios]":{
+    left: "10dp",
+    height: Ti.UI.SIZE,
+    layout: "absolute",
+    width: Ti.UI.SIZE,
+    touchEnabled: false
+},
+".rowLabel":{
+    textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+    font:{
+        fontSize: "16dp",
+        fontWeight: "normal"
+    },
+    color: "white",
+    height: Ti.UI.SIZE,
+    width: Ti.UI.FILL,
+    touchEnabled: false
+},
+".rowLabel[platform=ios]":{
+    textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+    font:{
+        fontSize: "16dp",
+        fontWeight: "normal"
+    },
+    color: "white",
+    height: Ti.UI.SIZE,
+    width: Ti.UI.SIZE,
+    touchEnabled: false
+},
+".rowSeparator":{
+	backgroundColor: "white",
+	opacity: "0.1",
+	height: "1dp",
+	width:"100%",
+	bottom: 0
+},
+".activeItem":{},
+".inactiveItem":{
+    opacity: 0.5,
+    touchEnabled: false
+},
+"#scanLabel":{
+    text: L( 'scan_title')
+},
+"#nearbyChallengesLabel":{
+    text: L( 'challenges_around_me_menu_item')
+},
+"#completedChallengesLabel":{
+    text: L( 'completed_challenges')
+},
+"#myChallengesLabel":{
+    text: L( 'my_challenges_menu_item')
+},
+"#experienceStoreLabel":{
+	text: L("experience_store"),
+},
+"#myTicketsLabel":{
+	text: L("my_tickets")
+},
+"#aboutLabel":{
+    text: L('welcome_user_menu')
+},
+"#highscoresLabel":{
+    text: L( 'highscores_title')
+},
+"#logoutLabel":{
+    text: L( 'logout_menu_item')
+},
+"#menuTable":{
+    backgroundColor: "#33495F"
+},
+"TableView":{
+    top:"85dp",
+    height: Ti.UI.SIZE,
+    separatorColor: '#33495F',
+    backgroundColor: "#33495F"
+},
+
+"#userTokensWrapper":{
+	height: Ti.UI.SIZE,
+    width: Ti.UI.SIZE,
+    borderRadius: "6dp",
+    horizontalWrap: true,
+    layout: "horizontal",
+    backgroundColor: "#3496C7",
+	right: "5dp"
+},
+"#tokensIcon":{
+	left: "5dp",
+	right: "2dp",
+	top: "2dp",
+	bottom: "4dp",
+	touchEnabled: false,
+	disabled: true
+},
+"#tokenNumberLabel":{
+    right: "5dp",
+    font:{
+        fontSize: "16dp",
+        fontWeight: "bold"
+    },
+    color: "white",
+    text: "0",
+    left: "0dp",
+    width: Ti.UI.SIZE
+}

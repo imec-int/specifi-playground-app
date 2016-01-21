@@ -1,0 +1,6 @@
+module.exports = {
+  	APP_STATUS_STOPPED : "00",
+	APP_STATUS_PAUSED : "01",
+	APP_STATUS_RESUMED : "02",
+	APP_STATUS_STARTED : "03"
+}; 

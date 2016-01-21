@@ -1,0 +1,89 @@
+"#registerUser":{
+    width: Ti.UI.Fill,
+    height: Ti.UI.Fill,
+    layout: "absolute",
+    backgroundColor: Alloy.Globals.CustomColor1,
+},
+"#registerUserWrapper":{
+    height: Ti.UI.Fill,
+    width: Ti.UI.Fill,
+    layout: 'vertical',
+},
+".textFieldWrapper":{
+    top: "20dp",
+    height: "44dp",
+    borderRadius: "4dp",
+    right: "30dp",
+    left: "30dp",
+    backgroundColor: "white",
+},
+".labelWrapper":{
+    top:"5dp",
+    height: Ti.UI.SIZE,
+    right: "30dp",
+    left: "30dp",
+    color: "white",
+},
+".TfRegister":{
+    height: Ti.UI.SIZE,
+    left: "10dp",
+    right: "10dp",
+    borderWidth: 0,
+    backgroundImage: "none"
+},
+".LabelRegister":{
+    height: Ti.UI.SIZE,
+    left: "0",
+    right: "0",
+},
+".TfRegister[platform=ios]":{
+    keyboardToolbarColor: "#999",
+    keyboardToolbarHeight: "40dp"
+},
+"#TfTop":{
+    hintText: L( "userNameTextFieldHint")
+},
+"#TfTop[platform=android]":{
+    softKeyboardOnFocus: Titanium.UI.Android.SOFT_KEYBOARD_SHOW_ON_FOCUS,
+    visible: false
+},
+"#LabelTop":{
+    left: 0,
+    right: 0,
+    font:{
+        fontSize: "12dp"
+    },
+    color: "white",
+},
+".registerButton":{
+    borderRadius: "4dp",
+    height: "40dp",
+    left: "30dp",
+    right: "30dp",
+    top: "10dp",
+    font:{
+        fontSize: "16dp",
+        fontWeight: "bold"
+    },
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+    textPaddingLeft: "10dp",
+    touchEnabled: true,
+    iconWidth: "25dp",
+    iconHeight: "25dp",
+    titleShadowDisabled: true,
+    titleColor: "white",
+    backgroundColor: Alloy.Globals.CustomColor3,
+    backgroundSelectedColor: Alloy.Globals.CustomColor3Light
+},
+
+"#BtnNext":{
+    iconImage: "/images/icons/next-#ffffff.png",
+    titleColor: "white",
+    title: L( "BtnNextTitle")
+},
+"#BtnCancel":{
+    iconImage: "/images/icons/cancel-#ffffff.png",
+    title: L( "BtnCancelTitle"),
+    backgroundColor: Alloy.Globals.CustomColor4,
+    backgroundSelectedColor: Alloy.Globals.CustomColor4Light
+}

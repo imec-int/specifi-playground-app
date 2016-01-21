@@ -1,0 +1,42 @@
+<Alloy>
+	<View id="detailWrapper">
+		<View id="challengeDetailWrapperOuter">
+			<View id="titleWrapper" >
+				<View  id="titleWrapperInner">
+					<Label autoStyle="true" id="challengeTitle"/>
+				</View>
+			</View>
+			<ScrollView id="challengeDetailWrapper">
+				<Label id="about" class="innerInfo"></Label>
+				<Label id="description" class="innerInfo"/>
+				<View class='centerWrapper innerInfo'>
+                	<View id="scannedWrapper" class="rounded">
+						<View id="scannedNumberWrapper" class="infoAndIcon">
+							<Label class="icon" icon="fa-qrcode"></Label>
+							<Label id="scannedNumber"/>
+						</View>
+						<Label id="scannedText"/>
+					</View>
+					<View class="spacer"></View>
+					<View id="scoreWrapper" class="rounded">
+						<View id="bonusWrapper">
+							<View id="bonusNumberWrapper" class="infoAndIcon">
+								<Label class="icon" icon="fa-star"></Label>
+								<Label id="bonusNumber"/>
+							</View>
+							<Label id="bonusText"/>
+						</View>
+						<View id="tokensWrapper">
+							<View id="tokensNumberWrapper" class="infoAndIcon">
+								<Label class="icon" icon="fa-trophy"></Label>
+								<Label id="tokensNumber"/>
+							</View>
+							<Label id="tokensText"/>
+						</View>
+					</View>
+                </View>
+			</ScrollView>
+		</View>
+		<Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+	</View>
+</Alloy>

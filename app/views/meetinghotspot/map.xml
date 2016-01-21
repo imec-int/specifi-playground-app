@@ -1,0 +1,24 @@
+<Alloy>
+    <View id="detailWrapper">
+        <View id="challengeDetailWrapper">
+            <View id="titleWrapper" >
+                <View  id="titleWrapperInner">
+                    <Label autoStyle="true" id="challengeTitle"/>
+                </View>
+            </View>
+            <View id="mapWrapper">
+                <View id="overMapInfo">
+                    <Label autoStyle="true" id="explanation"/>
+                </View>
+            </View>
+        </View>
+        <View id="footerWrapper">
+            <View id="innerFooterWrapper">
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnDetails" onClick="onClick"/>
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" id="btnPlayHotspot" onClick="onClick"/>
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" id="btnScan" onClick="onClick"/>
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnMap" onClick="onClick"/>
+            </View>
+        </View>
+    </View>
+</Alloy>

@@ -1,0 +1,13 @@
+
+"#imageWrapper" : {
+  width:Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  modal: false,
+  exitOnClose:false,
+  backgroundColor: "black",
+  orientationModes: [ Ti.UI.LANDSCAPE_LEFT,  Ti.UI.PORTRAIT],
+},
+"#photo":{
+    width:Ti.UI.FILL,
+    height: Ti.UI.SIZE
+}

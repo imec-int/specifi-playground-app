@@ -1,0 +1,102 @@
+"#challengeDetailWrapper":{
+    top: 0,
+    height: Alloy.Globals.appConfig.contentHeight,
+    layout: "vertical",
+    backgroundColor: "white",
+	backgroundImage: "/images/background-arrow.png"
+},
+"#challengeDetailWrapper[platform=ios]":{
+    disableBounce: true
+},
+"#currentWaypoint":{
+    top: "5dp",
+    font: {
+        fontSize: "16dp"
+    },
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+    color: "white",
+    width: Ti.UI.FILL,
+    bottom: "5dp"
+},
+
+"TableView":{
+    height: Ti.UI.SIZE,
+    top: "10dp",
+    scrollable: true,
+    separatorColor: "transparent",
+    backgroundColor: "white"
+},
+"#waypointTextWrapper":{
+	top: "1dp"
+},
+
+"#bigIcon":{
+	backgroundColor: Alloy.Globals.CustomColor4,
+	width: "80dp",
+	height: "80dp",
+	borderRadius: "40dp",
+	top: "20dp"
+},
+"#bigIconImage":{
+	width: "45dp",
+	height: "45dp",
+	backgroundImage: "/images/icons/schedule-#ffffff.png"
+},
+
+"#viewTitle":{
+	top: "10dp",
+	font:{
+		fontSize: "30dp",
+		fontWeight: "bold"
+	},
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+},
+"#viewExplanation":{
+	top: "15dp",
+	font:{
+		fontSize: "15dp",
+		fontWeight: "normal"
+	},
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+},
+"#startDateLabel":{
+	top: "5dp",
+	font:{
+		fontSize: "15dp",
+		fontWeight: "bold"
+	},
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+},
+"#endDateLabel":{
+	top: "5dp",
+	font:{
+		fontSize: "15dp",
+		fontWeight: "bold"
+	},
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+},
+"#scheduleTable":{
+    height:Ti.UI.SIZE,
+    
+},
+
+"#waypointTextWrapperFooterSpace":{
+	height: "40dp"
+},
+
+"#footerWrapper":{
+	zindex:10000
+},
+
+".footerButton": {
+	height: Alloy.Globals.appConfig.headerHeight,
+	font: {
+		fontSize: "17dp"
+	},
+	width: "20%",
+	textPaddingLeft: "0",
+	noTitle: true
+},
+"#btnAccess":{
+	selected: true
+}

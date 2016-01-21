@@ -1,0 +1,8 @@
+<Alloy>
+    <View id="loadingWrapper">
+    	<ImageView id="flipBook" />
+        <View id="messageWrapper">
+            <Label id="loadingTextLabel" text="test loader" />
+        </View>
+    </View>
+</Alloy>

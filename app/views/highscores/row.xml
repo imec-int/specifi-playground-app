@@ -1,0 +1,20 @@
+<Alloy>
+    <TableViewRow id="row" class="highscoresTableViewRow">
+        <View id="rowWrapper">
+            <View id="leftSide">
+            	<Label id="positionLabel"></Label>
+                <View id="userPictureWrapper">
+                	<ImageView id="userPictureImage"></ImageView>
+            	</View>
+            </View>
+            <View id="infoWrapper">
+                <Label id="userLabel"/>
+            </View>
+            <View id="rightSide">
+                <Label id="rightIcon" icon="fa-dot-circle-o" />
+                <Label id="scoreLabel"/>
+            </View>
+        </View>
+        <Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+    </TableViewRow>
+</Alloy>

@@ -1,0 +1,95 @@
+".challengeTableViewRow":{
+    allowsSelection: false,
+    editable: false,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    bubbleParent: true,
+    touchEnabled: true,
+    layout: "vertical",
+    backgroundSelectedColor: Alloy.Globals.CustomColor1Lighter,
+},
+"#rowWrapper":{
+	top: "10dp",
+    bottom: "5dp",
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    layout: "absolute",
+    horizontalWrap: false
+},
+"#leftSide":{
+	left: '0dp',
+    width: "40dp",
+    height: Titanium.UI.SIZE,
+    layout: "vertical"
+},
+"#rightSide":{
+    width: "80dp",
+    right: '0dp',
+    height: Titanium.UI.SIZE,
+    layout: "vertical"
+},
+"#infoWrapper":{
+    height: Ti.UI.SIZE,
+    layout: "vertical",
+    left:'40dp',
+    right: '80dp'
+},
+"#titleLabel":{
+    left: 0,
+    font:{
+        fontSize: "18dp",
+        fontWeight: "normal"
+    }
+},
+"#typeLabel":{
+    left: 0,
+    font:{
+        fontSize: "14dp",
+        fontWeight: "normal",
+        fontStyle: "italic"
+    }
+},
+"#distanceLabel":{
+    left: 0,
+    font:{
+        fontSize: "14dp",
+        fontWeight: "normal"
+    },
+    bottom: "5dp"
+},
+"#completedCounterLabel":{
+    left: 0,
+    font:{
+        fontSize: "14dp",
+        fontWeight: "normal"
+    },
+    bottom: "5dp"
+},
+"#leftIcon":{
+    width: "30dp",
+    height: "40dp",
+    font:{
+        fontSize: "30dp",
+    },
+    color: Alloy.Globals.CustomColor7,
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+},
+
+"#rightIcon": {
+    width: "20dp",
+    height: "20dp",
+    font:{
+        fontSize: "20dp",
+    },
+    color: Alloy.Globals.CustomColor4,
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+},
+"#tokenLabel":{
+	width: "70dp",
+	height: Titanium.UI.SIZE,
+	color: Alloy.Globals.CustomColor4,
+	font:{
+		fontSize: "16dp"
+	},
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}

@@ -1,0 +1,76 @@
+<Alloy>
+    <View id="detailWrapper">
+        <View id="challengeDetailWrapper">
+        	
+            <View id="titleWrapper" >
+                <Label id="challengeTitle"/>
+            </View>
+            
+            <ScrollView class="scrollView">
+            	<View class="contentWrapper">
+            		<View id="warningWrapper">
+						<View id="warningLeft">
+							<Label id="warningIcon" icon="fa-exclamation"/>
+						</View>
+						<View id="warningRight">
+							<Label id="warningDetails"/>
+						</View>
+					</View>
+	            	
+					<View id="topWrapper">
+	            		<Label class="ugcTypeIcon" id="ugcTypeImage"/>
+	            		<Label id="ugcTitle"/>
+	                </View>
+	                
+	                <View class="ugcMedia" id="ugcImageWrapper">
+                    	<ImageView class = "ugcMedia" id="ugcImage" onClick="imageClick"></ImageView>
+                    </View>
+                    
+                    <View class="ugcMedia" id="ugcVideo" onClick="videoClick">
+                        <ImageView class = "ugcMedia" id="ugcVideoPreview" ></ImageView>
+                        <View id="playButton">
+                            <View id="playButtonIcon"></View>
+                        </View>
+                    </View>
+	                
+	                <TextArea id="ugcTextArea"></TextArea>
+					<Label id="uploadMessage" class="innerInfo"/>
+	
+					<Label id="currentWaypoint" class="innerInfo"/>
+					<Label id="waypointDescription" class="innerInfo"/>
+					
+					<View id="details">
+						<View class="row innerInfo">
+							<Label class="detailIcon" icon = "fa-search"/>
+							<View class="detailTextWrapper">
+								<Label class="detailText"  id="waypointInstructions"/>
+							</View>
+						</View>
+						<View class="row innerInfo">
+							<Label class="detailIcon" icon = "fa-flag"/>
+							<View class="detailTextWrapper">
+								<Label class="detailText"  id="waypointNumber"/>
+							</View>
+						</View>
+						<View class="row innerInfo">
+							<Label class="detailIcon" icon = "fa-flag-checkered"/>
+							<View class="detailTextWrapper">
+								<Label class="detailText"  id="waypointNumberOf"/>
+							</View>
+						</View>
+					</View>
+            	</View>
+            	
+            </ScrollView>
+            
+        </View>
+        <View id="footerWrapper">
+            <View id="innerFooterWrapper">
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnRecord" onClick="onClick"/>
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnUpload" onClick="onClick"/>
+                <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnNext" onClick="onClick"/>
+            </View>
+        </View>
+        <Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+    </View>
+</Alloy>
