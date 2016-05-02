@@ -37,14 +37,6 @@ switch (challengeType){
 		$.leftIcon.setColor((!args.available)?Alloy.Globals.CustomColor6:Alloy.Globals.CustomColor7);
 		$.fa.add($.leftIcon,'fa-map-marker');
 		break;
-	case L("Personal_marker"):
-		$.leftIcon.setColor(Alloy.Globals.CustomColor7);
-		$.fa.add($.leftIcon,'fa-smile-o');
-		break;
-	case L("Meeting_hotspot"):
-		$.leftIcon.setColor(Alloy.Globals.CustomColor7);
-		$.fa.add($.leftIcon,'fa-users');
-		break;
 }
 
 

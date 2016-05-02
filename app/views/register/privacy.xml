@@ -1,0 +1,29 @@
+<Alloy>
+	<View class="registerWrapper">
+		<ScrollView class="scrollWrapper">
+			<View class="registerSwitchWrapper" id="privacySwitchWrapper">
+				<Switch class="registerSwitch" value="false" id="privacySwitch"/>
+				<Label class="registerSwitchLabel" id="privacyLabel"/>
+			</View>
+			<Label id="readPrivacyLabel" onClick="onClick"/>
+			<View class="registerSwitchWrapper">
+				<Switch class="registerSwitch" value="false" id="projectSwitch"/>
+				<Label class="registerSwitchLabel" id="projectLabel"/>
+			</View>
+			<View class="registerSwitchWrapper">
+				<Switch class="registerSwitch" value="false" id="surveySwitch"/>
+				<Label class="registerSwitchLabel" id="surveyLabel"/>
+			</View>
+			<View id="last" class="labelWrapper">
+				<Label class="registerHintLabel" id="registerHint"></Label>
+			</View>
+			
+		</ScrollView>
+		<View id="footerWrapper">
+			<View class="registerInnerFooterWrapper">
+				<Require type="view" src="ui/extendedbutton" class="registerButton" id="btnRegisterNext" onClick="onClick"/>
+				<Require type="view" src="ui/extendedbutton" class="registerButton" id="btnRegisterCancel" onClick="onClick"/>
+			</View>
+		</View>
+	</View>
+</Alloy>

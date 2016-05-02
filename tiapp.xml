@@ -3,15 +3,14 @@
     <id>com.yourserver.playground</id>
     <name>Playground</name>
     <version>1.0.0</version>
-    <publisher>John Doe</publisher>
-    <url>http://yourserver.com</url>
-    <description>CreaCity is a City Game developed for the EU-SPECIFI project. The game was designed and developed by iMinds Living Labs.</description>
-    <copyright>2015 by iMinds</copyright>
+    <publisher>iMinds Living Labs VZW</publisher>
+    <url>http://www.iminds.be</url>
+    <description>The game was designed and developed by iMinds Living Labs.</description>
+    <copyright>2016 by iMinds Living Labs</copyright>
     <icon>appicon.png</icon>
     <analytics>false</analytics>
-    <guid></guid>
+    <guid>7b5e2412-02ff-41f2-9000-544b703d1417</guid>
     <property name="ti.ui.defaultunit" type="string">system</property>
-    <property name="ti.facebook.appid"></property>
     <statusbar-hidden>false</statusbar-hidden>
     <fullscreen>false</fullscreen>
     <navbar-hidden>true</navbar-hidden>
@@ -43,24 +42,14 @@
             </dict>
         </plist>
     </ios>
-    <mobileweb>
-        <precache/>
-        <splash>
-            <enabled>true</enabled>
-            <inline-css-images>true</inline-css-images>
-        </splash>
-        <theme>default</theme>
-    </mobileweb>
     <modules>
-        <module platform="android">ti.map</module>
-        <module platform="iphone">ti.map</module>
         <module platform="android" version="1.0">com.mykingdom.media</module>
-        <module platform="iphone" version="4.4.2">com.mirasense.scanditsdk</module>
-        <module platform="android" version="4.4.2">com.mirasense.scanditsdk</module>
-        <module platform="android">facebook</module>
-        <module platform="iphone">facebook</module>
-        <module platform="android" version="0.2">com.liferay.beacons</module>
-        <module platform="iphone" version="0.9.2">org.beuckman.tibeacons</module>
+        <module platform="iphone">ti.map</module>
+        <module platform="android">ti.map</module>
+        <module platform="iphone" version="4.10.1">com.mirasense.scanditsdk</module>
+        <module platform="android" version="4.3.0">com.mirasense.scanditsdk</module>
+        <module platform="android" version="0.3">com.liferay.beacons</module>
+        <module platform="iphone" version="0.10.0">org.beuckman.tibeacons</module>
     </modules>
     <deployment-targets>
         <target device="android">true</target>
@@ -68,8 +57,9 @@
         <target device="iphone">true</target>
         <target device="mobileweb">false</target>
     </deployment-targets>
-    <sdk-version>3.5.1.GA</sdk-version>
+    <sdk-version>5.2.2.GA</sdk-version>
     <plugins>
-        <plugin version="1.0">ti.alloy</plugin>
+        <plugin version="1.7.31">ti.alloy</plugin>
     </plugins>
+    <property name="appc-app-id" type="string">56a234419f2cfb71611621a5</property>
 </ti:app>

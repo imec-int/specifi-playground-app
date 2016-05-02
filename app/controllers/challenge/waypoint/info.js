@@ -5,17 +5,19 @@ $.noAccessWrapper.setHeight("0dp");
 
 //Libs
 var utils = require('utils');
+var challengeUtils = require('challengeutils');
+var cloudinary = require('cloudinaryutils');
 
 //Properties
 var args = arguments[0] || {};
 var userChallenge = {};
 var currentWaypoint;
 var audioPlayer;
-var hintUsed = false;
+var wpId = args.wpId;
+var connection = require('connectiondefaults');
 
 //Services
 var AjaxUserChallenge = require('/net/ajaxuserchallenge');
-var AjaxGetImage = require('/net/ajaxgetimage');
 
 /**
 *	Get the userchallenge
@@ -52,19 +54,6 @@ var goBackToDetail = function() {
 };
 
 
-/**
-*	Determine currentWaypoint
-*/
-function findCurrentWaypoint(data) {
-	var waypoints = data.challenge.waypoints;
-	var completedWP = data.completedWP ? data.completedWP : [];
-	if(completedWP.length < waypoints.length) {
-		return waypoints[completedWP.length];
-	} else {
-		return null;
-	}
-};
-
 
 /**
 *	Resets all fields that can change
@@ -76,10 +65,8 @@ function resetView() {
 	$.waypointImage.setImage(null);
 	$.waypointImage.setWidth("0dp");
 	$.waypointImage.setHeight("0dp");
-	$.waypointImage.localfilePath = "";
 	
 	$.waypointVideo.videoUrl = "";
-	$.waypointVideo.filetype = "";
 	$.waypointVideoPreview.setTop("0dp");
 	$.waypointVideoPreview.setImage(null);
 	$.waypointVideo.setWidth("0dp");
@@ -104,7 +91,7 @@ function parseChallenge(data) {
 	userChallenge = data;
 	
 	if(!userChallenge.complete) {
-		currentWaypoint = findCurrentWaypoint(userChallenge);
+		currentWaypoint = challengeUtils.findCurrentWaypoint(userChallenge, wpId);
 	} else {
 		completeUserChallenge(userChallenge);
 		return;
@@ -113,13 +100,6 @@ function parseChallenge(data) {
 	resetView();
 	
 	$.challengeTitle.text = '" ' + userChallenge.challenge.name + ' "';
-	
-	if (utils.testPropertyExists(userChallenge, 'hintsUsed')) {
-		var found = _.find(userChallenge.hintsUsed, function(hint){
-			return hint == currentWaypoint._id;
-		});
-		hintUsed = found != undefined ? true : false;
-	}
 
 	//check if the waypoint is available
 	if (utils.testPropertyExists(currentWaypoint, 'available') && currentWaypoint.available === false) {
@@ -128,68 +108,29 @@ function parseChallenge(data) {
 	}
 
 	//adding image if exists
-	if (utils.testPropertyExists(currentWaypoint, 'content.image.url') && currentWaypoint.content.image.url!=null) {
-		//getting the image file and saving it locally
-		var agi = new AjaxGetImage({
-			onSuccess : function(localfilePath) {
-				var blob = utils.resizeAndCrop({
-					localfilePath : localfilePath,
-					width : 480,
-					height : 180
-				});
-				$.waypointImage.setImage(blob);
-				
-				$.waypointImage.setWidth("480dp");
-				$.waypointImage.setHeight("180dp");
-				
-				$.waypointImage.localfilePath = localfilePath;
-			},
-			onError : function(response) {
-				//@TODO handle the error
-				Ti.API.info('there was an error fetching the image');
-			},
-			image : currentWaypoint.content.image
-		});
-		agi.fetch();
+	if (utils.testPropertyExists(currentWaypoint, 'content.image.secure_url') && currentWaypoint.content.image.secure_url!==null && currentWaypoint.content.image.secure_url !== '') {
+		$.waypointImage.setImage(cloudinary.formatUrl(currentWaypoint.content.image.secure_url, 480, 180, 'c_fill'));
+		$.waypointImage.setWidth("480dp");
+		$.waypointImage.setHeight("180dp");
 	}
 
 	//adding video preview if exists
-	if (utils.testPropertyExists(currentWaypoint, 'content.video.url') && currentWaypoint.content.video.url!=null) {
-		if(OS_ANDROID)
-			currentWaypoint.content.video.filename = String(currentWaypoint.content.video.filename).substring(0, currentWaypoint.content.video.filename.length-4)+"_preview.jpg";
-		var agiVideoPreview = new AjaxGetImage({
-			onSuccess : function(localfilePath) {
-				Ti.API.info("Local file: "+ JSON.stringify(localfilePath));
-				var blob = utils.resizeAndCrop({
-					localfilePath : localfilePath,
-					width : 500,
-					height : 250
-				});
-				
-				$.waypointVideo.videoUrl = currentWaypoint.content.video.videoPath;
-				$.waypointVideo.filetype = currentWaypoint.content.video.filetype;
-				$.waypointVideoPreview.setTop("20dp");
-				$.waypointVideoPreview.setImage(blob);
-				$.waypointVideo.setWidth(Ti.UI.FILL);
-				$.waypointVideo.setHeight(Ti.UI.SIZE);
-				$.waypointVideoPreview.setWidth(Ti.UI.FILL);
-				$.waypointVideoPreview.setHeight(Ti.UI.SIZE);
-				$.playButton.setWidth("50dp");
-				$.playButton.setHeight("50dp");
-			},
-			onError : function(response) {
-				//@TODO handle the error
-				Ti.API.info('there was an error fetching the video');
-			},
-			image : currentWaypoint.content.video
-		});
-		agiVideoPreview.fetch();
+	if (utils.testPropertyExists(currentWaypoint, 'content.video.secure_url') && currentWaypoint.content.video.secure_url!==null && currentWaypoint.content.video.secure_url!=='') {
+		$.waypointVideo.videoUrl = cloudinary.formatUrl(currentWaypoint.content.video.secure_url, 500, 250, 'c_fill');
+		$.waypointVideoPreview.setTop("20dp");
+		$.waypointVideoPreview.setImage(cloudinary.getVideoThumbnail(currentWaypoint.content.video.secure_url, currentWaypoint.content.video.public_id, 500, 250, 'c_fill'));
+		$.waypointVideo.setWidth(Ti.UI.FILL);
+		$.waypointVideo.setHeight(Ti.UI.SIZE);
+		$.waypointVideoPreview.setWidth(Ti.UI.FILL);
+		$.waypointVideoPreview.setHeight(Ti.UI.SIZE);
+		$.playButton.setWidth("50dp");
+		$.playButton.setHeight("50dp");
 	}
+	
 
 	//adding the audio if exists
-	if (utils.testPropertyExists(currentWaypoint, "content.audio.url") && currentWaypoint.content.audio.url!=null) {
+	if (utils.testPropertyExists(currentWaypoint, "content.audio.url") && currentWaypoint.content.audio.url!==null && currentWaypoint.content.audio.url!=='') {
 		$.waypointAudio.height = Ti.UI.SIZE;
-		$.waypointAudio.url = currentWaypoint.content.audio.videoPath;
 		$.waypointAudio.top = "10dp";
 		$.audioLabel.setText(L("press_and_listen"));
 		$.audioLabel.setLeft("10dp");
@@ -202,7 +143,7 @@ function parseChallenge(data) {
 		$.waypointDescription.text = currentWaypoint.content.text;
 		
 	
-	$.waypointNumber.text = String.format(L("playWaypointNumber"),userChallenge.completedWP.length + 1);
+	$.waypointNumber.text = String.format(L("playWaypointNumber"),challengeUtils.findStep(userChallenge.challenge.waypoints, currentWaypoint._id));
 	if (userChallenge.challenge.waypoints.length > 1) {
 		$.waypointNumberOf.text = String.format(L("playWaypointNumberOf"),userChallenge.challenge.waypoints.length);
 	} else {
@@ -236,9 +177,8 @@ function completeUserChallenge(data) {
 *	Opens a pictureViewer if the user taps an image
 */
 function imageClick(e) {
-	var url = e.source.localfilePath;
 	var pictureViewer = Alloy.createController('ui/pictureviewer', {
-		url : url
+		url : cloudinary.formatUrl(currentWaypoint.content.image.secure_url, 480, 180, 'c_fill')
 	}).getView();
 	pictureViewer.open();
 }
@@ -248,7 +188,6 @@ function imageClick(e) {
 */
 function videoClick(e) {
 	var videoUrl = e.source.videoUrl;
-	var filetype = e.source.filetype;
 	var videoView = Alloy.createController('ui/videoplayer', {
 		videoUrl : videoUrl
 	}).getView();
@@ -264,7 +203,8 @@ function accessClick() {
 	Alloy.Globals.pushPath({
 		viewId : 'challenge/waypoint/availability/info',
 		data : {
-			id : args.id
+			id : args.id,
+			wpId: args.wpId
 		}
 	});
 }
@@ -279,22 +219,28 @@ function onClick(e) {
 		case "btnAccess":
 			accessClick();
 			break;
-	
-		case "btnHint":
-			Alloy.Globals.pushPath({
-				viewId : "challenge/waypoint/hint/info",
-				data : {
-					id : args.id
-				}
-			});
+			
+		case 'btnBack':
+			if(userChallenge.randomOrder) {
+				Alloy.Globals.pushPath({
+					viewId : 'challenge/waypoint/random',
+					data : {
+						id : args.id
+					},
+					resetPath: true
+				});
+			} else {
+				goBackToDetail();
+			}
 			break;
 	
 		case "btnLocation":
-			if (hintUsed || !currentWaypoint.locationHidden) {
+			if (!currentWaypoint.locationHidden) {
 				Alloy.Globals.pushPath({
 					viewId : 'challenge/waypoint/map',
 					data : {
-						id : args.id
+						id : args.id,
+						wpId: args.wpId
 					}
 				});
 			} else {
@@ -325,7 +271,8 @@ function qrOrBeaconScanning() {
 					Alloy.Globals.pushPath({
 						viewId : "challenge/waypoint/scan/scan",
 						data : {
-							id : args.id
+							id : args.id,
+							wpId: args.wpId
 						}
 					});
 					break;
@@ -333,7 +280,8 @@ function qrOrBeaconScanning() {
 					Alloy.Globals.pushPath({
 						viewId : "challenge/waypoint/beacon/info",
 						data : {
-							id : args.id
+							id : args.id,
+							wpId: args.wpId
 						}
 					});
 					break;
@@ -347,7 +295,8 @@ function qrOrBeaconScanning() {
 		Alloy.Globals.pushPath({
 			viewId : "challenge/waypoint/scan/scan",
 			data : {
-				id : args.id
+				id : args.id,
+				wpId: args.wpId
 			}
 		});
 	}
@@ -389,9 +338,8 @@ function audioChangeHandler(e) {
 *	Handles a click event on the audio player
 */
 function audioClick(e) {
-	var url = e.source.url;
 	audioPlayer = Ti.Media.createAudioPlayer({
-		url : url
+		url : currentWaypoint.content.audio.secure_url
 	});
 	audioPlayer.addEventListener('complete', audioCompleteHandler);
 	audioPlayer.addEventListener('change', audioChangeHandler);

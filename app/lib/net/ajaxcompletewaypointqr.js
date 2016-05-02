@@ -20,7 +20,6 @@ function AjaxCompleteWaypointQR(args) {
 }
 
 AjaxCompleteWaypointQR.prototype.completeWaypoint = function(args) {
-	Ti.API.info('Complete waypoint');
 	if (!args) args={};
 	args.instance = this;
 	//adding connection settings to args

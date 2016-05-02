@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	
+	<!-- ERROR CODES  START -->
+	<!-- general errors -->
+	<string name="err1000">Database fout!</string>
+	<string name="err1010">Je moet ingelogd zijn om dat te doen!</string>
+	<string name="err1020">Verplicht veld niet ingevuld!</string>
+	<string name="err1040">Can't retrieve the game settings!</string>
+	<string name="err1060">De app werkt mogelijk niet correct zonder locatie permissies!</string>
+	<string name="err1070">De app heeft camera permissies nodig om correct te werken!</string>
+
+	<!-- User errors -->
+	<string name="err1001">You must provide a name, email address and password!</string>
+	<string name="err1002">We already have a user for that email!</string>
+	<string name="err1003">Error creating user!</string>
+	<string name="err1004">No account found!</string>
+	<string name="err1005">Er is een fout opgetreden tijdens het inloggen! Probeer nog eens.</string>
+	<string name="err1006">Old password does not match!</string>
+	<string name="err1007">Username is not unique!</string>
+	<string name="err1008">Username must be between 5 an 12 characters long!</string>
+	<string name="err1009">Photo upload failed!</string>
+	<string name="err1012">Paswoord vergeten invullen? Erg belangrijk! Probeer nog eens!</string>
+	<string name="err1013">Password has to be more than 5 characters!</string>
+	<string name="err1014">Can't change user info!</string>
+	<string name="err1015">Empty form!</string>
+	<string name="err1016">You can't change those fields!</string>
+	<string name="err1017">Could not send you a reset password email!</string>
+	<string name="err1018">Toegegeven: we zijn streng. Je gebruikersnaam moet minstens 5 en mag maximum 12 karakters tellen.</string>
+	<string name="err1019">Volgens ons is dit geen geldig e-mail adres. Kan dat? Probeer nog eens!</string>
+
+	<!-- Challenge errors -->
+	<string name="err1021">Challenge not found!</string>
+	<string name="err1022">Challenge already started!</string>
+	<string name="err1023">Challenge already stopped!</string>
+	<string name="err1024">Challenge already completed!</string>
+	<string name="err1025">You're not playing this challenge!</string>
+	<string name="err1026">Not a valid location!</string>
+	<string name="err1027">That's not the next waypoint to complete!</string>
+	<string name="err1028">Challenge cooldown not over! You can play this challenge again on %s.</string>
+	<string name="err1030">Challenge can not be played more than once!</string>
+
+	<!-- Waypoint errors -->
+	<string name="err1031">Waypoint not found!</string>
+	<string name="err1032">Waypoint already completed!</string>
+	<string name="err1033">Waypoint is not part of the challenge!</string>
+
+	<!-- UserGeneratedContent errors -->
+	<string name="err1041">User generated content not found!</string>
+	<string name="err1042">You have to upload a file to complete the waypoint!</string>
+	<string name="err1043">Could not upload user generated content!</string>
+	<string name="err1044">That's not the right type of content!</string>
+	<string name="err1045">Can't rate your own content!</string>
+	<string name="err1046">Can't rate the same content twice!</string>
+
+	<!-- App errors -->
+	<string name="errorGetImage">Kan afbeelding niet ophalen!</string>
+
+	<!-- ERROR CODES  END -->
+
+	<!-- login -->
+	<string name="no_connection">Er is geen verbinding met de server</string>
+	<string name="userNameTextFieldHint">Gebruikersnaam</string>
+	<string name="firstNameTextFieldHint">Voornaam</string>
+	<string name="surNameTextFieldHint">Achternaam</string>
+	<string name="passwordTextFieldHint">Paswoord</string>
+	<string name="emailTextFieldHint">E-mail adres</string>
+	<string name="forgotPassword">Paswoord vergeten?</string>
+	<string name="btnLoginTitle">Aanmelden</string>
+	<string name="btnRegisterTitle">Registreer je nu!</string>
+
+	<!-- register -->
+	<string name="firstNameTfHint">Voornaam</string>
+	<string name="lastNameTfHint">Familienaam</string>
+	<string name="birthDateTfHint">Geboortedatum</string>
+	<string name="zipCodeTfHint">Postcode</string>
+	<string name="BtnBackTitle">Terug</string>
+	<string name="BtnNextTitle">Volgende</string>
+	<string name="BtnCancelTitle">Annuleren</string>
+	<string name="BtnTakePhotoTitle">Kies(of neem) een foto !</string>
+	<string name="BtnSaveProfileTitle">Bevestig je registratie !</string>
+	<string name="repeatPasswordTextFieldHint">Herhaal paswoord</string>
+	<string name="registerUsernameHelp">Kies een unieke gebruikersnaam die we gebruiken in de app.</string>
+	<string name="registerNameHelp">Vul je echte naam in. Dit is belangrijk als je beloningen krijgt van aangesloten loyaliteitsprogramma's.</string>
+	<string name="registerPasswordHelp">Je paswoord moet minstens 5 karakters lang zijn.</string>
+	<string name="registerEmailHelp">Je e-mail adres. We gebruiken dit enkel om contact op te nemen in verband met de Playground app.</string>
+	<string name="Email_not_unique">Dit e-mail adres wordt reeds door een andere speler gebruikt. Probeer nog eens met een ander adres!</string>
+	<string name="Username_not_unique">Mooie keuze qua gebruikersnaam. Helaas dacht iemand anders er ook zo over en was je voor. Probeer het nog eens met een andere naam!</string>
+	<string name="oldPasswordTextFieldHint">Old password</string>
+	<string name="newPasswordTextFieldHint">New password</string>
+	<string name="BtnChangePasswordTitle">Change password</string>
+	<string name="Register_E_mail">Je e-mail adres</string>
+	<string name="Register_password">Een goed paswoord</string>
+	<string name="Register_Name">Vul je naam in!</string>
+	<string name="Register_Privacy">Privacy</string>
+	<string name="Register_Last_step">Laatste stap! #selfie!</string>
+	<string name="Register_as_a_new_player">Een unieke gebruikersnaam</string>
+	<string name="LabelPhotoText">Laatste stap! Maak of kies een inspirerende of leuke foto van jezelf. Zeker niet verplicht maar wel dubbel zo fijn.</string>
+	<string name="privacySwitchText">Ik ga akkoord met de Privacy Statement en Terms and Conditions.*</string>
+	<string name="privacyReadLink">Klik hier om de privacy statement en Terms and Conditions te lezen.</string>
+	<string name="projectSwitchText">Ik wil in de toekomst meedoen aan testen van andere verbonden projecten.</string>
+	<string name="surveySwitchText">Ik wil gecontacteerd worden over enquetes.</string>
+
+	<!--languages-->
+	<string name="English">English</string>
+	<string name="French">Français</string>
+	<string name="Dutch">Nederlands</string>
+
+	<!-- challenges -->
+	<string name="Nearby_challenges">Challenges</string>
+	<string name="btnUserList">Lijst</string>
+	<string name="btnMap">Kaart</string>
+	<string name="More_than_max_length_allowed">Dit is langer dan we in gedachten hadden. Probeer nog eens.</string>
+	<string name="Less_than_min_length_allowed">Dis is korter dan we in gedachten hadden. Probeer nog eens.</string>
+	<string name="tokens">%1$d tokens</string>
+	<string name="Challenges">Challenges</string>
+	<string name="expectedDuration">Verwachte duur</string>
+	<string name="minutes">minuten</string>
+	<string name="tokensToBeEarned">%1$d tokens te winnen</string>
+	<string name="btnDetails">Info</string>
+	<string name="btnShowOnMap">Op de kaart</string>
+	<string name="Play">START</string>
+	<string name="You_are_here">Je bevindt je hier</string>
+	<string name="challengeStarted">Challenge gestart</string>
+	<string name="challengeStartFailed">challengeStartFailed</string>
+	<string name="btnScan">Scan</string>
+	<string name="challengeStopped">challengeStopped</string>
+	<string name="challengeStopFailed">challengeStopFailed</string>
+	<string name="btnMapView">Kaart</string>
+	<string name="btnListView">Lijst</string>
+	<string name="Challenge">Challenge</string>
+	<string name="playAboutLabel">Over deze challenge</string>
+	<string name="from_your_current_location">%s van jouw locatie</string>
+	<string name="Challenge_details">Challenge details</string>
+	<string name="Play_this_challenge">Speel deze challenge!</string>
+	<string name="Resume_challenge">Hervat challenge</string>
+	<string name="waypoint_qr_error">Dit is niet de correcte QR code!</string>
+	<string name="noAccessDetails">De locatie voor deze stap is momenteel niet beschikbaar. Druk hier voor meer info.</string>
+	<string name="waypointInstructions">Vind &amp; Scan de QR code die bij deze stap hoort om verder te gaan met deze challenge!</string>
+	<string name="ajaxUserChallengeError">ajaxUserChallengeError</string>
+	<string name="Starting_point">Startpunt</string>
+	<string name="Starting_location">Startlocatie</string>
+	<string name="Challenge_starts_here">De challenge begint hier</string>
+	<string name="Play_challenge">Challenge wordt gespeeld</string>
+	<string name="completed_challenges">Gedane challenges</string>
+	<string name="Current_waypoint_detail">Huidige stap</string>
+	<string name="Change_password">Change your password</string>
+	<string name="completed_x_times">%1$d keer gespeeld</string>
+	<string name="Challenge_ended">Challenge beëindigd</string>
+	<string name="btnMoreChallenges">Meer uitdagingen</string>
+	<string name="close">Sluiten</string>
+	<string name="press_and_listen">Druk en luister</string>
+	<string name="Reset_password">Reset password</string>
+	<string name="forgot_password_question">Forgot password?</string>
+	<string name="passwordResetTokenTextFieldHint">E-mail received code</string>
+	<string name="challengeDetailsMapExplanation">Jij bent de groene cirkel. Ga naar de startlocatie bij de vlag. Druk op 'play' om te beginnen. Veel plezier!</string>
+	<string name="challengePlayMapExplanation">De groene cirkel is je startlocatie. De locatie die je zoekt is aangegeven met een vlaggetje.</string>
+	<string name="btnRecord">Opnemen</string>
+	<string name="btnRecord_picture">Neem foto</string>
+	<string name="btnUpload">Uploaden</string>
+	<string name="waypoint_qr_error">Niet de juiste QR code!</string>
+	<string name="waypoint_ugc_capture_photo_err">We vonden je foto niet terug. Probeer nog eens?</string>
+	<string name="waypoint_ugc_capture_video_err">We kunnen je camera niet opstarten. Probeer nog eens?</string>
+	<string name="waypoint_ugc_wrong_type">Verkeerde bestandstype. Probeer eens met een ander?</string>
+	<string name="waypoint_ugc_no_camera">Je smartphone heeft geen camera? Of stuk? Zeker nodig voor deze app!</string>
+	<string name="ugcInstructions">Upload wat er gevraagd wordt in de beschrijving om verder te spelen.</string>
+	<string name="ugc_upload_failed">Upload mislukt! Probeer het nog eens.</string>
+	<string name="ugcUploading">Uploaden...</string>
+	<string name="btnNext">Volgende</string>
+	<string name="btnSkip">Overslaan</string>
+	<string name="ugc_load_error">Download mislukt</string>
+	<string name="rate_ugc_success">Bedankt! De vorige speler heeft dankzij jou een extra token ontvangen.</string>
+	<string name="rate_ugc_fail">Er ging blijkbaar wat mis. Probeer het nog eens?</string>
+	<string name="PreviousUserContentLabel">Speler %s ging je voor op deze challenge en liet ook een bijdrage achter. Verdient hij of zij hier volgens jou een extra token voor? Druk dan op de duim voor je verder gaat!</string>
+	<string name="rate_ugc_twice">De vorige speler heeft al een token van jou ontvangen voor deze bijdrage. Bedankt!</string>
+	<string name="no_ugc_text">Vergeet zeker geen tekst in te voeren! Zonder kunnen we niet verder :)</string>
+	<string name="ugc_data_warning">Uploaden kan afhankelijk van je data abonnement extra kosten met zich meebrengen! Je inzendingen zijn publiekelijk zichtbaar.</string>
+	<string name="playWaypointNumberOf">Er zijn %d stappen in deze challenge</string>
+	<string name="playWaypointNumber">Je speelt momenteel stap %d</string>
+	<string name="playSingleWaypointOf">Makkelijk! Er is slechts 1 stap in deze challenge. Bijna gedaan! Woohoo!</string>
+	<string name="waypoint_location_hidden_error">De locatie van deze stap is verborgen!</string>
+	<string name="ugc_upload_failed">Upload niet gelukt!</string>
+	<string name="ugcPicture">Neem een foto!</string>
+	<string name="ugcVideo">Maak een video!</string>
+	<string name="ugcText">Schrijf een bericht!</string>
+	<string name="ugcGoodJob">Knap werk!</string>
+	<string name="ugcReadyForUpload">Druk op uploaden om verder te spelen. Niet tevreden met je camerawerk? Probeer het dan opnieuw met de knop Opnemen.</string>
+	<string name="lastUgcDesc">Speler %s liet hier laatst iets achter. Kijk wat hij heeft gemaakt!</string>
+	<string name="challengeCompletedTitle">Geweldig!</string>
+	<string name="challengeCompletedSubTitle">Je verdiende zonet</string>
+	<string name="challengeCompletedFinish">met het spelen van deze challenge</string>
+	<string name="error_get_challenges">Er is een fout opgetreden tijdens het ophalen van je challenges!</string>
+	<string name="error_get_completed_challenges">Er is een fout opgetreden tijdens het ophalen van je uitgespeelde challenges!</string>
+	<string name="earned">%d verdiend</string>
+	<string name="random_order_allowed">Je mag de waypoints in eender welke volgorde voltooien.</string>
+	<string name="random_order_not_allowed">Je moet de waypoints in de volgorde voltooien die de app aangeeft.</string>
+
+	<!-- days of the week -->
+	<string name="monday">Maandag</string>
+	<string name="tuesday">Dinsdag</string>
+	<string name="wednesday">Woensdag</string>
+	<string name="thursday">Donderdag</string>
+	<string name="friday">Vrijdag</string>
+	<string name="saturday">Zaterdag</string>
+	<string name="sunday">Zondag</string>
+	<string name="all_day">De hele dag</string>
+	<string name="Registering">Registreren</string>
+	<string name="Waypoint_avalilability">Beschikbaarheid Locatie</string>
+	<string name="Waypoint_availability_explanation">Hieronder zie je wanneer je deze stap wel (groen) of niet (grijs) kan vervolledigen.</string>
+	<string name="WaypointAvailabilityAlways">Locatie toegankelijk!</string>
+	<string name="WaypointAvailabilityAlwaysExplanation">De locatie voor dit onderdeel van deze challenge is altijd beschikbaar. Geen gesloten deuren, openingsuren of slapende mensen die je in de weg staan om er op eender welk moment voor te gaan. Go for it!</string>
+	<string name="Not_available">Niet beschikbaar</string>
+	<string name="Available_from">Beschikbaar van</string>
+	<string name="Available_until">Beschikbaar tot</string>
+	<string name="to">tot</string>
+	<string name="and">en</string>
+	<string name="challenges_around_me_menu_item">Challenges</string>
+	<string name="my_challenges_menu_item">Mijn challenges</string>
+	<string name="logout_menu_item">Uitloggen</string>
+	<string name="My_challenges">Mijn challenges</string>
+	<string name="powered_by_crea_city">Powered by CreaCity</string>
+	<string name="Connection_error_retry_message">There was an error connecting to the server.\nWe will retry in %d seconds.</string>
+	<string name="Checking_connection">Checking the connection to the server.</string>
+	<string name="ugcUploadFailed">Upload gefaald! Probeer nog eens.</string>
+	<string name="btnRate">Cool</string>
+	<string name="Ok">Ok</string>
+	<string name="Error">Fout</string>
+	<string name="Tokens">Tokens</string>
+	<string name="Choose_from_gallery">Kies uit gallerij</string>
+	<string name="Take_a_new_photo">Foto nemen</string>
+	<string name="Register_photo_dialog_message">Neem een unieke foto van jezelf</string>
+	<string name="Register_photo_dialog_title">Profielfoto</string>
+	<string name="Exit_application_message">Aflsuiten</string>
+	<string name="Exit_application_questionmark">Zeker dat je wil stoppen?</string>
+	<string name="Exit">Sluiten</string>
+	<string name="extra_difficulty_explanation_not_started">%d bonus tokens als je de challenge in %d minuten voltooid</string>
+	<string name="extra_difficulty_explanation_started">Je kan %d extra tokens winnen als je voor %s eindigt!</string>
+	<string name="expected_duration">Neemt ongeveer %d minuten in beslag</string>
+	<string name="Retry">Probeer nog eens</string>
+	<string name="There_is_no_data_coverage">Geen data netwerk beschikbaar</string>
+	<string name="Internet_connection_is_lost">Het internet is even zoek. Ga naar een betere locatie en probeer nog eens.</string>
+	<string name="No_challenges_found_refresh_explanation">We vonden geen uitdagingen in de buurt van je huidige locatie. Staat je GPS aan? Zo ja, ga op pad in de stad om uitdagingen te vinden! Veel plezier!</string>
+	<string name="btnRefresh">Uitdagingen in de buurt zoeken</string>
+	<string name="Refreshing">Zoeken</string>
+	<string name="No_my_challenges_found_refresh_explanation">Er werden geen challenges gevonden!</string>
+	<string name="no_completed_challenges">Je hebt nog geen challenges uitgespeeld! Begin nu te spelen en verdien tokens!</string>
+	<string name="You_can_play_this_challenge_at_a_later_time">Kan je later spelen</string>
+	<string name="You_can_play_this_challenge_right_now">Kan je nu spelen</string>
+
+	<!-- Welcome screen -->
+	<string name="welcome_user_menu">Over</string>
+	<string name="welcome_user_title">Hallo %s,</string>
+	<string name="welcome_user_text">Welkom in ons Playground experiment! Als je de challenges voltooit die we in en rond de stad hebben opgezet belonen wij jou met Playground tokens. Die worden dan omgezet in A-kaart punten die je kan inwisselen voor ervaringen.</string>
+	<string name="welcome_user_end">Open up, game on!</string>
+	<string name="welcome_user_credits">Het Playground team</string>
+	<string name="welcome_user_action">Klik op de knop hieronder of gebruik het menu links om de Challenges te bekijken.</string>
+	<string name="welcome_user_disclaimer_title">-- Disclaimer --</string>
+	<string name="welcome_user_disclaimer_apple">Apple Inc. is in geen enkele vorm een sponsor van deze app. Verdiende tokens hebben geen monetaire waarde en kunnen niet verkocht of omgeruild worden. Tickets voor Experiences kunnen niet overgedragen of verkocht worden. Tokens mogen enkel via officiële Playground media verzameld worden, zoals de app of de website www.yourserver.com.</string>
+	<string name="welcome_user_disclaimer_google">Google Inc. is in geen enkele vorm een sponsor van deze app. Verdiende tokens hebben geen monetaire waarde en kunnen niet verkocht of omgeruild worden. Tickets voor Experiences kunnen niet overgedragen of verkocht worden. Tokens mogen enkel via officiële Playground media verzameld worden, zoals de app of de website www.yourserver.com.</string>
+	<string name="version_label">Versie: %s</string>
+	<string name="btnToChallenges">Ga naar Challenges</string>
+
+	<!-- Scan -->
+	<string name='scan_unknown_type'>We zijn niet zeker of dit een Playground QR code is!</string>
+
+	<!-- Beacon screen -->
+	<string name='qr_or_beacon_question'>Wil je een QR code scannen, of zoeken naar iBeacons?</string>
+	<string name='scan_qr_btn'>Scan een QR code</string>
+	<string name='scan_beacon_btn'>Zoek iBeacons</string>
+	<string name='scanning_type_title'>Kies het scan type</string>
+	<string name='beacon_description'>Probeer zo dicht mogelijk bij de beacon te geraken. Als je dicht genoeg bent zal de waypoint automatisch gescand worden.</string>
+	<string name='beacon_not_detected'>Niets gevonden</string>
+	<string name='beacon_far'>Dichtbij</string>
+	<string name='beacon_near'>Nog iets dichter</string>
+
+	<!-- Constant strings -->
+	<string name="app_name">Playground</string>
+
+</resources>

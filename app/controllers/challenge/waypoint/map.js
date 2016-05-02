@@ -4,12 +4,13 @@ header.changeTitle(L("Play_challenge"));
 
 //Libs
 var utils = require("utils");
+var challengeUtils = require('challengeutils');
 
 //Properties
 var args = arguments[0] || {};
 var userChallenge = {};
 var currentWaypoint;
-var hintUsed = false;
+var wpId = args.wpId;
 
 //Map
 var MapModule = require('ti.map');
@@ -64,18 +65,6 @@ function resetView() {
 	mapView.removeAllAnnotations();
 }
 
-/*
-	Determine currentWaypoint
-*/
-function findCurrentWaypoint(data) {
-	var waypoints = data.challenge.waypoints;
-	var completedWP = data.completedWP ? data.completedWP : [];
-	if(completedWP.length < waypoints.length) {
-		return waypoints[completedWP.length];
-	} else {
-		return null;
-	}
-};
 
 /*
 	Parse the result and fill the userchallenge object
@@ -84,7 +73,7 @@ function parseChallenge(data) {
 	userChallenge = data;
 	
 	if(!userChallenge.complete) {
-		currentWaypoint = findCurrentWaypoint(userChallenge);
+		currentWaypoint = challengeUtils.findCurrentWaypoint(userChallenge, wpId);
 	} else {
 		completeUserChallenge(userChallenge);
 		return;
@@ -94,13 +83,6 @@ function parseChallenge(data) {
 	
 	$.challengeTitle.text = '" ' + userChallenge.challenge.name + ' "';
 	$.currentWaypoint.text = currentWaypoint.name;
-	
-	if (utils.testPropertyExists(userChallenge, 'hintsUsed')) {
-		var found = _.find(userChallenge.hintsUsed, function(hint){
-			return hint == currentWaypoint._id;
-		});
-		hintUsed = found != undefined ? true : false;
-	}
 	
 	var geos = [];
 	geos.push({
@@ -181,7 +163,8 @@ function onClick(e) {
 			Alloy.Globals.pushPath({
 				viewId : "challenge/waypoint/info",
 				data : {
-					id : args.id
+					id : args.id,
+					wpId: args.wpId
 				}
 			});
 			break;
@@ -190,20 +173,24 @@ function onClick(e) {
 			Alloy.Globals.pushPath({
 				viewId : 'challenge/waypoint/availability/info',
 				data : {
-					id : args.id
+					id : args.id,
+					wpId: args.wpId
 				}
 			});
 			break;
-	
-		case "btnHint":
-			Alloy.Globals.pushPath({
-				viewId : "challenge/waypoint/hint/info",
-				data : {
-					id : args.id
-				}
-			});
+		case 'btnBack':
+			if(userChallenge.randomOrder) {
+				Alloy.Globals.pushPath({
+					viewId : 'challenge/waypoint/random',
+					data : {
+						id : args.id
+					},
+					resetPath: true
+				});
+			} else {
+				goBackToDetail();
+			}
 			break;
-	
 		case "btnScan":
 			Ti.App.fireEvent('stopAudio');
 			qrOrBeaconScanning();
@@ -227,7 +214,8 @@ function qrOrBeaconScanning() {
 					Alloy.Globals.pushPath({
 						viewId : "challenge/waypoint/scan/scan",
 						data : {
-							id : args.id
+							id : args.id,
+							wpId: args.wpId
 						}
 					});
 					break;
@@ -235,7 +223,8 @@ function qrOrBeaconScanning() {
 					Alloy.Globals.pushPath({
 						viewId : "challenge/waypoint/beacon/info",
 						data : {
-							id : args.id
+							id : args.id,
+							wpId: args.wpId
 						}
 					});
 					break;
@@ -249,7 +238,8 @@ function qrOrBeaconScanning() {
 		Alloy.Globals.pushPath({
 			viewId : "challenge/waypoint/scan/scan",
 			data : {
-				id : args.id
+				id : args.id,
+				wpId: args.wpId
 			}
 		});
 	}

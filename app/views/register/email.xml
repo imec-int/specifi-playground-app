@@ -1,14 +1,18 @@
 <Alloy>
-	<View id="registerEmail">
-		<View id="registerEmailWrapper">
-			<View class="textFieldWrapper">
-				<TextField class="TfRegister" id="TfTop" onChange = "onTfTopChange"/>
+	<View class="registerWrapper">
+		<ScrollView class="scrollWrapper">
+			<View id='textFieldBackground' class="textFieldWrapper">
+				<TextField class="registerTextField" id="TfTop" onChange = "onValueChanged"/>
 			</View>
 			<View class="labelWrapper">
-				<Label class="LabelRegister" id="LabelTop"></Label>
+				<Label class="registerHintLabel" id="registerHint"></Label>
 			</View>
-			<Require type="view" src="ui/extendedbutton" class="registerButton" id="BtnNext" onClick="onClick"/>
-			<Require type="view" src="ui/extendedbutton" class="registerButton" id="BtnCancel" onClick="onClick"/>
+		</ScrollView>
+		<View id="footerWrapper">
+			<View class="registerInnerFooterWrapper">
+				<Require type="view" src="ui/extendedbutton" class="registerButton" id="btnRegisterNext" onClick="onClick"/>
+				<Require type="view" src="ui/extendedbutton" class="registerButton" id="btnRegisterCancel" onClick="onClick"/>
+			</View>
 		</View>
 	</View>
 </Alloy>

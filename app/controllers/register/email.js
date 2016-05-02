@@ -1,80 +1,79 @@
 var header = Alloy.Globals.header.view;
 header.changeTitle(L("Register_E_mail"));
-$.LabelTop.setText(L("registerEmailHelp"));
+$.registerHint.setText(L("registerEmailHelp"));
 
-var registerData;
-try {
-	registerData = JSON.parse(Ti.App.Properties.getString("registerData"));
-} catch(e) {
-	registerData = false;
-}
+//Properties
+var args = arguments[0] || {};
+var user = args.user;
 
-if (registerData) {
-	Alloy.Globals.registerData = registerData;
-} else {
+if (!user)
 	Alloy.Globals.pushPath({viewId:'login',resetPath:true});
-}
 
-var previousConnect = 0;
+if(user.email)
+	$.TfTop.setValue(user.email);
 
 //focusing on the textfield
 setTimeout(function() {
     $.TfTop.focus();
 }, 1000);
 
-function onTfTopChange(e) {
-    Ti.API.info('tfTop changed' + JSON.stringify(e));
-    var currentTime = new Date().getTime();
 
-    if (currentTime - previousConnect > 250) {
-        validateEmail(e.source.value, function(result) {
-            Ti.API.info(result);
-        });
-        previousConnect = currentTime;
-    }
+//Shows error underneath the textfield
+function showError(err){
+	$.textFieldBackground.setBackgroundColor("#FF5C5C");
+	$.TfTop.setBackgroundColor("#FF5C5C");
+	$.registerHint.setText(L("err"+err.error));
+	$.registerHint.setColor("#FF0000");
+ };
+
+function onValueChanged(e) {
+    validateEmail(e.source.value, function(result) {
+    	$.textFieldBackground.setBackgroundColor("#FFFFFF");
+    	$.TfTop.setBackgroundColor("#FFFFFF");
+        $.registerHint.setText(L( "registerEmailHelp"));
+    	$.registerHint.setColor("#FFFFFF");
+    }, function(err){
+    	showError(err);
+    });
 };
 
 function onClick(e) {
     var buttonId = e.source.id;
     switch (buttonId) {
-        case "BtnNext":
+        case "btnRegisterNext":
             var tfTopText = $.TfTop.getValue();
             $.TfTop.blur();
             //@TODO show the loading screen
-            //we'll use alloy globals to keep the info and erase it on finish/cancel
 
             validateEmail(tfTopText, function(result) {
-                if (!result.error && result.unique) {	
+                if (result.unique) {	
 
                     //saving value in the global registration container
-                    Alloy.Globals.registerData.email = tfTopText;
+                    user.email = tfTopText;
                     
-                    //storing this for resume 
-                    Ti.App.Properties.setString("registerData",JSON.stringify(Alloy.Globals.registerData));
-
                     //going to next registration step
                     Alloy.Globals.pushPath({
-                        viewId : 'register/year'
+                        viewId : 'register/privacy',
+                        data: {
+                        	user: user
+                    	}
                     });
                 } else {
-                    if (result.message)
-                        alert(result.message);
-                    else
-                        alert(L("Email_not_unique"));
+                    showError({error:"1002"});
                 }
+            }, function(err){
+            	showError(err);
             });
             break;
-        case "BtnCancel":
+        case "btnRegisterCancel":
         	$.TfTop.blur();
-        	Ti.App.Properties.setString("registerData",false);
-            Ti.App.Properties.setString("currentRoute",false);
-            Ti.App.fireEvent('appInit');
+            Alloy.Globals.pushPath({viewId: 'login', resetPath: true});
             header.hideHeader();
             break;
     }
 }
 
-function validateEmail(email, _handler) {
+function validateEmail(email, _handler, _errorHandler) {
     //validating only strings more than 2 chars
     if (email.length > 2) {
         //we locally validate the format of the email
@@ -86,19 +85,13 @@ function validateEmail(email, _handler) {
                 	email : email
                 },
                 onSuccess : _handler,
-                onError : _handler
+                onError : _errorHandler
             });
             eav.validate();
         } else {
-            _handler({
-                error : 101,
-                message : L("emailFormatError"),
-            });
+            _errorHandler({error: '1019'});
         }
     } else {
-        _handler({
-            error : 101,
-            message : L("emailFormatError"),
-        });
+        _errorHandler({error: '1019'});
     }
 }

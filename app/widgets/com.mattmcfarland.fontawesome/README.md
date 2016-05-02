@@ -1,8 +1,22 @@
-#Font Awesome Ti.Widget 1.2.0
-*OMG! It's the Offical Font Awesome 4.1.0 by Dave Gandy for Titanium Alloy!*
+[![MattMcFarland/com.mattmcfarland.fontawesome API Documentation](https://www.omniref.com/github/MattMcFarland/com.mattmcfarland.fontawesome.png)](https://www.omniref.com/github/MattMcFarland/com.mattmcfarland.fontawesome)
+
+# Font Awesome Ti.Widget 1.6.0
+*OMG! It's the Offical Font Awesome 4.5.0 by Dave Gandy for Titanium Alloy!*
+
+This is a widget for the [Appcelerator](http://www.appcelerator.com) [Alloy](http://projects.appcelerator.com/alloy/docs/Alloy-bootstrap/index.html) MVC framework which provides easy implementation of the Offical Font Awesome icons found at [fontawesome.io](http://fontawesome.io).
+
+Before you submit an issue, be sure to check out the FAQ section.
 
 ## Overview
-This is a widget for the [Appcelerator](http://www.appcelerator.com) [Alloy](http://projects.appcelerator.com/alloy/docs/Alloy-bootstrap/index.html) MVC framework which provides easy implementation of the Offical Font Awesome 4.1.0 icons found at [fontawesome.io](http://fontawesome.io)
+- [Features](#features)
+- [Working Example](#working-example)
+- [Quick Start](#quick-start)
+- [Documentation](#documentation)
+- [Customization](#customization)
+- [Methodology](#methodology)
+- [FAQ](#faq)
+- [License](#license)
+- [Changelog](#changelog)
 
 ## Features
 * 100% Free to use and open source to boot
@@ -24,7 +38,7 @@ This is a widget for the [Appcelerator](http://www.appcelerator.com) [Alloy](htt
 
 ```javascript
 "dependencies": {
-	"com.mattmcfarland.fontawesome":"1.2.0"
+    "com.mattmcfarland.fontawesome":"1.6.0"
 }
 ```
 
@@ -34,24 +48,24 @@ This is a widget for the [Appcelerator](http://www.appcelerator.com) [Alloy](htt
 
 ```xml
 <Alloy>
-	<Window title="Tab 1">
-		<Label icon = "fa-car" >I am Window 1</Label>
-		<Widget id="fa" src="com.mattmcfarland.fontawesome"/>
-	</Window>
+    <Window title="Tab 1">
+        <Label icon="fa-car">I am Window 1</Label>
+        <Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+    </Window>
 </Alloy>
 ```
 
 That's it. You simply add your Icons in a very similar way we do it with HTML 5.
 
 ```xml
-<Label icon = "fa-glass"></Label>
+<Label icon="fa-glass"></Label>
 ```
 
 ### Titanium
 
 ```js
-	var fa = Alloy.createWidget("com.mattmcfarland.fontawesome");
-	win.add(fa);
+    var fa = Alloy.createWidget("com.mattmcfarland.fontawesome");
+    win.add(fa);
 ```
 
 Using Titanium API with Javascript to add icons on the fly:
@@ -80,7 +94,27 @@ As of version 1.2.0, customization has been implemented.  You may use a differen
 
 When customizing the Font Awesome Ti.Widget API, it is recommended to enable debugMode:
 ```js
-	$.fa.debugMode = true;
+    $.fa.debugMode = true;
+```
+
+### Using "iconPosition" property
+
+By default we "prepend" any text/title value with the icon but you might want to "append" the icon instead.
+
+XML:
+
+```xml
+<Label icon="fa-search" text="Search" id="searchLabel" />
+```
+
+TSS:
+
+```javascript
+"#searchLabel": {
+    font : {
+        iconPosition : "append", // Default value is "prepend"
+    }
+}
 ```
 
 ### Using custom icons
@@ -89,10 +123,10 @@ To add your very icon character map from a font-file:
 
 1. Copy your fontfile into your `assets/fonts` directory.
 
-2. Make sure the name of the font file and the system name of the font file match.  
-	* For `IOS` - Titanium SDK looks for the system name of the font file
-	* For `ANDROID` and `MOBILE WEB` - Titanium SDK looks for the file name without the `ext` (.ttf)
-	* This is why FontAwesome.ttf is the same as FontAwesome, the system name is FontAwesome, file name is FontAwesome.
+2. Make sure the name of the font file and the system name of the font file match.
+    * For `IOS` - Titanium SDK looks for the system name of the font file
+    * For `ANDROID` and `MOBILE WEB` - Titanium SDK looks for the file name without the `ext` (.ttf)
+    * This is why FontAwesome.ttf is the same as FontAwesome, the system name is FontAwesome, file name is FontAwesome.
 
 > For more information, checkout the Titanium SDK documentation regarding adding fonts: http://docs.appcelerator.com/titanium/3.0/#!/guide/Custom_Fonts
 
@@ -105,7 +139,7 @@ To add your very icon character map from a font-file:
 5. Apply your custom fonts to a widget instance like so:
 
 ```js
-	$.fa.icons = require('new_icons');
+    $.fa.icons = require('new_icons');
 ```
 
 ### Extended Methods
@@ -119,48 +153,12 @@ Once you add an instance of the widget to a view, you may use the API methods to
 
 The widget was designed so at a very basic level it works right out of the box.  Meaning, all you have to do is add a proper `icon` property to any view and it works.  But not in all cases, so the purpose of this section is to explain how it works so you can have a better understanding and control over the widget and how it operates.
 
-Once you create a `Font Awesome Ti.Widget` it immediately parses the view it is added to for other `Ti.UI.View` objects.  The scope of this query is limited to the widget's siblings and it/their children views (and grand children and so on). 
+Once you create a `Font Awesome Ti.Widget` it immediately parses the view it is added to for other `Ti.UI.View` objects.  The scope of this query is limited to the widget's siblings and it/their children views (and grand children and so on).
 > As of version 1.2.0, you can disable the initial parser by adding the property `instaParse` to `false` (`eg: <Widget instaParse = "false" ...`), then use the `refresh` method to parse when you are ready.
 
 The `Font Awesome Ti.Widget` then applies icons to every instance of a `Ti.UI.View` object that has an `icon` property with a `fa-` prefix.  Because MobileWeb, Android, and IOS handle View objects (such as Label, Button, Row, etc) differently, you may have to create blank labels just for icons for optimal compatibility.
 
 Additional methods such as add, remove, change are available for use with a widget instance so you can have additional control. Refer to the documentation for the comments in `widget.js` for more information.
-
-## License
-
-### Font Awesome 4.1.0
-
-Created by Dave Gandy
-
-FontAwesome.ttf is licensed under SIL OFL 1.1 
-
-### Titanium Alloy Widget 1.2.0 
-
-Created by Matt McFarland and Licensed under GPL
-
-
-## Changelog
-
-**Version 1.2.0**
-* Improved Documentation.
-* Include docs with widget.
-* Add custom icon functionality.
-* Add option to disable initial parser.
-* Mobileweb is no longer supported, but still works.
-
-**Version 1.1.1**
-* Fix md documentation 
-
-**Version 1.1.0**
-* Added JS methods for adding/removing/refreshing icons.
-
-**Version 1.0.1-3** 
-* Established symantic versioning, fixed android bugs.
-* Disregard version 4.0.3 (is actually version 1.0) - important!
-
-**Version 1.0.0**
-* Accidentally named version 4.0.3
-* Initial Release
 
 ##  FAQ
 
@@ -170,11 +168,37 @@ A: If you add it to a Label with text, it appears before the text.  If you want 
 
 **Q: Where is the reference guide/cheat sheet for these icons?**
 
-A: You can find a complete list of all icons and their names at [fontawesome.io/icons](http://fontawesome.io/icons) 
+A: You can find a complete list of all icons and their names at [fontawesome.io/icons](http://fontawesome.io/icons)
 
 **Q: Are there any compatibility issues?**
 
-A: Android requires putting the icon inside the app's asset folder, and Mobileweb does not allow for text+icon sharing. 
+A: Android requires putting the icon inside the app's asset folder, and Mobileweb does not allow for text+icon sharing.
+
+**Q: Why can't I see icons in my Listview/Tableview?**
+
+A: Currently, this widget does not work well with auto-generated content, such as **Listview**, **TableView** and alike.
+While setting the icon property does not work, the combination of setting the text property to the unicode character and the fontFamily to ``FontAwesome`` does work:
+
+XML:
+
+```xml
+<!-- breaks in listview -->
+<Label icon="fa-search"></Label>
+
+<!-- still works in listview -->
+<Label class="search-icon"></Label>
+```
+
+TSS:
+
+```javascript
+".search-icon": {
+    text : "\uf002",
+    font : {
+        fontFamily : "FontAwesome",
+    }
+}
+```
 
 **Q: What if I'm using `icon` for something else?**
 
@@ -186,7 +210,7 @@ A: Please use the issues tab on the right, this way we can publically fix your i
 
 **Q: Do I need to put it inside every `<View>` tag??**
 
-A: The widget will automatically parse its siblings/children for `icon` properties with `fa-` prefix. For optimum efficiency, you should only apply the widget to these areas. 
+A: The widget will automatically parse its siblings/children for `icon` properties with `fa-` prefix. For optimum efficiency, you should only apply the widget to these areas.
 
 **Q: Who made these Awesome Icons???**
 
@@ -194,6 +218,58 @@ A: The Icons themselves were created by Dave Gandy, the Font in which they popul
 
 **Q: I've seen another FontAwesome on Titanium's Marketplace for $5, is this the same?**
 
-A: Not the same at all, the other one is using an older version of Font Awesome, has a few proprietary fonts mixed in, and was made for Titanium, not Alloy. 
+A: Not the same at all, the other one is using an older version of Font Awesome, has a few proprietary fonts mixed in, and was made for Titanium, not Alloy.
 
+## License
 
+### Font Awesome
+
+Created by Dave Gandy
+
+FontAwesome.ttf is licensed under SIL OFL 1.1
+
+### Titanium Alloy Widget
+
+Created by Matt McFarland and Licensed under GPL
+
+## Changelog
+
+**Version 1.6.0**
+* Update to FontAwesome 4.5.0
+
+**Version 1.5.1**
+* Added support for "iconPosition" property.
+* Added support inside "leftNavButtons" and "rightNavButtons"
+
+**Version 1.5.0**
+* Update to FontAwesome 4.4.0
+
+**Version 1.4.1**
+* Added support for "iconFontSize" property.
+
+**Version 1.4.0**
+* Update to FontAwesome 4.3.0
+
+**Version 1.3.0**
+* Update to FontAwesome 4.2.0
+
+**Version 1.2.0**
+* Improved Documentation.
+* Include docs with widget.
+* Add custom icon functionality.
+* Add option to disable initial parser.
+* Mobileweb is no longer supported, but still works.
+
+**Version 1.1.1**
+* Fix md documentation
+
+**Version 1.1.0**
+* Added JS methods for adding/removing/refreshing icons.
+
+**Version 1.0.1-3**
+* Established symantic versioning, fixed android bugs.
+* Disregard version 4.0.3 (is actually version 1.0) - important!
+
+**Version 1.0.0**
+* Accidentally named version 4.0.3
+* Initial Release

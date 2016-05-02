@@ -2,7 +2,7 @@ var connection = Alloy.Globals.appConfig.connection;
 var AjaxCall = require('../utils').creacityAjaxCall;
 
 function AjaxUser(args) {
-	Ti.API.info('Ajax personal marker constructor args'+Ti.API.info(JSON.stringify(args)));
+	Ti.API.info('Ajax user constructor args'+Ti.API.info(JSON.stringify(args)));
 	this.params = args.params || {};
 	//avoiding class overriding
 	if (!(this instanceof arguments.callee))

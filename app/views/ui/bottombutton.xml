@@ -1,0 +1,13 @@
+<Alloy>
+    <View id="buttonWrapper">
+        <View id="layoutWrapper">
+            <View id="iconWrapper">
+                <Label id="icon"></Label>
+            </View>
+            <View id="textWrapper">
+                <Label id="buttonLabel"/>
+            </View>
+        </View>
+        <Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+    </View>
+</Alloy>

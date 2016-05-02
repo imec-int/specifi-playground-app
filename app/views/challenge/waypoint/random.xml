@@ -1,0 +1,12 @@
+<Alloy>
+	<View id="detailWrapper">
+		<View id="challengeDetailWrapper">
+			<View id="titleWrapper" >
+				<Label id="challengeTitle"/>
+			</View>
+			<View id="waypointWrapper">
+			</View>
+		</View>
+		<Widget id="fa" src="com.mattmcfarland.fontawesome"/>
+	</View>
+</Alloy>

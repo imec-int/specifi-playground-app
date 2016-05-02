@@ -4,7 +4,7 @@
 "#footerWrapper":{
 	height: Alloy.Globals.appConfig.headerHeight
 },
-"#innerFooterWrapper":{
+".innerFooterWrapper":{
 	layout: 'absolute',
 	height: Titanium.UI.FILL
 },

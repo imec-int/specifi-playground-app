@@ -1,7 +1,7 @@
 "#header":{
     height: 0,
     width: Ti.UI.FILL,
-    backgroundColor: Alloy.Globals.CustomColor1,
+    backgroundColor: Alloy.Globals.CustomColor3,
 },
 "#mainHeaderWrapper":{
     layout: 'absolute',

@@ -10,15 +10,6 @@
 	height: Titanium.UI.FILL
 },
 
-".scrollWrapper": {
-	heigth: Titanium.UI.FILL,
-	width: Titanium.UI.FILL,
-	showVerticalScrollIndicator: true,
-	layout: "vertical",
-	contentWidth: "99%",
-	disableBounce: false
-},
-
 ".centered":{
     width: Ti.UI.FILL,
     textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
@@ -90,7 +81,7 @@
 	horizontalWrap: true
 },
 
-"#innerFooterWrapper":{
+".innerFooterWrapper":{
 	horizontalWrap: true
 },
 

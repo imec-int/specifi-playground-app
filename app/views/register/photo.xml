@@ -1,13 +1,17 @@
 <Alloy>
-	<View id="registerPhoto">
-		<View id="registerPhotoWrapper">
+	<View class="registerWrapper">
+		<ScrollView class="scrollWrapper">
 			<ImageView id="image" image="/images/ui/person_ph.png" />
 			<View class="labelWrapper">
-				<Label class="LabelRegister" id="LabelTop" textid="LabelPhotoText"/>
+				<Label class="registerHintLabel" id="registerHint" textid="LabelPhotoText"/>
 			</View>
-			<Require type="view" src="ui/extendedbutton" class="registerButton" id="BtnPhoto" onClick="onClick"/>
-			<Require type="view" src="ui/extendedbutton" class="registerButton" id="BtnSave" onClick="onClick"/>
-			<Require type="view" src="ui/extendedbutton" class="registerButton" id="BtnCancel" onClick="onClick"/>
+		</ScrollView>
+		<View id="footerWrapper">
+			<View class="registerInnerFooterWrapper">
+				<Require type="view" src="ui/extendedbutton" class="registerButton" id="btnPhoto" onClick="onClick"/>
+				<Require type="view" src="ui/extendedbutton" class="registerButton" id="btnSave" onClick="onClick"/>
+				<Require type="view" src="ui/extendedbutton" class="registerButton" id="btnRegisterCancel" onClick="onClick"/>
+			</View>
 		</View>
 	</View>
 </Alloy>

@@ -20,7 +20,7 @@
 },
 ".row":{
 	height: '24dp',
-	layout: 'horizontal',
+	layout: 'horizontal'
 },
 "#challengeType":{
 	text: L("Challenge")
@@ -36,6 +36,9 @@
 		fontWeight: "bold",
 	},
 	color: Alloy.Globals.CustomColor7
+},
+"#randomRow":{
+	height: "36dp"
 },
 "#description":{
 	height: Titanium.UI.SIZE,

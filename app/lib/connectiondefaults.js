@@ -1,7 +1,6 @@
 module.exports = {
-	root : 'https://yourserver.com/api',
-	linkRoot: 'http://yourserver.com',
-	fbRoot: 'http://yourserver.com/fb',
+	root : 'https://yourserver.com:30001/api',
+	linkRoot: 'http://yourserver.com:3000',
 	endpoints : {
 		settings: {
 			id : 'settings',
@@ -46,7 +45,7 @@ module.exports = {
 				requestType : "POST",
 				contentType : "multipart/form-data",
 				url : '/user/register',
-				params : ["username", "email", "password", "password_confirm", "gender", "birthyear", "photo_upload"]
+				params : ["firstname", "surname", "username", "email", "password", "photo_upload", "language", "privacyAndTerms", "contactProjects", "contactSurveys"]
 			},
 			logout : {
 				id : 'userLogout',
@@ -113,14 +112,14 @@ module.exports = {
 				requestType : "POST",
 				contentType : "multipart/form-data",
 				url : '/userchallenge/waypoint/qr',
-				params : ["qrcode", "challengeid", "content_upload", "contentText"]
+				params : ["qrcode", "challengeid", "contentVideo_upload", "contentImage_upload", "contentText"]
 			},
 			completeWaypointBeacon : {
 				id : "completeWaypointBeacon",
 				requestType : "POST",
 				contentType : "multipart/form-data",
 				url : '/userchallenge/waypoint/beacon',
-				params : ["challengeid", "beacon", "wpid","content_upload", "contentText"]
+				params : ["challengeid", "beacon", "wpid", "contentVideo_upload", "contentImage_upload", "contentText"]
 			},
 			fetch : {
 				id : "fetch",
@@ -128,94 +127,6 @@ module.exports = {
 				contentType : "application/json",
 				url : '/userchallenge/%challenge_id%',
 				params : ["challenge_id"]
-			},
-			getHint : {
-				id : "getHint",
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/userchallenge/%challenge_id%/waypoint/%waypoint_id%/hint',
-				params : ["challenge_id", "waypoint_id"]
-			}
-		},
-		personalMarker : {
-			list : {
-				id : "list",
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/personalmarker/list',
-				params : []
-			},
-			fetch : {
-				id : "fetch",
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/personalmarker/%personalmarker_id%',
-				params : ['personalmarker_id']
-			},
-			nearby : {
-				id : "nearby",
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/personalmarker/nearby/%location%/distance/%distance%',
-				params : ['location', 'distance']
-			}
-		},
-		meetingHotspot:{
-			list: {
-				id : "list",
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/meetinghotspot/list',
-				params : []
-			},
-			fetch:{
-				id : "fetch",
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/meetinghotspot/%meetinghotspot_id%',
-				params : ['meetinghotspot_id']
-			},
-			nearby:{
-				id:"nearby",
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/meetinghotspot/nearby/%location%/distance/%distance%',
-				params : ['location','distance']
-			},
-			start:{
-				id:"start",
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/meetinghotspot/%meetinghotspot_id%/start/%location%',
-				params : ['meetinghotspot_id','location']
-			},
-			stop: {
-				id: "stop",
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/meetinghotspot/%meetinghotspot_id%/stop',
-				params : ['meetinghotspot_id']
-			},
-			scan:{
-				id:"scan",
-				requestType : "POST",
-				contentType : "form-data",
-				url : '/meetinghotspot/scan',
-				params : ['id','qr','location']
-			}
-		},
-		scan : {
-			scanPersonalMarker: {
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/scan/personalmarker/%id%',
-				params : ["id"]
-			},
-			scanWaypoint: {
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/scan/waypoint/%id%',
-				params : ["id"]
 			}
 		},
 		usergeneratedcontent:{
@@ -232,79 +143,10 @@ module.exports = {
 				params : ["id", "score"]
 			}
 		},
-		experience :{
-			list: {
-				id : "list",
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/experience/list',
-				params : []
-			},
-			fetch:{
-				id : "fetch",
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/experience/%id%',
-				params : ['id']
-			},
-			buy: {
-				id: "buy",
-				requestType : "POST",
-				contentType : "form-data",
-				url : '/experience/buy',
-				params : ["id", "amount"]
+		privacy: {
+			terms: {
+				url : '/termsandconditions'
 			}
-		},
-		experienceTicket :{
-			list: {
-				id : "list",
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/experienceticket/list',
-				params : []
-			},
-			fetch:{
-				id : "fetch",
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/experienceticket/%id%',
-				params : ['id']
-			},
-			use: {
-				id: "use",
-				requestType : "POST",
-				contentType : "form-data",
-				url : '/experienceticket/use',
-				params : ["id"]
-			}
-		},
-		highscores :{
-			top: {
-				id : "top",
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/highscore/%top%',
-				params : ['top']
-			},
-			weekly: {
-				id : "weekly",
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/highscore/weekly/%top%',
-				params : ['top']
-			},
-			personal: {
-				id : "personal",
-				requestType : "GET",
-				contentType : "application/json",
-				url : '/highscore/personal',
-				params: []
-			}
-		}
-	},
-	facebook: {
-		challenge: {
-			complete: "/challenge/completed/"
 		}
 	}
 };

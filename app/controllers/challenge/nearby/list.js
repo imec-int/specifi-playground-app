@@ -8,6 +8,9 @@ var tableData = [];
 //Services
 var AjaxNearbyAll = require("net/ajaxnearbyall");
 
+//Libs
+var PermissionsUtils = require('utils/permissionsutils');
+
 /*
  	Handles click events on list items
  */
@@ -32,7 +35,7 @@ function onClick(e) {
 			break;
 		case "btnRefresh":
 			$.btnRefresh.setText(L("Refreshing"));
-			ajaxNearbyAll.fetch();
+			getChallenges();
 			break;
 		}
 };
@@ -76,20 +79,6 @@ var ajaxNearbyAllSuccessHandler = function(response) {
 		data.push(row);
 	});
 
-	var personalMarkers = response.personalmarkers;
-	_.each(personalMarkers, function(row, index) {
-		row.challengeType = L("Personal_marker");
-		data.push(row);
-	});
-
-	var meetingHotspots = response.meetinghotspots;
-	_.each(meetingHotspots, function(row, index) {
-		var template = row.template;
-		template.challengeType = L("Meeting_hotspot");
-		template._id = row._id;
-		data.push(template);
-	});
-
 	createList(data);
 };
 
@@ -102,7 +91,7 @@ var ajaxNearbyAllErrorHandler = function(err) {
 };
 
 /*
- 	Get nearby challenges, personal markers, hotspots,...
+ 	Get nearby challenges,...
  */
 var ajaxNearbyAll = new AjaxNearbyAll({
 	onSuccess : ajaxNearbyAllSuccessHandler,
@@ -114,13 +103,29 @@ var ajaxNearbyAll = new AjaxNearbyAll({
 });
 
 /*
-	Get current location and fetch nearby challenges, hotspots,...
+	Get current location and fetch nearby challenges,...
 */
-Ti.Geolocation.getCurrentPosition(function(e) {
-	if (e.error) {
-		Alloy.Globals.currentCoords = Alloy.Globals.appConfig.defaultCoords;
-	} else {
-		Alloy.Globals.currentCoords = e.coords;
-	}
-	ajaxNearbyAll.fetch();
-});
+function getChallenges(){
+	PermissionsUtils.getLocationPermissions(function(err){
+		if(err) {
+			Alloy.Globals.currentCoords = Alloy.Globals.appConfig.defaultCoords;
+			ajaxNearbyAll.params.location = Alloy.Globals.currentCoords.longitude + ',' + Alloy.Globals.currentCoords.latitude;
+			ajaxNearbyAll.fetch();
+		} else {
+			Ti.Geolocation.getCurrentPosition(function(e) {
+				if (e.error) {
+					Alloy.Globals.currentCoords = Alloy.Globals.appConfig.defaultCoords;
+				} else {
+					Alloy.Globals.currentCoords = {
+						latitude : e.coords.latitude,
+						longitude : e.coords.longitude
+					};
+				}
+				ajaxNearbyAll.params.location = Alloy.Globals.currentCoords.longitude + ',' + Alloy.Globals.currentCoords.latitude;
+				ajaxNearbyAll.fetch();
+			});
+		}
+	});
+}
+
+getChallenges();

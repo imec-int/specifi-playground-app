@@ -2,10 +2,6 @@
 Alloy.Globals.index = $.index;
 Alloy.Globals.leftMenu = {};
 
-var indicator = Alloy.createController('loadingscreen', {
-	text : L("Checking_connection")
-}).getView();
-Alloy.Globals.indicator = indicator;
 var menu = Alloy.createController('menu').getView();
 var mainView = Alloy.createController('mainview').getView();
 Alloy.Globals.sliderMenu = $.sliderMenu;
@@ -30,7 +26,6 @@ Alloy.Globals.sliderMenu.addEventListener('opened',function(){
 Alloy.Globals.sliderMenu.setAccesibility(false);
 Alloy.Globals.mainContent = mainView;
 Alloy.Globals.currentContent = null;
-
 
 $.index.fullscreen = false;
 
@@ -64,12 +59,11 @@ if (OS_ANDROID) {
 		Alloy.Globals.sliderMenu.hidemenu();
 
 		if (Alloy.Globals.appStatus != AppStates.APP_STATUS_STARTED) {
-			Ti.App.fireEvent("appResumed");
+			Alloy.Globals.appResume();
 			Alloy.Globals.appStatus = AppStates.APP_STATUS_RESUMED;
 		}
 	});
 	$.index.addEventListener('blur', function(e) {
-		Alloy.Globals.pauseMoment = (new Date().getTime()) / 1000;
 		Alloy.Globals.appStatus = AppStates.APP_STATUS_PAUSED;
 		Alloy.Globals.sliderMenu.hidemenu();
 	});
@@ -81,41 +75,6 @@ $.index.addEventListener('open', function(e) {
 	$.index.show();
 });
 
-$.index.add(indicator);
-Alloy.Globals.indicator = indicator;
-indicator.show();
 $.index.hide();
 $.index.open();
-
-
-
-//trying to ping
-var Ping = require("net/ping");
-var pingService = new Ping({
-	onSuccess : function(presult) {
-		Ti.API.info('ping result'+JSON.stringify(presult));
-		$.index.remove(indicator);
-		Alloy.Globals.indicator = null;
-		indicator = null;
-		Ti.App.fireEvent('appInit');
-		Alloy.Globals.appConfig.clientServerDifference = new Date().getTime() - new Date(presult.time).getTime();
-		Ti.API.info('client server difference '+Alloy.Globals.appConfig.clientServerDifference);
-	},
-	onError : function() {
-		Alloy.Globals.indicator.changeText(String.format(L('Connection_error_retry_message'), 20));
-		var counter = 20;
-		var countDown = setInterval(function() {
-			counter--;
-			Alloy.Globals.indicator.changeText(String.format(L('Connection_error_retry_message'), counter));
-		}, 1000);
-		setTimeout(function() {
-			clearInterval(countDown);
-			Alloy.Globals.indicator.changeText(L('Checking_connection'));
-			setTimeout(function() {
-				pingService.tryPing();
-			}, 500);
-		}, 19500);
-	}
-});
-pingService.tryPing();
-
+Alloy.Globals.appInit();

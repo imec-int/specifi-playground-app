@@ -37,7 +37,7 @@
 					</View>
 				</View>
 				<View class="row innerInfo">
-					<Label class="detailIcon" id="expectedDurationIcon" />
+					<Label class="detailIcon" icon="fa-clock-o" />
 					<View class="detailTextWrapper">
 						<Label class="detailText"  id="expectedDuration" />
 					</View>
@@ -48,11 +48,17 @@
 						<Label class="detailText"  id="extraTokenNumber"/>
 					</View>
 				</View>
+				<View id="randomRow" class="row innerInfo">
+					<Label class="detailIcon" icon="fa-random" />
+					<View class="detailTextWrapper">
+						<Label class="detailText"  id="randomOrderText" />
+					</View>
+				</View>
 				<View class="spacer" ></View>
 			</ScrollView>
 		</View>
 		<View id="footerWrapper">
-			<View id="innerFooterWrapper">
+			<View class="innerFooterWrapper">
 				<Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnDetails" onClick="onClick"/>
 				<Require autoStyle="true" type="view" src="ui/extendedbutton" id="btnPlayChallenge" onClick="onClick"/>
 				<Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnMap" onClick="onClick"/>

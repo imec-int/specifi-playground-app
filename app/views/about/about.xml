@@ -12,7 +12,7 @@
             <Label id="versionLabel" class="innerInfo"></Label>
 		</ScrollView>
 		<View id="footerWrapper">
-            <View id="innerFooterWrapper">
+            <View class="innerFooterWrapper">
                 <Require autoStyle="true" type="view" src="ui/extendedbutton" class="footerButton" id="btnChallenges" onClick="onClick"/>
             </View>
         </View>

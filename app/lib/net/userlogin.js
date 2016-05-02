@@ -16,7 +16,7 @@ function UserLogin(args) {
 	};
 }
 
-UserLogin.prototype.tryLogin = function(args) {
+UserLogin.prototype.login = function(args) {
 	if (!args) args={};
 	args.instance = this;
 	//adding connection settings to args

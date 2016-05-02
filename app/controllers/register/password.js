@@ -1,115 +1,84 @@
 var header = Alloy.Globals.header.view;
 header.changeTitle(L("Register_password"));
 
-var registerData;
-try {
-	registerData = JSON.parse(Ti.App.Properties.getString("registerData"));
-} catch(e) {
-	registerData = false;
-}
-
-if (registerData) {
-	Alloy.Globals.registerData = registerData;
-} else {
-	//we have to reset to login
+//Properties
+var args = arguments[0] || {};
+var user = args.user;
+if (!user)
 	Alloy.Globals.pushPath({viewId:'login',resetPath:true});
-}
+	
+if(user.password)
+	$.TfPass.setValue(user.password);
 
 header.showHeader();
 header.changeTitle(L("Register_password"));
 
+$.registerHint.setText(L("registerPasswordHelp"));
 
-var previousConnect = 0;
 //focusing on the textfield
-
 setTimeout(function() {
-    Ti.API.info('focusing on textfield');
     $.TfPass.focus();
 }, 1000);
 
-function onTfTopChange(e) {
-    Ti.API.info('tfTop changed' + JSON.stringify(e));
-    var currentTime = new Date().getTime();
+//Shows error underneath the textfield
+function showError(err){
+	$.textFieldBackground.setBackgroundColor("#FF5C5C");
+	$.TfPass.setBackgroundColor("#FF5C5C");
+	$.registerHint.setText(L("err"+err.error));
+	$.registerHint.setColor("#FF0000");
+ };
 
-    if (currentTime - previousConnect > 250) {
-        validatePassword(function(result) {
-            Ti.API.info(result);
-        });
-        previousConnect = currentTime;
-    }
+
+
+
+function onValueChanged(e) {
+    validatePassword(e.source.value, function() {
+    	$.textFieldBackground.setBackgroundColor("#FFFFFF");
+    	$.TfPass.setBackgroundColor("#FFFFFF");
+    	$.registerHint.setText(L( "registerPasswordHelp"));
+    	$.registerHint.setColor("#FFFFFF");
+    }, function(err){
+    	showError(err);
+    });
 };
 
 function onClick(e) {
     var buttonId = e.source.id;
     switch (buttonId) {
-        case "BtnNext":
+        case "btnRegisterNext":
         	$.TfPass.blur();
             var tfTopText = $.TfPass.getValue();
-            var tfConfirm = $.TfRepeatPass.getValue();
-            //@TODO show the loading screen
-            //we'll use alloy globals to keep the info and erase it on finish/cancel
 
-            validatePassword(function(result) {
-                if (!result.error) {
-                    //saving value in the global registration container
-                    Alloy.Globals.registerData.password = tfTopText;
-                    Alloy.Globals.registerData.password_confirm = tfConfirm;
-                    
-                     //storing this for resume 
-                    Ti.App.Properties.setString("registerData",JSON.stringify(Alloy.Globals.registerData));
-                     var testBack = Ti.App.Properties.getString("registerData");
-                	 Ti.API.info('we saved '+testBack);
-
-                    //going to next registration step
-                    Alloy.Globals.pushPath({
-                        viewId : 'register/email'
-                    });
-                } else {
-                	$.TfPass.focus();
-                	alert(result.message);
-                }
+            validatePassword(tfTopText,function() {
+                //saving value in the global registration container
+                user.password = tfTopText;
+                
+                //going to next registration step
+                Alloy.Globals.pushPath({
+                    viewId : 'register/email',
+                    data: {
+                    	user: user
+                    }
+                });
+            }, function(err){
+            	showError(err);
             });
             break;
-        case "BtnCancel":
+        case "btnRegisterCancel":
        		$.TfPass.blur();
-    	 	Ti.App.Properties.setString("registerData",false);
-            Ti.App.Properties.setString("currentRoute",false);
-            Ti.App.fireEvent('appInit');
+            Alloy.Globals.pushPath({viewId: 'login', resetPath: true});
             header.hideHeader();
             break;
     }
 }
 
-function validatePassword(_handler) {
-    //validating only strings more than 2 chars
-    var password = $.TfPass.getValue();
-    var repeat = $.TfRepeatPass.getValue();
+function validatePassword(password, _handler, _errorHandler) {
     if (!password.length) {
-         _handler({
-            error : 102,
-            message : L('password_empty_error'),
-        });
-        return;
+        return _errorHandler({error: '1012'});
     }
     //validating password length
     if (password.length < 5) {
-        _handler({
-            error : 100,
-            message : L('password_too_short'),
-        });
-        return;
+        return _errorHandler({error: '1013'});
     }
-    if (password !== repeat) {
-        _handler({
-            error : 101,
-            message : L("password_dont_match"),
-        });
-        return;
-    }
-    if (password === repeat) {
-        _handler({
-            success : 1
-        });
-        return;
-    }
+    return _handler();
 }

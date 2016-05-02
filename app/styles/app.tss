@@ -43,7 +43,7 @@
 },
 
 "#titleWrapper":{
-	backgroundColor: Alloy.Globals.CustomColor5,
+	backgroundColor: Alloy.Globals.CustomColor1,
     width: Ti.UI.FILL,
     height: Ti.UI.SIZE,
     layout: "absolute",
@@ -84,7 +84,7 @@
     left: "10dp",
     width: Ti.UI.FILL,
     color: "white",
-    textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 },
 
 "#playButton":{
@@ -203,35 +203,38 @@
 },
 
 "#btnDetails":{
-    iconImage: "/images/icons/info-#ffffff.png",
+    icon: 'fa-info',
+    color: '#ffffff',
     backgroundColor: Alloy.Globals.CustomColor3Light,
     backgroundSelectedColor: Alloy.Globals.CustomColor3,
     backgroundDisabledColor: Alloy.Globals.DisabledColor
 },
 "#btnLocation":{
-	iconImage: "/images/icons/pin-#ffffff.png",
+	icon: 'fa-map-marker',
+    color: '#ffffff',
 	backgroundColor: Alloy.Globals.CustomColor3Light,
 	backgroundSelectedColor: Alloy.Globals.CustomColor3,
 	backgroundDisabledColor: Alloy.Globals.DisabledColor
 }
-"#btnHint":{
-	iconImage: "/images/icons/hint-#ffffff.png",
-	backgroundColor: Alloy.Globals.CustomColor3Light,
-	backgroundSelectedColor: Alloy.Globals.CustomColor3,
-	backgroundDisabledColor: Alloy.Globals.DisabledColor
-},
 "#btnAccess":{
-	iconImage: "/images/icons/schedule-#ffffff.png",
+	icon: 'fa-calendar',
+    color: '#ffffff',
 	backgroundColor: Alloy.Globals.CustomColor3Light,
 	backgroundSelectedColor: Alloy.Globals.CustomColor3,
 	backgroundDisabledColor: Alloy.Globals.DisabledColor
 },
-
+"#btnBack":{
+	icon: "fa-times-circle-o",
+	color: '#ffffff',
+	backgroundColor: Alloy.Globals.CustomColor3Light,
+	backgroundSelectedColor: Alloy.Globals.CustomColor3,
+	backgroundDisabledColor: Alloy.Globals.DisabledColor
+},
 "#btnScan":{
 	title: L( "btnScan"),
 	height: Alloy.Globals.appConfig.footerExtendedHeight,
-	backgroundColor: Alloy.Globals.CustomColor1,
-	backgroundSelectedColor: Alloy.Globals.CustomColor1Light,
+	backgroundColor: Alloy.Globals.PlayButtonColor,
+	backgroundSelectedColor: Alloy.Globals.PlayButtonColorLight,
 	backgroundDisabledColor: Alloy.Globals.DisabledColor,
 	borderRadius: "4dp",
 	titleShadowDisabled: true,
@@ -269,20 +272,8 @@
 "#btnPlayChallenge":{
     width: "20%",
 	height: Alloy.Globals.appConfig.footerExtendedHeight,//double of icon height
-	backgroundColor: Alloy.Globals.CustomColor1,
-	backgroundSelectedColor: Alloy.Globals.CustomColor1Light,
-	iconImage: "/images/icons/play-arrow.png",
-	noTitle: true,
-	borderRadius: "4dp",
-	bottom: "-5dp",
-	iconHeight: "50dp",
-	iconWidth: "50dp",
-},
-"#btnPlayHotspot":{
-    width: "20%",
-	height: Alloy.Globals.appConfig.footerExtendedHeight,//double of icon height
-	backgroundColor: Alloy.Globals.CustomColor1,
-	backgroundSelectedColor: Alloy.Globals.CustomColor1Light,
+	backgroundColor: Alloy.Globals.PlayButtonColor,
+	backgroundSelectedColor: Alloy.Globals.PlayButtonColorLight,
 	iconImage: "/images/icons/play-arrow.png",
 	noTitle: true,
 	borderRadius: "4dp",
@@ -325,7 +316,7 @@
 	height: Titanium.UI.SIZE,
 	horizontalWrap: false
 },
-"#innerFooterWrapper":{
+".innerFooterWrapper":{
 	height: Titanium.UI.SIZE,
 	backgroundColor: "transparent",
 	layout: "horizontal",
@@ -512,22 +503,112 @@
 	iconImage: "/images/icons/next-#ffffff.png"
 },
 
-'#btnFacebook':{
-	text: L('share_fb'),
-	width: "70%",
-    left: "15%",
-    right: "15%",
-    backgroundColor: "#3B4F94",
-	backgroundSelectedColor: "#5A76D7",
-	iconImage: "/images/icons/facebook-#ffffff.png"
+".registerWrapper":{
+	width: Ti.UI.Fill,
+    height: Ti.UI.Fill,
+    layout: "absolute",
+    backgroundColor: Alloy.Globals.CustomColor1
+},
+".registerSwitch": {
+	height: Ti.UI.SIZE,
+    left: "10dp",
+    right: "10dp"
+},
+".registerSwitchWrapper":{
+	height: Titanium.UI.SIZE,
+	width: Ti.UI.Fill,
+	layout: "horizontal"
+},
+".registerSwitch[platform=android]": {
+	style: Titanium.UI.Android.SWITCH_STYLE_CHECKBOX
+},
+".registerTextField":{
+    height: Ti.UI.SIZE,
+    left: "10dp",
+    right: "10dp",
+    borderWidth: 0,
+    backgroundImage: "none",
+    hintTextColor: "#C9C9C9"
+},
+".registerTextField[platform=ios]":{
+    keyboardToolbarColor: "#999",
+    keyboardToolbarHeight: "40dp"
+},
+".labelWrapper":{
+    top:"5dp",
+    height: Ti.UI.SIZE,
+    right: "30dp",
+    left: "30dp",
+    color: "white",
+},
+".registerHintLabel":{
+    height: Ti.UI.SIZE,
+    left: "0dp",
+    right: "0dp",
+    color: "white",
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+},
+".textFieldWrapper":{
+    top: "20dp",
+    height: "44dp",
+    borderRadius: "4dp",
+    right: "30dp",
+    left: "30dp",
+    backgroundColor: "white",
+},
+".registerButton":{
+    borderRadius: "4dp",
+    height: "40dp",
+    left: "30dp",
+    right: "30dp",
+    top: "10dp",
+    font:{
+        fontSize: "16dp",
+        fontWeight: "bold"
+    },
+    textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+    textPaddingLeft: "10dp",
+    touchEnabled: true,
+    iconWidth: "25dp",
+    iconHeight: "25dp",
+    titleShadowDisabled: true,
+    titleColor: "white",
+    backgroundColor: Alloy.Globals.CustomColor3,
+    backgroundSelectedColor: Alloy.Globals.CustomColor3Light
+},
+"#registerHint":{
+    left: 0,
+    right: 0,
+    font:{
+        fontSize: "12dp"
+    }
+},
+"#btnRegisterNext":{
+    iconImage: "/images/icons/next-#ffffff.png",
+    titleColor: "white",
+    title: L( "BtnNextTitle")
+},
+"#btnRegisterCancel":{
+    iconImage: "/images/icons/cancel-#ffffff.png",
+    title: L( "BtnCancelTitle"),
+    backgroundColor: "#f2c200",
+    backgroundSelectedColor: "#fcc900"
 },
 
-'#btnTwitter':{
-	text: L('share_twitter'),
-	width: "70%",
-    left: "15%",
-    right: "15%",
-    backgroundColor: "#3EAAE7",
-	backgroundSelectedColor: "#8CC5E6",
-	iconImage: "/images/icons/twitter-#ffffff.png"
+
+".scrollWrapper": {
+	heigth: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	showVerticalScrollIndicator: true,
+	layout: "vertical",
+	contentWidth: "99%",
+	disableBounce: false
+},
+".registerInnerFooterWrapper":{
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL,
+	backgroundColor: "transparent",
+	layout: "vertical",
+	horizontalWrap: false,
+	bottom: "15%"
 }

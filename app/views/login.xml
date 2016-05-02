@@ -4,14 +4,14 @@
 			<View id="logoWrapper">
 				<View id="logo"></View>
 			</View>
-			<View class="textFieldWrapper" id="TfUsernameWrapper">
-				<TextField class="TfLogin" id="TfUsername" onBlur="onBlur" onFocus="onFocus" onReturn="onReturn"/>
+			<View class="textFieldWrapper" id="TfUsernameWrapper" onClick="onClick">
+				<TextField class="TfLogin" id="TfUsername" onReturn="onReturn"/>
 			</View>
-			<View class="textFieldWrapper">
-				<TextField class="TfLogin" id="TfPassword" onBlur="onBlur" onFocus="onFocus" onReturn="onReturn"/>
+			<View class="textFieldWrapper" onClick="onClick">
+				<TextField class="TfLogin" id="TfPassword" onReturn="onReturn"/>
 			</View>
 			<Require type="view" src="ui/extendedbutton" class ="loginViewBtn" id="btnLogin" onClick="onClick"/>
-			<Require type="view" src="ui/extendedbutton" class ="loginViewBtn" id="btnCreateNew" onClick="onClick"/>
+			<Require type="view" src="ui/extendedbutton" class ="loginViewBtn" id="btnRegister" onClick="onClick"/>
 			<Label id="forgotPasswordLink" onClick="onClick"></Label>
 		</View>
 	</View>

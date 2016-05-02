@@ -1,17 +1,11 @@
 //Initializing some globals
 Alloy.Globals.user = null;
-Alloy.Globals.userIsLogged = false;
 
 Alloy.Globals.iPhoneTall = (OS_IOS && Ti.Platform.osname == "iphone" && Ti.Platform.displayCaps.platformHeight == 568);
 
 var AppStates = require("appstates");
 Alloy.Globals.appStatus = AppStates.APP_STATUS_STOPPED;
-Alloy.Globals.counterIds = [];
-Alloy.Globals.clearAllCounters = function() {
-	_.each(Alloy.Globals.counterIds, function(id) {
-		clearInterval(id);
-	});
-};
+
 Alloy.Globals.mapViews = [];
 Alloy.Globals.mapViewsDisableTouch = function() {
 	_.each(Alloy.Globals.mapViews, function(mapView) {
@@ -33,23 +27,30 @@ Alloy.Globals.mapViewsClearAll = function() {
 
 //Styling Related Globals
 //Primary Colors
-Alloy.Globals.CustomColor1 = "#005380";
+Alloy.Globals.CustomColor1 = "#8ba6b4";
 Alloy.Globals.CustomColor1Light = "#6698b3";
 Alloy.Globals.CustomColor1Lighter = "#d9e5ec";
-Alloy.Globals.CustomColor2 = "#007576";
-Alloy.Globals.CustomColor2Light = "#66acad";
-Alloy.Globals.CustomColor3 = "#51a026";
-Alloy.Globals.CustomColor3Light = "#97c67d";
+Alloy.Globals.CustomColor3 = "#e20177";
+Alloy.Globals.CustomColor3Light = "#e26aa9";
 Alloy.Globals.CustomColor4 = "#edd200";
-Alloy.Globals.CustomColor4Light = "#f4e466";
-Alloy.Globals.CustomColor5 = "#007ba5";
-Alloy.Globals.CustomColor5Light = "#66b0c9";
+Alloy.Globals.CustomColor5 = "#ECE005";
+Alloy.Globals.CustomColor5Light = "#e9e147";
 Alloy.Globals.CustomColor6 = "#E42119";
 Alloy.Globals.CustomColor7 = "#6B055A";
+
+Alloy.Globals.PlayButtonColor = "#00a210";
+Alloy.Globals.PlayButtonColorLight = "#46b851";
+
+//Menu
+Alloy.Globals.MenuBackgroundColor = "#2F383E";
 
 Alloy.Globals.DisabledColor = "#C4C4C4";
 //Basic black text
 Alloy.Globals.BlackText = "#423f37";
+
+//Antwerp
+Alloy.Globals.AntwerpColorRed = "#CF0039";
+Alloy.Globals.AntwerpColorRedLight = "#CA5072";
 
 //Allows us to check whether we are dealing with an iPhone5S or similar tall device
 Alloy.Globals.iPhoneTall = (OS_IOS && Ti.Platform.osname == "iphone" && Ti.Platform.displayCaps.platformHeight == 568);
@@ -97,17 +98,12 @@ var footerExtendedHeight = headerCalculated + headerCalculated / 3 + 1;
 //we need to know the size of footer buttons in case of two buttons and a big one
 var footerTwoButtonsPlusCenterWidth = Math.floor((deviceWidth - 20 / 100 * deviceWidth) / 2);
 
-Alloy.Globals.qrCodeImageUrl = function(text) {
-	return "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=" + text;
-};
-
 Alloy.Globals.appConfig = {
 	gameSettings : require('gamesettingsdefaults'),
 	statusBarHeight : statusBarHeight,
 	fullScreenHeight : fullScreenHeight,
 	fullScreenWidth : deviceWidth,
-	nearbyRadius : 15000000,
-	personalNearbyRadius : 100,
+	nearbyRadius : 15000,
 	minUsernameLength : 5,
 	maxUsernameLength : 12,
 	contentHeight : fullScreenHeight - 2 * headerCalculated,
@@ -118,50 +114,35 @@ Alloy.Globals.appConfig = {
 	baseIconHeight : baseIconHeight,
 	halfIconHeight : baseIconHeight / 2,
 	twoThirdsIconHeight : baseIconHeight * 2 / 3,
-	homeViewId : "about/about",
+	homeViewId : "challenge/nearby/list",
 	defaultCoords : {
-		latitude : 37.9667,
-		longitude : 23.7167
+		latitude : 51.2167326,
+		longitude : 4.4027696
 	},
-	xhrSecurityParams : (OS_IOS) ? {
+	xhrSecurityParams : {
 		// We bypass the certificate issue over at IBM
-		validatesSecureCertificate : false,
-		// The line below as per : https://jira.appcelerator.org/browse/TIMOB-2801
-		tlsVersion : Titanium.Network.TLS_VERSION_1_0
-	} : {
-		// We bypass the certificate issue over at IBM
-		validatesSecureCertificate : false,
-		// The line below as per : https://jira.appcelerator.org/browse/TIMOB-2801
-		tlsVersion : Titanium.Network.TLS_VERSION_1_0
+		validatesSecureCertificate : false
 	},
 	connection : require("connectiondefaults"),
 	userImageFetch : false //to know when we fetch image from gallery (so resume is not kicking in)
 };
-//adding the history and the routing handlers to the global scope
-Alloy.Globals.appHistory = [];
-Alloy.Globals.pushPath = require('navigationhandlers').pushPath;
-Alloy.Globals.popPath = require('navigationhandlers').popPath;
 
 //Set default coordinates
 Alloy.Globals.currentCoords = Alloy.Globals.appConfig.defaultCoords;
 
-var NavigationHandlers = require('navigationhandlers');
+var navigationHandlers = require('navigationhandlers');
 
-var pushPathListener = NavigationHandlers.pushPathListener;
-var popPathListener = NavigationHandlers.popPathListener;
-var appInitListener = NavigationHandlers.appInitListener;
-var loginListener = NavigationHandlers.loginListener;
-var logoutListener = NavigationHandlers.logoutListener;
-var userUpdateListener = NavigationHandlers.userUpdateListener;
-var appResumeListener = NavigationHandlers.appResumeListener;
+//adding the history and the routing handlers to the global scope
+Alloy.Globals.appHistory = [];
+Alloy.Globals.pushPath = navigationHandlers.pushPath;
+Alloy.Globals.popPath = navigationHandlers.popPath;
+Alloy.Globals.logout = navigationHandlers.logout;
+Alloy.Globals.userUpdate = navigationHandlers.userUpdate;
+Alloy.Globals.login = navigationHandlers.login;
+Alloy.Globals.appResume = navigationHandlers.appResume;
+Alloy.Globals.appInit = navigationHandlers.appInit;
 
 //defining global event listeners
-Ti.App.addEventListener('pushPath', pushPathListener);
-Ti.App.addEventListener('popPath', popPathListener);
-Ti.App.addEventListener('appInit', appInitListener);
-Ti.App.addEventListener('doLogin', loginListener);
-Ti.App.addEventListener('doLogout', logoutListener);
-Ti.App.addEventListener('userUpdate', userUpdateListener);
 Ti.App.addEventListener('stopAudio', function() {
 	if (Alloy.Globals.audioPlayer) {
 		Alloy.Globals.audioPlayer.stop();
@@ -171,18 +152,16 @@ Ti.App.addEventListener('stopAudio', function() {
 		Alloy.Globals.audioPlayer = null;
 	}
 });
-Ti.App.addEventListener('appResumed', appResumeListener);
 
 if (OS_IOS) {
 
 	Ti.App.addEventListener('resumed', function() {
-		Ti.App.fireEvent('appResumed');
+		Alloy.Globals.appResume();
 		Alloy.Globals.appStatus = AppStates.APP_STATUS_RESUMED;
 	});
 
 	Ti.App.addEventListener('pause', function() {
 		//saving the pause moment in seconds
-		Alloy.Globals.pauseMoment = (new Date().getTime()) / 1000;
 		Alloy.Globals.sliderMenu.hidemenu();
 		Alloy.Globals.appStatus = AppStates.APP_STATUS_PAUSED;
 	});
@@ -209,7 +188,7 @@ if (OS_ANDROID) {
 	activity.onDestroy = function() {
 		Ti.API.info('*** Destroy Event Called ***');
 		Alloy.Globals.stopScanning();
-		Alloy.Globals.beaconUtils.stopRanging();
+		Alloy.Globals.stopRanging();
 		Alloy.Globals.scanner = null;
 		Alloy.Globals.appStatus = AppStates.APP_STATUS_STOPPED;
 	};
@@ -221,6 +200,8 @@ if (OS_ANDROID) {
 	_ = require("alloy/underscore")._;
 }
 
+//========================GEOLOCATION========================
+
 //setting the geolocation stuff
 if (OS_IOS) {
 	//This is needed for iBeacons. WHEN_IN_USE doesn't work.
@@ -230,10 +211,17 @@ Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_NEAREST_TEN_METERS;
 Ti.Geolocation.purpose = 'Determine Current User Location';
 Ti.Geolocation.distanceFilter = 10;
 
+var PermissionsUtils = require('utils/permissionsutils');
 Alloy.Globals.getLocationHandler = function() {
 	//getting current location
-	Ti.Geolocation.getCurrentPosition(function() {
-		Ti.API.info('trying to get location');
+	PermissionsUtils.getLocationPermissions(function(err) {
+		if (err) {
+			alert(L(err));
+		} else {
+			Ti.Geolocation.getCurrentPosition(function() {
+				Ti.API.info('trying to get location');
+			});
+		}
 	});
 };
 Alloy.Globals.getLocationHandler();
@@ -249,6 +237,11 @@ Ti.Geolocation.addEventListener('location', function(e) {
 		};
 	}
 });
+
+//========================QR CODE SCANNER========================
+
+//Libs
+var PermissionsUtils = require("utils/permissionsutils");
 
 //Scanner
 var scanditsdk = require("com.mirasense.scanditsdk");
@@ -270,18 +263,24 @@ if (OS_IOS) {
  Start scanning and add callbacks to scanner object
  */
 Alloy.Globals.startScanning = function(view, successCallback, cancelCallback) {
-	Alloy.Globals.stopScanning();
-	Alloy.Globals.scanner.init("scandit key goes here", 0);
-	Alloy.Globals.scanner.setSuccessCallback(successCallback);
-	Alloy.Globals.scanner.setCancelCallback(cancelCallback);
-	Alloy.Globals.scanView = view;
-	Alloy.Globals.scanView.add(Alloy.Globals.scanner);
-	if (OS_IOS) {
-		Alloy.Globals.scanner.setLeft('0dp');
-		Alloy.Globals.scanner.setScanningHotSpot(0.5, 0.24);
-	}
+	PermissionsUtils.getCameraPermissions(function(err) {
+		if (err) {
+			alert(L(err));
+		} else {
+			Alloy.Globals.stopScanning();
+			Alloy.Globals.scanner.init("iantKFBxEeSRFhShCUddAfV6Yat7dg11Zq6s76MTK5c", 0);
+			Alloy.Globals.scanner.setSuccessCallback(successCallback);
+			Alloy.Globals.scanner.setCancelCallback(cancelCallback);
+			Alloy.Globals.scanView = view;
+			Alloy.Globals.scanView.add(Alloy.Globals.scanner);
+			if (OS_IOS) {
+				Alloy.Globals.scanner.setLeft('0dp');
+				Alloy.Globals.scanner.setScanningHotSpot(0.5, 0.24);
+			}
 
-	Alloy.Globals.scanner.startScanning();
+			Alloy.Globals.scanner.startScanning();
+		}
+	});
 };
 
 /*
@@ -303,10 +302,19 @@ Alloy.Globals.clearScannerCallbacks = function() {
 	Alloy.Globals.scanner.setCancelCallback(null);
 };
 
-//iBeacons
-var BeaconUtils = require('utils/beaconutils');
-Alloy.Globals.beaconUtils = new BeaconUtils('Playground', true);
+//========================IBEACONS SCANNER========================
 Alloy.Globals.iBeaconEnabled = false;
+var beacons = null;
+var proximityCallback = null;
+var region = 'Playground';
+
+if (OS_ANDROID) {
+	beacons = require("com.liferay.beacons");
+	beacons.setAutoRange(true);
+}
+if (OS_IOS) {
+	beacons = require('org.beuckman.tibeacons');
+}
 
 /*
  Handles bluetooth status
@@ -323,7 +331,12 @@ var bluetoothListener = function(response) {
 };
 
 //Check availability of Bluetooth for iBeacon scanning
-Alloy.Globals.beaconUtils.checkAvailability(bluetoothListener);
+if (OS_ANDROID) {
+	bluetoothListener(beacons.checkAvailability());
+} else if (OS_IOS) {
+	beacons.addEventListener('bluetoothStatus', bluetoothListener);
+	beacons.requestBluetoothStatus();
+}
 
 /*
  Handles permission changes
@@ -338,6 +351,33 @@ var permissionListener = function(e) {
 
 //Check permission changes
 if (OS_IOS) {
-	Alloy.Globals.beaconUtils.addEventListener("changeAuthorizationStatus", permissionListener);
+	beacons.addEventListener("changeAuthorizationStatus", permissionListener);
 }
 
+//Start Ranging
+Alloy.Globals.startRanging = function(beacon, cb) {
+	PermissionsUtils.getLocationPermissions(function(err) {
+		if (err) {
+			alert(L(err));
+		} else {
+			proximityCallback = cb;
+			beacon.identifier = region;
+			if (proximityCallback)
+				beacons.addEventListener("beaconProximity", proximityCallback);
+			beacons.startMonitoringForRegion(beacon);
+			if (OS_IOS)
+				beacons.startRangingForBeacons(beacon);
+		}
+	});
+
+};
+
+//Stop ranging
+Alloy.Globals.stopRanging = function() {
+	if (proximityCallback)
+		beacons.removeEventListener("beaconProximity", proximityCallback);
+	proximityCallback = null;
+	Ti.API.info("Stop ranging!");
+	beacons.stopRangingForAllBeacons();
+	beacons.stopMonitoringAllRegions();
+};

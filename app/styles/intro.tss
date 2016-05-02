@@ -1,0 +1,43 @@
+"#introView" : {
+	borderColor: 'green',
+	borderWidth: '1dp',
+  	top: '0dp',
+    width: Ti.UI.Fill,
+    height: Ti.UI.Fill,
+    backgroundColor: "white",
+    layout: "absolute"
+},
+
+"#introImages": {
+	borderColor: 'red',
+	borderWidth: '1dp',
+	top: '0dp',
+	width: Ti.UI.Fill,
+    height: Ti.UI.Fill
+},
+
+"#btnNextImage": {
+	title: L("btnNext"),
+	right: '20dp',
+	bottom: '20dp',
+	width: Titanium.UI.SIZE,
+    height: Titanium.UI.SIZE,
+    titleColor: "#FFFFFF",
+	backgroundColor: Alloy.Globals.CustomColor3,
+	backgroundSelectedColor: Alloy.Globals.CustomColor3Light,
+	backgroundDisabledColor: "#C4C4C4",
+	iconImage: "/images/icons/next-#ffffff.png"
+},
+
+"#btnSkip": {
+	title: L("btnSkip"),
+	left: '20dp',
+	bottom: '20dp',
+	width: Titanium.UI.SIZE,
+    height: Titanium.UI.SIZE,
+    titleColor: "#FFFFFF",
+	backgroundColor: Alloy.Globals.CustomColor3,
+	backgroundSelectedColor: Alloy.Globals.CustomColor3Light,
+	backgroundDisabledColor: "#C4C4C4",
+	iconImage: "/images/icons/next-#ffffff.png"
+}

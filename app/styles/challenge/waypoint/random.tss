@@ -1,0 +1,11 @@
+"#challengeDetailWrapper":{
+	top: 0,
+	height: Ti.UI.FILL,
+	layout: "vertical",
+	backgroundColor: "white",
+	backgroundImage: "/images/background-arrow.png",
+},
+"#challengeDetailWrapper[platform=ios]":{
+	disableBounce: true
+}
+

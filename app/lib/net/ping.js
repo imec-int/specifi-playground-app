@@ -18,7 +18,6 @@ function Ping(args) {
 }
 
 Ping.prototype.tryPing = function(args) {
-	Ti.API.info('Ping');
 	if (!args) args={};
 	args.instance = this;
 	//adding connection settings to args

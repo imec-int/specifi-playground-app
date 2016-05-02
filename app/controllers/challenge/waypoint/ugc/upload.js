@@ -5,6 +5,8 @@ header.changeTitle(L("Play_challenge"));
 //Libs
 var utils = require('utils');
 var CustomProgressBar = require('/ui/customprogressbar');
+var challengeUtils = require('challengeutils');
+var PermissionsUtils = require('utils/permissionsutils');
 
 //Properties
 var args = arguments[0] || {};
@@ -12,6 +14,7 @@ var userChallenge = {};
 var currentWaypoint;
 var media = null;
 var pgbar = null;
+var wpId = args.wpId;
 
 //Services
 var AjaxUserChallenge = require('/net/ajaxuserchallenge');
@@ -58,18 +61,6 @@ var ajaxUserChallenge = new AjaxUserChallenge({
 });
 ajaxUserChallenge.fetch();
 
-/**
-*	Determine currentWaypoint
-*/
-function findCurrentWaypoint(data) {
-	var waypoints = data.challenge.waypoints;
-	var completedWP = data.completedWP ? data.completedWP : [];
-	if(completedWP.length < waypoints.length) {
-		return waypoints[completedWP.length];
-	} else {
-		return null;
-	}
-};
 
 /**
 *	Resets all fields that can change
@@ -85,7 +76,7 @@ function parseChallenge(data) {
 	userChallenge = data;
 	
 	if(!userChallenge.complete) {
-		currentWaypoint = findCurrentWaypoint(userChallenge);
+		currentWaypoint = challengeUtils.findCurrentWaypoint(userChallenge, wpId);
 	} else {
 		completeUserChallenge(userChallenge);
 		return;
@@ -102,7 +93,7 @@ function parseChallenge(data) {
     	$.waypointDescription.text = currentWaypoint.ugcDescription;
 		
 	
-	$.waypointNumber.text = String.format(L("playWaypointNumber"),userChallenge.completedWP.length + 1);
+	$.waypointNumber.text = String.format(L("playWaypointNumber"),challengeUtils.findStep(userChallenge.challenge.waypoints, currentWaypoint._id));
 	if (userChallenge.challenge.waypoints.length > 1) {
 		$.waypointNumberOf.text = String.format(L("playWaypointNumberOf"),userChallenge.challenge.waypoints.length);
 	} else {
@@ -157,7 +148,7 @@ function videoClick(e) {
  * Handles image click
  */
 function imageClick(e) {
-    var url = e.source.localfilePath;
+    var url = e.source.getImage();
     var pictureViewer = Alloy.createController('ui/pictureviewer', {
         url : url
     }).getView();
@@ -171,7 +162,15 @@ function onClick(e) {
 	Alloy.Globals.stopScanning();
     switch(e.source.id) {
  		case "btnRecord":
- 			captureMedia(currentWaypoint);
+ 			PermissionsUtils.getCameraPermissions(function(err){
+ 				if(err) {
+ 					alert(L(err));
+ 				} 
+ 				else {
+ 					captureMedia(currentWaypoint);
+ 				}
+ 				
+ 			});
  			break;
 		case "btnUpload":
 			startUpload();
@@ -358,18 +357,22 @@ function startUpload(){
 	
 	if(args.qr && args.qr.id)
 		qrid = args.qr.id;
-	
+	var params = {
+    	wpid: currentWaypoint._id,
+        qrcode : qrid,
+        beacon: args.beacon,
+        challengeid: args.id
+   	};
+   	if(currentWaypoint.ugcType === 'video')
+   		params.contentVideo_upload = media;
+   	else
+   		params.contentImage_upload = media;
+   	
 	var ajaxUserChallenge = new AjaxCompleteWaypoint({
 	    onSuccess : ajaxCompleteWaypointSuccessHandler,
 	    onError : ajaxCompleteWaypointErrorHandler,
 	    onSendStream: ajaxCompleteWaypointProgressHandler,
-	    params : {
-	    	wpid: currentWaypoint._id,
-	        qrcode : qrid,
-	        beacon: args.beacon,
-	        challengeid: args.id,
-	        content_upload: media
-	    }
+	    params : params
 	});
 	ajaxUserChallenge.completeWaypoint();
 }

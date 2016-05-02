@@ -1,350 +1,244 @@
 //Libs
 var utils = require("utils");
+var cloudinary = require('cloudinaryutils');
+var connection = require("connectiondefaults");
 
 //Services
-var AjaxGetImage = require('/net/ajaxgetimage');
 var UserLogin = require('net/userlogin');
 var AjaxGameSettings = require('net/ajaxgamesettings');
 var UserLogout = require('/net/userlogout');
 var Ping = require("net/ping");
 
-exports.pushPath = function(args) {
+/**
+ * Show a new screen and push it on top of the history stack
+ * @param {Object} args
+ */
+function pushPath(args) {
+	Ti.API.info("=====================PUSH PATH=====================");
+	Alloy.Globals.stopRanging();
+
 	//checking for currentUser
 	var currentUser = Ti.App.Properties.getString('currentUser');
-	if (currentUser){
-		exports.userUpdateListener(JSON.parse(currentUser));
+
+	//@TODO Is this needed on every path push
+	if (currentUser) {
+		userUpdate(JSON.parse(currentUser));
 	}
-	
-	Alloy.Globals.clearAllCounters();
+
 	//clearing all maps (garbage collector)
 	Alloy.Globals.mapViewsClearAll();
-	var toPush = {
+
+	var pushedView = {
 		viewId : args.viewId,
 		data : args.data,
 		resetPath : args.resetPath
 	};
-	//removing old same views from path
-	Alloy.Globals.appHistory = _.reject(Alloy.Globals.appHistory, function(element) {
-		return element.viewId == args.viewId;
-	});
-	Alloy.Globals.appHistory.push(toPush);
-	Ti.App.Properties.setString("currentRoute", JSON.stringify(toPush));
 
 	//reseting path keeping only the current one
 	if ("resetPath" in args && args.resetPath === true) {
-		Alloy.Globals.appHistory = [_.last(Alloy.Globals.appHistory)];
-		Ti.API.info('history ' + JSON.stringify(Alloy.Globals.appHistory));
-	}
-	Ti.API.info('pushing ' + JSON.stringify(toPush));
-	Ti.App.fireEvent('pushPath', toPush);
-	Ti.App.fireEvent('stopAudio');
-};
-
-exports.popPath = function(args) {
-	Alloy.Globals.appHistory.pop();
-	Ti.App.fireEvent('popPath', args);
-	Ti.App.fireEvent('stopAudio');
-};
-
-exports.popPathListener = function(args) {
-	var history = Alloy.Globals.appHistory;
-	var mainContent = Alloy.Globals.mainContent;
-
-	if (args.noRefresh) {
-		mainContent.remove(Alloy.Globals.currentContent);
-		return;
+		Alloy.Globals.appHistory = [pushedView];
+	} else {
+		Alloy.Globals.appHistory.push(pushedView);
 	}
 
-	if (history.length == 0 && OS_ANDROID) {//exiting app after a dialog
-		var dialog = Ti.UI.createAlertDialog({
-			buttonNames : [L('Exit'), L('Cancel')],
-			message : L('Exit_application_message'),
-			title : L('Exit_application_questionmark')
-		});
-
-		dialog.addEventListener('click', function(e) {
-			switch (e.index) {
-			case 0:
-				var activity = Titanium.Android.currentActivity;
-				setTimeout(function() {
-					Alloy.Globals.clearAllCounters();
-					activity.finish();
-				}, 200);
-				break;
-			}
-
-		});
-
-		dialog.show();
-
-		return;
-	}
-
-	if (Alloy.Globals.currentContent)
-		mainContent.remove(Alloy.Globals.currentContent);
-
-	if (history[history.length - 1])
-		Ti.App.fireEvent('pushPath', history[history.length - 1]);
-	else {
-		Alloy.Globals.currentContent = null;
-		Ti.App.fireEvent('appInit');
-	}
-};
-
-exports.pushPathListener = function(pushedView) {
-	var viewId = pushedView.viewId;
-	var viewData = pushedView.data;
 	var viewToAdd;
 	try {
-		Ti.API.info('INSTANTIATING VIEW!');
-		viewToAdd = Alloy.createController(viewId, viewData).getView();
+		Ti.API.info('INSTANTIATING VIEW: ' + JSON.stringify(pushedView.viewId));
+		viewToAdd = Alloy.createController(pushedView.viewId, pushedView.data).getView();
 		Ti.API.info('VIEW INSTANTIATED!');
 	} catch(e) {
-		Ti.API.error('Error while instantiating view: ' +JSON.stringify(e));
-		//If view doesn't exist, navigate to challenges list
-		viewToAdd = Alloy.createController('challenge/nearby/list', null).getView();
+		Ti.API.error('Error while instantiating view error: ' + JSON.stringify(e));
+		//If view doesn't exist, reinit the app
+		return appInit();
 	}
-		
-	var mainContent = Alloy.Globals.mainContent;
-	//checking the length of the path. if it is 1 we don't remove anything from main view
-	if ((Alloy.Globals.appHistory.length > 1 && Alloy.Globals.currentContent) || (pushedView.resetPath && Alloy.Globals.currentContent)) {
-		mainContent.remove(Alloy.Globals.currentContent);
 
-		//forcing garbage collection
-		Alloy.Globals.currentContent = null;
+	var mainContent = Alloy.Globals.mainContent;
+	if (!_.isNull(Alloy.Globals.currentContent)) {
+		mainContent.remove(Alloy.Globals.currentContent);
 	}
+
+	//forcing garbage collection
+	Alloy.Globals.currentContent = null;
 
 	mainContent.add(viewToAdd);
 	Alloy.Globals.currentContent = viewToAdd;
+	Ti.App.fireEvent('stopAudio');
 };
 
-exports.appInit = function(params) {
-	//checking if user was on register when app was paused or somehow dropped
-	var registerData;
-	try {
-		registerData = JSON.parse(Ti.App.Properties.getString("registerData"));
-	} catch(e) {
-		registerData = false;
+/**
+ * Go one view back on the history stack
+ * @param {Object} args
+ */
+function popPath(args) {
+	Alloy.Globals.stopRanging();
+
+	//View to pop
+	var toPop = Alloy.Globals.appHistory.pop();
+
+	var history = Alloy.Globals.appHistory;
+	var mainContent = Alloy.Globals.mainContent;
+
+	if (history.length > 0) {
+		mainContent.remove(Alloy.Globals.currentContent);
+		Alloy.Globals.currentContent = null;
+		pushPath(_.last(history));
 	}
 
-	if (registerData) {
-		var currentRoute;
-		try {
-			currentRoute = JSON.parse(Ti.App.Properties.getString('currentRoute'));
-		} catch (e) {
-			currentRoute = false;
-		};
+	Ti.App.fireEvent('stopAudio');
+};
 
-		if (currentRoute && currentRoute.viewId != 'login') {
-			exports.pushPath(currentRoute);
-			return;
-		}
-	}
+/**
+ * Handles application initialization
+ * @param {Object} args
+ */
+function appInit() {
+	Ti.API.info("=====================APP INIT=====================");
 
-	var viewId = Alloy.Globals.userIsLogged ? Alloy.Globals.appConfig.homeViewId : 'login';
-	if (params) {
-		viewId = params.viewId;
-		data = params.data;
-	}
-	Alloy.Globals.appHistory = [];
 	if (!_.isNull(Alloy.Globals.currentContent)) {
 		Alloy.Globals.mainContent.remove(Alloy.Globals.currentContent);
 	}
+	Alloy.Globals.appHistory = [];
 	Alloy.Globals.currentContent = null;
-	var pushPath = exports.pushPath;
-	pushPath({
-		viewId : viewId,
-		data : {},
-	});
-};
 
-exports.appInitListener = function() {
-	//checking if user was on register when app was paused or somehow dropped
-	var registerData;
-	try {
-		registerData = JSON.parse(Ti.App.Properties.getString("registerData"));
-	} catch(e) {
-		registerData = false;
-	}
-
-	if (registerData) {
-		var currentRoute;
-		try {
-			currentRoute = JSON.parse(Ti.App.Properties.getString('currentRoute'));
-		} catch (e) {
-			currentRoute = false;
-		};
-
-		if (currentRoute && currentRoute.viewId != 'login') {
-			exports.pushPath(currentRoute);
-			return;
-		}
-	}
-
-	var mainContent = Alloy.Globals.mainContent;
-	
-	//checking the length of the path. if is 1 we don't remove anything from main view
-	if (Alloy.Globals.appHistory.length > 0 || Alloy.Globals.currentContent) {
-		//properly removing the current content from the main wrapper
-		mainContent.remove(Alloy.Globals.currentContent);
-	}
-
-	//checking if user is logged in already
+	//if there is a user, try a login
 	var currentUserString = Ti.App.Properties.getString('currentUser');
 	var currentUser = currentUserString ? JSON.parse(currentUserString) : '';
 	if (currentUser) {
-		Ti.App.fireEvent('doLogin', {
-			user : currentUser,
+		return login({
+			user : currentUser
 		});
 	} else {
-		exports.appInit({
-			viewId : 'login',
-			data : {}
-		});
+		var loggedInBefore = Ti.App.Properties.getString('loggedInBefore');
+		if (!loggedInBefore) {
+			pushPath({
+				viewId : 'intro',
+				resetPath : true
+			});
+		} else {
+			pushPath({
+				viewId : 'login',
+				resetPath : true
+			});
+		}
 	}
+
 };
 
-exports.loginListener = function(args) {
+/**
+ * Handles a login event
+ * @param {Object} args
+ */
+function login(args) {
+	//Create loading indicator
 	var indicator = Alloy.createController('loadingscreen', {
 		text : "Logging in"
 	}).getView();
 	Alloy.Globals.index.add(indicator);
 	Alloy.Globals.indicator = indicator;
-	var user = args.user;
-	var password = user.unhashedPassword;
 
-	var loginSuccessHandler = function() {
+	var loginSuccessHandler = function(response) {
 		//fetching game settings
-		
 		var agm = new AjaxGameSettings({
 			onSuccess : function(gs) {
 				//updating the default gameSettings
 				_.each(gs.settings, function(gameSetting, index) {
-					if(gameSetting.name === "ticketsEmail" || gameSetting.name === "randomHotspotTime") {
-						Alloy.Globals.appConfig.gameSettings[gameSetting.name] = gameSetting.value;
-					} else {
-						Alloy.Globals.appConfig.gameSettings[gameSetting.name] = JSON.parse(gameSetting.value);
-					}
+					Alloy.Globals.appConfig.gameSettings[gameSetting.name] = JSON.parse(gameSetting.value);
 				});
 			},
 			onError : function(gs) {
-				Ti.API.info('game settings error ' + JSON.stringify(gs));
+				Ti.API.info('Get game settings error ' + JSON.stringify(gs));
 			}
 		});
 		agm.get({});
-		
 
-		//@TODO on backed we need to solve the unprotected password
-		var currentUserData = userLogin.response.user;
+		var currentUserData = response.user;
 		Alloy.Globals.user = currentUserData;
-		var localUserAvatar = utils.getLocalUserAvatar(currentUserData.username);
-		//looking up the user avatar locally
-		if (localUserAvatar) {
-			Ti.API.info("There's a local user avatar: "+localUserAvatar);
-			Alloy.Globals.leftMenu.userImage.setImage(localUserAvatar);
-		}
 
-		//fetching the photo if exists on server
-		if (utils.testPropertyExists(currentUserData, 'photo.url') && !localUserAvatar) {
-			//getting the image file
-			var ajaxGetImage = new AjaxGetImage({
-				onSuccess : function(localfilePath) {
-					Ti.API.info('Fetched the user avatar from the server: ' + localfilePath);
-					Alloy.Globals.leftMenu.userImage.setImage(localfilePath);
-					utils.setLocalUserAvatar(currentUserData.username, localfilePath);
-				},
-				onError : function(response) {
-					//@TODO handle the error
-					Ti.API.error('Avatar image fetch error');
-				},
-				image : currentUserData.photo,
-				thumb: true
-			});
-			ajaxGetImage.fetch();
-		}
+		//Set language
+		var language = (Alloy.Globals.user.language) ? Alloy.Globals.user.language.substring(0, 2) : 'nl';
+		Ti.Locale.setLanguage(language);
+
 		if (!currentUserData.unhashedPassword)
 			currentUserData.unhashedPassword = password;
 
-		exports.userUpdateListener(currentUserData);
-
-		//saving userProfile locally so we have it always and user don't have to enter it all the times
-		Ti.App.Properties.setString('currentUser', JSON.stringify(currentUserData));
-		Alloy.Globals.userIsLogged = true;
-
-		var mainContent = Alloy.Globals.mainContent;
-		if (Alloy.Globals.currentContent)
-			mainContent.remove(Alloy.Globals.currentContent);
+		userUpdate(currentUserData);
 
 		Alloy.Globals.sliderMenu.setAccesibility(true);
-		if (currentUserData.username + "-" !== "-")
-			Alloy.Globals.leftMenu.userNameLabel.setText(currentUserData.username);
-
 		Alloy.Globals.header.view.showSliderButton();
+
 		Alloy.Globals.index.remove(indicator);
 		indicator = null;
 		Alloy.Globals.indicator = null;
 
-		//getting currentRoute
-		var currentRoute;
-		try {
-			currentRoute = JSON.parse(Ti.App.Properties.getString('currentRoute'));
-		} catch (e) {
-			currentRoute = false;
-		};
-		
-		//we're returning to the last saved route
-		if (currentRoute && currentRoute.viewId != 'login') {
-			exports.pushPath(currentRoute);
-			return;
+		var loggedInBefore = Ti.App.Properties.getString('loggedInBefore');
+		if (!loggedInBefore) {
+			Ti.App.Properties.setString('loggedInBefore', true);
+			return pushPath({
+				viewId : 'about/about',
+				resetPath : true
+			});
 		} else {
-			var loggedInBefore = Ti.App.Properties.getString('loggedInBefore');
-			if(loggedInBefore){
-				exports.pushPath({viewId: 'challenge/nearby/list', data: null, resetPath: true});
-				return;
-			}
+			return pushPath({
+				viewId : Alloy.Globals.appConfig.homeViewId,
+				resetPath : true
+			});
 		}
-		Ti.App.Properties.setString('loggedInBefore', true);
-		
-		//calling on success handler
-		exports.appInit();
 	};
 
+	//Login params
+	var user = args.user;
+	var password = (user) ? user.unhashedPassword : '';
+
+	//Login with email + password
 	var userLogin = new UserLogin({
-		params :{
+		params : {
 			email : user.email,
-			password : user.unhashedPassword,	
+			password : user.unhashedPassword
 		},
 		onSuccess : loginSuccessHandler,
-		onError : function() {
-			Alloy.Globals.userIsLogged = false;
+		onError : function(err) {
 			Alloy.Globals.index.remove(indicator);
 			Alloy.Globals.indicator = null;
 			Ti.App.Properties.setString('currentUser', false);
-			Ti.App.Properties.setString('currentRoute', false);
-			Ti.App.Properties.setString("registerData",false);
 			indicator = null;
-			alert(L('err1005'));
-			exports.appInit({
-				viewId : 'login',
-				data : {}
-			});
+			//User is unknown, redirect to registration screen
+			if (err.error === '1004') {
+				Alloy.Globals.pushPath({
+					viewId : 'register/name',
+					data : {
+						user : {
+							email : user.email,
+							password : user.unhashedPassword
+						}
+					}
+				});
+			} else {
+				//Wrong password and email combination, redirect to login screen
+				alert(L('err1005'));
+				pushPath({
+					viewId : 'login',
+					resetPath : true
+				});
+			}
 		}
 	});
-	userLogin.tryLogin();
+	userLogin.login();
+
 };
 
-exports.logoutListener = function() {
-	
+/**
+ * Logout from the app
+ */
+function logout() {
+
 	var userLogout = new UserLogout({
 		onSuccess : function(result) {
-			Alloy.Globals.userIsLogged = false;
 			Ti.App.Properties.setString('currentUser', false);
-			Ti.App.Properties.setString('currentRoute', false);
-			var mainContent = Alloy.Globals.mainContent;
 			if (Alloy.Globals.currentContent)
-			mainContent.remove(Alloy.Globals.currentContent);
+				Alloy.Globals.mainContent.remove(Alloy.Globals.currentContent);
 			Alloy.Globals.currentContent = null;
-			if (Alloy.Globals.appHistory) Alloy.Globals.appHistory = [];
+			if (Alloy.Globals.appHistory)
+				Alloy.Globals.appHistory = [];
 
 			//hiding menu and header
 			Alloy.Globals.sliderMenu.setAccesibility(false);
@@ -353,56 +247,56 @@ exports.logoutListener = function() {
 			Alloy.Globals.header.view.hideHeader();
 			//resetting user icon
 			Alloy.Globals.leftMenu.userImage.setImage("/images/icons/user-#00aaad.png");
-			Ti.App.fireEvent('appInit');
+			appInit();
 		},
 		onError : function(result) {
 			Ti.API.info('Logout error || ' + JSON.stringify(result));
-		},
+		}
 	});
 	userLogout.tryLogout();
 };
 
-exports.userUpdateListener = function(user) {
+/**
+ * Update and save the user
+ * @param {Object} user The updated User object
+ */
+function userUpdate(user) {
 	try {
 		//updating global score
 		var currentUser = JSON.parse(Ti.App.Properties.getString("currentUser"));
-		currentUser.score = user.score;
+		if (currentUser) {
+			currentUser.score = user.score;
+		} else {
+			currentUser = user;
+		}
 		Ti.App.Properties.setString("currentUser", JSON.stringify(currentUser));
 	} catch(e) {
 		//probably after logout
 	}
+	//Setting the user avatar
+	if (currentUser) {
+		if (currentUser.photo)
+			Alloy.Globals.leftMenu.userImage.setImage(cloudinary.formatUrl(currentUser.photo.secure_url, 44, 44, "c_thumb,g_face,r_max"));
+		//Update username
+		Alloy.Globals.leftMenu.userNameLabel.setText(currentUser.username);
+		//updating score on header
+		Alloy.Globals.leftMenu.tokenNumberLabel.setText(currentUser.score);
+	}
 
-	//updating score on header
-	Alloy.Globals.leftMenu.tokenNumberLabel.text = user.score;
 };
 
-exports.appResumeListener = function() {
+/**
+ * Handles an app resume event
+ */
+function appResume() {
 	Ti.API.info("=====================APP RESUMED=====================");
 	Alloy.Globals.sliderMenu.hidemenu();
-
-	//trying to ping
-	var ping = new Ping({
-		onSuccess : function() {
-			Alloy.Globals.index.remove(indicator);
-			indicator = null;
-			Alloy.Globals.indicator = null;
-			Ti.App.fireEvent('appInit');
-		},
-		onError : function() {
-			Ti.API.info('some error occured when pinging server');
-			//@TODO what to do on connection error
-			//Ti.App.fireEvent('appInit');
-		}
-	});
-	var currentTime = (new Date().getTime()) / 1000;
-	if (currentTime - Alloy.Globals.pauseMoment > 15 && !Alloy.Globals.userImageFetch) {
-		var indicator = Alloy.createController('loadingscreen', {
-			text : "checking connection"
-		}).getView();
-		Alloy.Globals.indicator = indicator;
-		Alloy.Globals.index.add(indicator);
-		indicator.show();
-		Alloy.Globals.pauseMoment = currentTime;
-		ping.tryPing();
-	}
 };
+
+exports.appResume = appResume;
+exports.userUpdate = userUpdate;
+exports.logout = logout;
+exports.login = login;
+exports.appInit = appInit;
+exports.pushPath = pushPath;
+exports.popPath = popPath; 

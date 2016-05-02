@@ -8,12 +8,10 @@ var args = arguments[0] || {};
 //Libs
 var connection = require('connectiondefaults');
 
-
 $.challengeTitle.text = '" '+args.name+' "';
 $.tokensNumber.text = args.gained;
 
-Ti.App.fireEvent('userUpdate', args.user);
-
+Alloy.Globals.userUpdate(args.user);
 
 /*
 	General click handler

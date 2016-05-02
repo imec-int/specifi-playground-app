@@ -1,0 +1,56 @@
+"#privacySwitch":{
+	title: L("privacySwitchText")
+},
+"#privacyLabel[platform=ios]":{
+	text:L("privacySwitchText")
+},
+"#readPrivacyLabel": {
+	text:L("privacyReadLink"),
+	color: "#008ad9",
+	width: Ti.UI.Fill,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+	left: '15dp',
+	font:{
+		fontSize: "14dp"
+	}
+},
+
+"#projectSwitch":{
+	title: L("projectSwitchText")
+},
+"#projectLabel[platform=ios]":{
+	text:L("projectSwitchText")
+},
+
+"#surveySwitch":{
+	title: L("surveySwitchText")
+},
+"#surveyLabel[platform=ios]":{
+	text:L("surveySwitchText")
+},
+
+".registerSwitch": {
+	top: '10dp',
+	bottom: '10dp'
+},
+".registerSwitch[platform=ios]": {
+	width: '40dp'
+},
+
+".registerHintLabel": {
+	bottom: '10dp'
+},
+".registerSwitchLabel[platform=ios]":{
+	color: "#FFFFFF",
+	left: '15dp',
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.SIZE
+},
+".registerSwitchLabel[platform=android]":{
+	width: 0,
+	height: 0,
+	visible: false
+},
+"#last[platform=ios]": {
+	bottom: "20%"
+}

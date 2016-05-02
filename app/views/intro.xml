@@ -1,0 +1,7 @@
+<Alloy>
+	<View id="introView">
+		<ImageView id="introImages" image="/images/intro1.png"/>
+		<Button id="btnNextImage" onClick="onClick"/>
+		<Button id="btnSkip" onClick="onClick"/>
+	</View>
+</Alloy>

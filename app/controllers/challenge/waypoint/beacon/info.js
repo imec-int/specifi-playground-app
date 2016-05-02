@@ -4,13 +4,14 @@ header.changeTitle(L("Play_challenge"));
 
 //Libs
 var utils = require('utils');
+var challengeUtils = require('challengeutils');
 
 //Properties
 var args = arguments[0] || {};
 var userChallenge = {};
 var currentWaypoint;
-var hintUsed = false;
 var previousRange = 'unknown';
+var wpId = args.wpId;
 var animation = Ti.UI.createAnimation({
 	opacity: 1,
 	duration : 1000, 
@@ -70,20 +71,6 @@ var goBackToDetail = function() {
 
 
 /**
-*	Determine currentWaypoint
-*/
-function findCurrentWaypoint(data) {
-	var waypoints = data.challenge.waypoints;
-	var completedWP = data.completedWP ? data.completedWP : [];
-	if(completedWP.length < waypoints.length) {
-		return waypoints[completedWP.length];
-	} else {
-		return null;
-	}
-};
-
-
-/**
 *	Resets all fields that can change
 */
 function resetView() {
@@ -97,7 +84,7 @@ function parseChallenge(data) {
 	userChallenge = data;
 	
 	if(!userChallenge.complete) {
-		currentWaypoint = findCurrentWaypoint(userChallenge);
+		currentWaypoint = challengeUtils.findCurrentWaypoint(userChallenge, wpId);
 	} else {
 		completeUserChallenge(userChallenge);
 		return;
@@ -107,13 +94,6 @@ function parseChallenge(data) {
 	
 	$.challengeTitle.text = '" ' + userChallenge.challenge.name + ' "';
 	
-	if (utils.testPropertyExists(userChallenge, 'hintsUsed')) {
-		var found = _.find(userChallenge.hintsUsed, function(hint){
-			return hint == currentWaypoint._id;
-		});
-		hintUsed = found != undefined ? true : false;
-	}
-
 	if (utils.testPropertyExists(currentWaypoint, "name") )
 		$.currentWaypoint.text = currentWaypoint.name;
 		
@@ -157,7 +137,8 @@ function onClick(e) {
 			Alloy.Globals.pushPath({
 				viewId : "challenge/waypoint/info",
 				data : {
-					id : args.id
+					id : args.id,
+					wpId: args.wpId
 				}
 			});
 			break;
@@ -166,26 +147,33 @@ function onClick(e) {
 			Alloy.Globals.pushPath({
 				viewId : 'challenge/waypoint/availability/info',
 				data : {
-					id : args.id
+					id : args.id,
+					wpId: args.wpId
 				}
 			});
 			break;
 	
-		case "btnHint":
-			Alloy.Globals.pushPath({
-				viewId : "challenge/waypoint/hint/info",
-				data : {
-					id : args.id
-				}
-			});
+		case 'btnBack':
+			if(userChallenge.randomOrder) {
+				Alloy.Globals.pushPath({
+					viewId : 'challenge/waypoint/random',
+					data : {
+						id : args.id
+					},
+					resetPath: true
+				});
+			} else {
+				goBackToDetail();
+			}
 			break;
 	
 		case "btnLocation":
-			if (hintUsed || !currentWaypoint.locationHidden) {
+			if (!currentWaypoint.locationHidden) {
 				Alloy.Globals.pushPath({
 					viewId : 'challenge/waypoint/map',
 					data : {
-						id : args.id
+						id : args.id,
+						wpId: args.wpId
 					}
 				});
 			} else {
@@ -194,7 +182,6 @@ function onClick(e) {
 			break;
 	
 		case "btnScan":
-			//startRanging();
 			break;
 	}
 }
@@ -203,11 +190,15 @@ function onClick(e) {
 	Handles a beacon proximity event
 */
 var beaconProximityHandler = function(e) {
+	Ti.API.info("Beacon proximity event: "+JSON.stringify(e));
+	if(!e || !e.proximity){
+		e = {proximity: 'unknown'};
+	}
 	var proximity = currentWaypoint.beaconProximity;
 	if(!proximity){
 		proximity = 'near';
 	}
-	if(e && e.proximity === proximity) {
+	if(e && isEqualOrCloser(e.proximity, proximity)) {
 		stopRanging();
 		if (currentWaypoint.type === 'ugc') {
 			//Since we were monitoring for the correct UUID already, we don't have to check it
@@ -215,7 +206,8 @@ var beaconProximityHandler = function(e) {
 				viewId : 'challenge/waypoint/ugc/upload',
 				data : {
 					id : args.id,
-					beacon : currentWaypoint.beaconUUID
+					beacon : currentWaypoint.beaconUUID,
+					wpId: currentWaypoint._id
 				}
 			});
 		} else {
@@ -224,12 +216,21 @@ var beaconProximityHandler = function(e) {
 					if(result.complete) {
 						completeUserChallenge(result);
 					} else {
-						Alloy.Globals.pushPath({
-							viewId : "challenge/waypoint/info",
-							data : {
-								id : result.challenge._id
-							}
-						});
+						if(userChallenge.randomOrder) {
+							Alloy.Globals.pushPath({
+								viewId : "challenge/waypoint/random",
+								data : {
+									id : result.challenge._id
+								}
+							});
+						} else {
+							Alloy.Globals.pushPath({
+								viewId : "challenge/waypoint/info",
+								data : {
+									id : result.challenge._id
+								}
+							});
+						}
 					}
 				},
 				onError : ajaxWaypointErrorHandler,
@@ -247,6 +248,35 @@ var beaconProximityHandler = function(e) {
 };
 
 /**
+ * Returns true if device is at or closer than targeted proximity to beacon
+ */
+function isEqualOrCloser(measuredProximity, target) {
+	switch(target) {
+		case 'far':
+			if(measuredProximity === 'far' || measuredProximity === 'near' || measuredProximity === 'immediate')
+				return true;
+			else
+				return false;
+			break;
+		case 'near':
+			if(measuredProximity === 'near' || measuredProximity === 'immediate')
+				return true;
+			else
+				return false;
+			break;
+		case 'immediate':
+			if(measuredProximity === 'immediate')
+				return true;
+			else
+				return false;
+			break;
+		default:
+			return false;
+			break;
+	}
+}
+
+/**
 *	Starts beacon ranging
 */
 function startRanging(){
@@ -255,7 +285,7 @@ function startRanging(){
 		beacon.major = currentWaypoint.beaconMajor;
 	if(currentWaypoint.beaconMinor)
 		beacon.minor = currentWaypoint.beaconMinor;
-	Alloy.Globals.beaconUtils.startRanging(beacon, beaconProximityHandler);
+	Alloy.Globals.startRanging(beacon, beaconProximityHandler);
 	showRange('unknown');
 }
 
@@ -264,7 +294,7 @@ function startRanging(){
 *	Stops beacon ranging
 */
 function stopRanging() {
-	Alloy.Globals.beaconUtils.stopRanging();
+	Alloy.Globals.stopRanging();
 	showRange('stop');
 }
 

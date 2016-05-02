@@ -1,0 +1,21 @@
+<Alloy>
+	<View class="registerWrapper">
+		<ScrollView class="scrollWrapper">
+			<View id="firstNameBackground" class="textFieldWrapper">
+				<TextField class="registerTextField" id="firstName" onChange="onValueChanged"/>
+			</View>
+			<View id="surNameBackground" class="textFieldWrapper">
+				<TextField class="registerTextField" id="surName" onChange="onValueChanged"/>
+			</View>
+			<View class="labelWrapper">
+				<Label class="registerHintLabel" id="registerHint"></Label>
+			</View>
+		</ScrollView>
+		<View id="footerWrapper">
+			<View class="registerInnerFooterWrapper">
+				<Require type="view" src="ui/extendedbutton" class="registerButton" id="btnRegisterNext" onClick="onClick"/>
+				<Require type="view" src="ui/extendedbutton" class="registerButton" id="btnRegisterCancel" onClick="onClick"/>
+			</View>
+		</View>
+	</View>
+</Alloy>

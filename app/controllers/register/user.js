@@ -1,105 +1,97 @@
 var header = Alloy.Globals.header.view;
 header.hideSliderButton();
 
-
-var registerData;
-try {
-	registerData = JSON.parse(Ti.App.Properties.getString("registerData"));
-} catch(e) {
-	registerData = false;
-}
-Ti.API.info('register data'+registerData);
-if (registerData && registerData!==false) {
-	Alloy.Globals.registerData = registerData;
-} else Alloy.Globals.registerData = {};
+//Properties
+var args = arguments[0] || {};
+var user = args.user || {};
+//Services
+var UsernameAjaxValidation = require('/net/usernameajaxvalidation');
 
 //initializing to empty on every attempt
 header.showHeader();
 header.changeTitle(L("Register_as_a_new_player"));
-var previousConnect = 0;
 $.TfTop.show();
+
+if(user.username)
+	$.TfTop.setValue(user.username);
 
 //focusing on the textfield
 
 setTimeout(function() {
-    Ti.API.info('focusing on textfield');
     $.TfTop.focus();
 }, 1000);
 
-$.LabelTop.setText(L("registerUsernameHelp"));
+$.registerHint.setText(L("registerUsernameHelp"));
 
-function onTfTopChange(e) {
-    Ti.API.info('tfTop changed' + JSON.stringify(e));
-    var currentTime = new Date().getTime();
+//Shows error underneath the textfield
+function showError(err){
+	$.textFieldBackground.setBackgroundColor("#FF5C5C");
+	$.TfTop.setBackgroundColor("#FF5C5C");
+	$.registerHint.setText(L("err"+err.error));
+	$.registerHint.setColor("#FF0000");
+ };
 
-    if (currentTime - previousConnect > 250) {
-        validateUser(e.source.value, function(result) {
-            Ti.API.info(result);
-        });
-        previousConnect = currentTime;
-    }
+//On username change
+function onValueChanged(e) {
+    validateUser(e.source.value, function(result){
+    	$.textFieldBackground.setBackgroundColor("#FFFFFF");
+    	$.TfTop.setBackgroundColor("#FFFFFF");
+    	$.registerHint.setText(L( "registerUsernameHelp"));
+    	$.registerHint.setColor("#FFFFFF");
+    }, function(err){
+    	showError(err);
+    });
 };
+
+
 
 function onClick(e) {
     var buttonId = e.source.id;
     switch (buttonId) {
-        case "BtnNext":
-            var tfTopText = $.TfTop.getValue();
+        case "btnRegisterNext":
+            var username = $.TfTop.getValue();
             $.TfTop.blur();
-            //@TODO show the loading screen
-            //we'll use alloy globals to keep the info and erase it on finish/cancel
-            validateUser(tfTopText, function(result) {
-                //@TODO check the result and act accordingly
-                //there should be a wrapper for messages for this text field
-
-                //saving value in the global registration container
-                Alloy.Globals.registerData.username = tfTopText;
+            validateUser(username, function(result) {
+                user.username = username;
                 
-                 //storing this for resume 
-                 Ti.App.Properties.setString("registerData", JSON.stringify(Alloy.Globals.registerData));
-                 var testBack = Ti.App.Properties.getString("registerData");
-                 Ti.API.info('we saved '+testBack);
-                if (!result.error && result.unique) {
+                if (result.unique) {
                     //going to next registration step
                     Alloy.Globals.pushPath({
-                        viewId : 'register/password'
+                        viewId : 'register/password',
+                        data: {
+                        	user: user
+                        }
                     });
                 } else {
-                    if (result.message) alert(result.message);
-                    else alert(L("Username_not_unique"));
+                   showError({error:"1007"}); 
                 }
+            }, function(err){
+            	showError(err);
             });
 
             break;
-        case "BtnCancel":
+        case "btnRegisterCancel":
             //going back to initial state (not logged)
             $.TfTop.blur();
-            Ti.App.Properties.setString("registerData",false);
-            Ti.App.Properties.setString("currentRoute",false);
-            $.LabelTop.fireEvent('blur');
-            Ti.App.fireEvent('appInit');
+            $.registerHint.fireEvent('blur');
+            Alloy.Globals.pushPath({viewId: 'login', resetPath: true});
             header.hideHeader();
             break;
     }
 }
 
-function validateUser(username, _handler) {
-    //there is no reason of doing username validation for strings that don't
-    //comply with basic requirements
+//Validate Username
+function validateUser(username, _handler, _errorHandler) {
     if (username.length <= Alloy.Globals.appConfig.maxUsernameLength && username.length >= Alloy.Globals.appConfig.minUsernameLength) {
-        var UsernameAjaxValidation = require('/net/usernameajaxvalidation');
         var uav = new UsernameAjaxValidation({
             params: {
             	username : username,
             },
             onSuccess : _handler,
-            onError : _handler,
+            onError : _errorHandler,
         });
         uav.validate();
     } else {
-        _handler({
-            error : 1,
-            message : L('username_length_errror'),
-        });
+        _errorHandler({error: '1018'});
     }
 }

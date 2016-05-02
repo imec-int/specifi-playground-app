@@ -1,5 +1,0 @@
-<Alloy>
-	<View id="countDownWrapper" class="container">
-		<Label id="countdownTime" />
-	</View>
-</Alloy>

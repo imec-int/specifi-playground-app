@@ -8,5 +8,6 @@
                 <Label id="buttonLabel"/>
             </View>
         </View>
+        <Widget id="fa" src="com.mattmcfarland.fontawesome"/>
     </View>
 </Alloy>

@@ -1,0 +1,14 @@
+"#firstName":{
+    hintText: L( "firstNameTextFieldHint")
+},
+"#firstName[platform=android]":{
+    softKeyboardOnFocus: Titanium.UI.Android.SOFT_KEYBOARD_SHOW_ON_FOCUS,
+    visible: false
+},
+"#surName":{
+    hintText: L( "surNameTextFieldHint")
+},
+"#surName[platform=android]":{
+    softKeyboardOnFocus: Titanium.UI.Android.SOFT_KEYBOARD_SHOW_ON_FOCUS,
+    visible: false
+}

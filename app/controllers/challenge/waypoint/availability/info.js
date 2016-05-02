@@ -5,12 +5,13 @@ header.changeTitle(L("Play_challenge"));
 //Libs
 var moment = require('alloy/moment');
 var utils = require('utils');
+var challengeUtils = require('challengeutils');
 
 //Properties
 var args = arguments[0] || {};
 var userChallenge = {};
 var currentWaypoint;
-var hintUsed = false;
+var wpId = args.wpId;
 
 //Services
 var AjaxUserChallenge = require('/net/ajaxuserchallenge');
@@ -51,19 +52,6 @@ var goBackToDetail = function() {
 };
 
 
-/*
-	Determine currentWaypoint
-*/
-function findCurrentWaypoint(data) {
-	var waypoints = data.challenge.waypoints;
-	var completedWP = data.completedWP ? data.completedWP : [];
-	if(completedWP.length < waypoints.length) {
-		return waypoints[completedWP.length];
-	} else {
-		return null;
-	}
-};
-
 
 /*
 	Resets all fields that can change
@@ -84,7 +72,7 @@ function parseChallenge(data) {
 	userChallenge = data;
 	
 	if(!userChallenge.complete) {
-		currentWaypoint = findCurrentWaypoint(userChallenge);
+		currentWaypoint = challengeUtils.findCurrentWaypoint(userChallenge, wpId);
 	} else {
 		completeUserChallenge(userChallenge);
 		return;
@@ -94,13 +82,6 @@ function parseChallenge(data) {
 	
 	$.challengeTitle.text = '" ' + userChallenge.challenge.name + ' "';
 	
-	if (utils.testPropertyExists(userChallenge, 'hintsUsed')) {
-		var found = _.find(userChallenge.hintsUsed, function(hint){
-			return hint == currentWaypoint._id;
-		});
-		hintUsed = found != undefined ? true : false;
-	}
-
 	if (utils.testPropertyExists(currentWaypoint, "name") )
 		$.currentWaypoint.text = currentWaypoint.name;
 		
@@ -140,26 +121,33 @@ function onClick(e) {
 			Alloy.Globals.pushPath({
 				viewId : "challenge/waypoint/info",
 				data : {
-					id : args.id
+					id : args.id,
+					wpId: args.wpId
 				}
 			});
 			break;
-		
-		case "btnHint":
-			Alloy.Globals.pushPath({
-				viewId : "challenge/waypoint/hint/info",
-				data : {
-					id : args.id
-				}
-			});
+			
+		case 'btnBack':
+			if(userChallenge.randomOrder) {
+				Alloy.Globals.pushPath({
+					viewId : 'challenge/waypoint/random',
+					data : {
+						id : args.id
+					},
+					resetPath: true
+				});
+			} else {
+				goBackToDetail();
+			}
 			break;
 		
 		case "btnLocation":
-			if (hintUsed || !currentWaypoint.locationHidden) {
+			if (!currentWaypoint.locationHidden) {
 				Alloy.Globals.pushPath({
 					viewId : 'challenge/waypoint/map',
 					data : {
-						id : args.id
+						id : args.id,
+						wpId: args.wpId
 					}
 				});
 			} else {
@@ -190,7 +178,8 @@ function qrOrBeaconScanning() {
 					Alloy.Globals.pushPath({
 						viewId : "challenge/waypoint/scan/scan",
 						data : {
-							id : args.id
+							id : args.id,
+							wpId: args.wpId
 						}
 					});
 					break;
@@ -198,7 +187,8 @@ function qrOrBeaconScanning() {
 					Alloy.Globals.pushPath({
 						viewId : "challenge/waypoint/beacon/info",
 						data : {
-							id : args.id
+							id : args.id,
+							wpId: args.wpId
 						}
 					});
 					break;
@@ -212,7 +202,8 @@ function qrOrBeaconScanning() {
 		Alloy.Globals.pushPath({
 			viewId : "challenge/waypoint/scan/scan",
 			data : {
-				id : args.id
+				id : args.id,
+				wpId: args.wpId
 			}
 		});
 	}

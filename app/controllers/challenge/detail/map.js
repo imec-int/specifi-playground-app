@@ -2,20 +2,19 @@ var header = Alloy.Globals.header.view;
 header.showHeader();
 header.changeTitle(L("Challenge_details"));
 
-//Sounds
-var soundClickPrimary = Titanium.Media.createSound({
-	url : '/sound/button_snap.mp3'
-});
-
 //Properties
 var challenge = {};
 var args = arguments[0] || {};
 var started = false;
 var mapmodule = require('ti.map');
-var tiMap = mapmodule.createView({});
+var tiMap = mapmodule.createView({mapType:mapmodule.NORMAL_TYPE});
 Alloy.Globals.mapViews.push(tiMap);
 var overMapInfo = $.overMapInfo;
 $.mapWrapper.removeAllChildren();
+var userChallenge = null;
+
+//Libs
+var moment = require("alloy/moment");
 
 //Services
 var AjaxUserChallenge = require('/net/ajaxuserchallenge');
@@ -30,7 +29,8 @@ var ajaxUserChallenge = new AjaxUserChallenge({
 		Ti.API.info('Success getting UserChallenge: ' + JSON.stringify(result));
 		showResumeButton();
 		started = true;
-		parseChallenge(result.challenge, result.start);
+		userChallenge = result;
+		parseChallenge(result.challenge, result.start, result.randomOrder);
 	},
 	onError : function(result) {
 		Ti.API.info('Error getting UserChallenge: ' + JSON.stringify(result));
@@ -50,7 +50,7 @@ function getChallenge() {
 	var ajaxGetChallenge = new AjaxGetChallenge({
 		onSuccess : function(result) {
 			Ti.API.info('Success getting challenge: ' + JSON.stringify(result));
-			parseChallenge(result.challenge);
+			parseChallenge(result.challenge, null, result.challenge.randomOrderAllowed);
 		},
 		onError : function(result) {
 			Ti.API.info('Error getting challenge: ' + JSON.stringify(result));
@@ -68,7 +68,7 @@ function getChallenge() {
 	Show the resume button instead of the play button
 */
 function showResumeButton() {
-	$.btnPlayChallenge.setBackgroundColor("#F2C200");
+	$.btnPlayChallenge.setBackgroundColor(Alloy.Globals.CustomColor5);
 	$.btnPlayChallenge.setIconImage("/images/icons/resume-arrow.png");
 }
 
@@ -76,7 +76,7 @@ function showResumeButton() {
 /*
 	Parse the result and fill the challenge object
 */
-function parseChallenge(data, startTime) {
+function parseChallenge(data, startTime, randomOrderAllowed) {
 	challenge = data;
 	$.explanation.text = L("challengeDetailsMapExplanation");
 	$.overMapInfo.height = "70dp";
@@ -108,6 +108,7 @@ function parseChallenge(data, startTime) {
 		latitude : Alloy.Globals.currentCoords.latitude,
 		longitude : Alloy.Globals.currentCoords.longitude
 	});
+	
 	var userAnnotationData = {
 		latitude : Alloy.Globals.currentCoords.latitude,
 		longitude : Alloy.Globals.currentCoords.longitude,
@@ -120,12 +121,12 @@ function parseChallenge(data, startTime) {
 	};
 	var userAnnotation = mapmodule.createAnnotation(userAnnotationData);
 	tiMap.addAnnotation(userAnnotation);
-	
 	//calculating all challenges to fit them to the screen
 	var MapZoomToAnnotations = require('mapzoomtoannotations');
 	var region = new MapZoomToAnnotations(geos);
 	tiMap.region = region;
 	$.mapWrapper.add(tiMap);
+	
 	$.mapWrapper.add(overMapInfo);
 }
 
@@ -137,7 +138,6 @@ function onClick(e) {
 	switch (e.source.id) {
 		
 		case "btnPlayChallenge":
-			soundClickPrimary.play();
 			if (!started) {
 				var AjaxStartChallenge = require('/net/ajaxstartchallenge');
 				var ajaxStartChallenge = new AjaxStartChallenge({
@@ -146,21 +146,33 @@ function onClick(e) {
 						extra : challenge.extradifficulty ? true : false
 					},
 					onSuccess : function(response) {
+						var viewId = 'challenge/waypoint/info';
+						if(challenge.randomOrderAllowed) {
+							viewId = 'challenge/waypoint/random';
+						}
 						Alloy.Globals.pushPath({
-							viewId : 'challenge/waypoint/info',
+							viewId : viewId,
 							data : {
 								id : challenge._id
 							}
 						});
 					},
-					onError : function(response) {
-						alert(L('err' + response.error));
+					onError : function(err) {
+						if(err.error === '1028') {
+							var cooldownTime = Alloy.Globals.appConfig.gameSettings.challengeCooldown || 0;
+							alert(String.format(L('err' + err.error), moment(err.detail).add(cooldownTime, 's').format('DD/MM/YYYY hh:mm:ss')));
+						} else {
+							alert(L('err' + err.error));
+						}
 					},
 				});
 				ajaxStartChallenge.start();
 			} else {
+				var viewId = 'challenge/waypoint/info';
+				if(userChallenge.randomOrder)
+					viewId = 'challenge/waypoint/random';
 				Alloy.Globals.pushPath({
-					viewId : 'challenge/waypoint/info',
+					viewId : viewId,
 					data : {
 						id : challenge._id
 					}

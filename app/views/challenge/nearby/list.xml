@@ -13,7 +13,7 @@
         	</View>
         </View>
         <View id="footerWrapper">
-            <View id="innerFooterWrapper">
+            <View class="innerFooterWrapper">
                 <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnMap" onClick="onClick"/>
                 <Require autoStyle="true" type="view" src="ui/extendedbutton" class ="footerButton" id="btnList" onClick="onClick"/>
             </View>

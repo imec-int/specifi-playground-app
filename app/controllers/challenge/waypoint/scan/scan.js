@@ -2,16 +2,17 @@ var header = Alloy.Globals.header.view;
 header.showHeader();
 header.changeTitle(L("Play_challenge"));
 
-
 //Libs
 var scanUtils = require("utils/scanutils");
 var utils = require('utils');
+var challengeUtils = require('challengeutils');
 
 //Properties
 var args = arguments[0] || {};
 var userChallenge = {};
 var currentWaypoint;
-var hintUsed = false;
+var wpId = args.wpId;
+var currentUser = JSON.parse(Ti.App.Properties.getString('currentUser'));
 
 //Services
 var AjaxUserChallenge = require('/net/ajaxuserchallenge');
@@ -42,6 +43,7 @@ ajaxUserChallenge.fetch();
 *	Handle complete waypoint error
 */
 var ajaxWaypointErrorHandler = function(result) {
+	Ti.API.info("Error:"+JSON.stringify(result));
 	startScanning();
 	alert(L("waypoint_qr_error"));
 };
@@ -63,20 +65,6 @@ var goBackToDetail = function() {
 
 
 /**
-*	Determine currentWaypoint
-*/
-function findCurrentWaypoint(data) {
-	var waypoints = data.challenge.waypoints;
-	var completedWP = data.completedWP ? data.completedWP : [];
-	if(completedWP.length < waypoints.length) {
-		return waypoints[completedWP.length];
-	} else {
-		return null;
-	}
-};
-
-
-/**
 *	Resets all fields that can change
 */
 function resetView() {
@@ -90,7 +78,7 @@ function parseChallenge(data) {
 	userChallenge = data;
 	
 	if(!userChallenge.complete) {
-		currentWaypoint = findCurrentWaypoint(userChallenge);
+		currentWaypoint = challengeUtils.findCurrentWaypoint(userChallenge, wpId);
 	} else {
 		completeUserChallenge(userChallenge);
 		return;
@@ -99,13 +87,6 @@ function parseChallenge(data) {
 	resetView();
 	
 	$.challengeTitle.text = '" ' + userChallenge.challenge.name + ' "';
-	
-	if (utils.testPropertyExists(userChallenge, 'hintsUsed')) {
-		var found = _.find(userChallenge.hintsUsed, function(hint){
-			return hint == currentWaypoint._id;
-		});
-		hintUsed = found != undefined ? true : false;
-	}
 
 	if (utils.testPropertyExists(currentWaypoint, "name") )
 		$.currentWaypoint.text = currentWaypoint.name;
@@ -114,7 +95,7 @@ function parseChallenge(data) {
 		$.waypointDescription.text = currentWaypoint.content.text;
 		
 	
-	$.waypointNumber.text = String.format(L("playWaypointNumber"),userChallenge.completedWP.length + 1);
+	$.waypointNumber.text = String.format(L("playWaypointNumber"),challengeUtils.findStep(userChallenge.challenge.waypoints, currentWaypoint._id));
 	if (userChallenge.challenge.waypoints.length > 1) {
 		$.waypointNumberOf.text = String.format(L("playWaypointNumberOf"),userChallenge.challenge.waypoints.length);
 	} else {
@@ -172,7 +153,8 @@ function onClick(e) {
 			Alloy.Globals.pushPath({
 				viewId : "challenge/waypoint/info",
 				data : {
-					id : args.id
+					id : args.id,
+					wpId: args.wpId
 				}
 			});
 			break;
@@ -181,26 +163,31 @@ function onClick(e) {
 			Alloy.Globals.pushPath({
 				viewId : 'challenge/waypoint/availability/info',
 				data : {
-					id : args.id
+					id : args.id,
+					wpId: args.wpId
 				}
 			});
 			break;
-	
-		case "btnHint":
-			Alloy.Globals.pushPath({
-				viewId : "challenge/waypoint/hint/info",
-				data : {
-					id : args.id
-				}
-			});
+		case 'btnBack':
+			if(userChallenge.randomOrder) {
+				Alloy.Globals.pushPath({
+					viewId : 'challenge/waypoint/random',
+					data : {
+						id : args.id
+					},
+					resetPath: true
+				});
+			} else {
+				goBackToDetail();
+			}
 			break;
-	
 		case "btnLocation":
-			if (hintUsed || !currentWaypoint.locationHidden) {
+			if (!currentWaypoint.locationHidden) {
 				Alloy.Globals.pushPath({
 					viewId : 'challenge/waypoint/map',
 					data : {
-						id : args.id
+						id : args.id,
+						wpId: args.wpId
 					}
 				});
 			} else {
@@ -218,36 +205,57 @@ function onClick(e) {
 	Handles a successful scan
 */
 function scanSuccessHandler(e) {
-	
 	stopScanning();
-	
+	Ti.API.info("Parse QR started!");
 	var qrCode = scanUtils.parseQRCode(e.barcode);
-	
+	Ti.API.info("QR parsed: "+JSON.stringify(qrCode));
 	if(!qrCode) {
 		alert(L('scan_unknown_type'));
 		startScanning();
 		return;
-	}				
-					
+	}
+	
 	if (currentWaypoint.type === 'ugc') {
 		//We need to check the QR code here because the upload screen doesn't allow you to rescan the QR
 		if (qrCode.id == currentWaypoint.qr) {
+			setTimeout(function(){
 			Alloy.Globals.pushPath({
 				viewId : 'challenge/waypoint/ugc/upload',
 				data : {
 					id : args.id,
-					qr : qrCode
+					qr : qrCode,
+					wpId: currentWaypoint._id
 				}
-			});
+			});},0);
 		} else {
 			alert(L("waypoint_qr_error"));
 			startScanning();
 		}
 	} else {
-		var ajaxCompleteWaypoint = new AjaxCompleteWaypointQR({
-			onSuccess : function(result) {
-				if(result.complete) {
-					completeUserChallenge(result);
+		//Bug as reported her https://github.com/Pushwoosh/pushwoosh-appcelerator-titanium/issues/6
+		Ti.API.info("Scan successful!");
+		setTimeout(function(){completeWaypoint(qrCode);},0);
+	}
+}
+
+/*
+	Handles completing a waypoint
+*/
+function completeWaypoint(qrCode) {
+	var ajaxCompleteWaypoint = new AjaxCompleteWaypointQR({
+		onSuccess : function(result) {
+			
+			Ti.API.info("Call successful: "+JSON.stringify(result));
+			if(result.complete) {
+				completeUserChallenge(result);
+			} else {
+				if(userChallenge.randomOrder) {
+					Alloy.Globals.pushPath({
+						viewId : "challenge/waypoint/random",
+						data : {
+							id : result.challenge._id
+						}
+					});
 				} else {
 					Alloy.Globals.pushPath({
 						viewId : "challenge/waypoint/info",
@@ -256,15 +264,16 @@ function scanSuccessHandler(e) {
 						}
 					});
 				}
-			},
-			onError : ajaxWaypointErrorHandler,
-			params : {
-				challengeid : args.id,
-				qrcode : qrCode.id
 			}
-		});
-		ajaxCompleteWaypoint.completeWaypoint();
-	}
+		},
+		onError : ajaxWaypointErrorHandler,
+		params : {
+			challengeid : args.id,
+			qrcode : qrCode.id
+		}
+	});
+	Ti.API.info("Completewaypoint started!");
+	ajaxCompleteWaypoint.completeWaypoint();
 }
 
 /*
@@ -272,5 +281,6 @@ function scanSuccessHandler(e) {
 */
 function scanCancelHandler(e) {
 	//@TODO Can we even cancel?
+	Ti.API.info("Scanning cancelled");
 }
 

@@ -43,12 +43,6 @@ var createMarkers = function(geos) {
 			case L("Challenge"):
 				icon = (Availability.checkAvailability(geo.row))?"pin-wp-challenge.png":"pin-wp-challenge-unavailable.png";
 				break;
-			case L("Personal_marker"):
-				icon = "pin-player-marker.png";
-				break;
-			case L("Meeting_hotspot"):
-				icon = "pin-meeting-hotspot.png";
-				break;
 			default:
 				break;
 		}

@@ -1,4 +1,5 @@
 "#loginView":{
+	top: '0dp',
     width: Ti.UI.Fill,
     height: Ti.UI.Fill,
     backgroundColor: "white",
@@ -6,9 +7,10 @@
     layout: "absolute"
 },
 "#loginWrapper":{
+	top: '0dp',
     width: Ti.UI.Fill,
-    height: "400dp",
-    layout: 'vertical',
+    height: "500dp",
+    layout: 'vertical'
 },
 ".textFieldWrapper":{
     top: "10dp",
@@ -18,17 +20,18 @@
     borderColor: "#BDC3C7",
     backgroundImage: "/images/whitener.png",
     right: "30dp",
-    left: "30dp",
+    left: "30dp"
 },
 "#logo":{
     width: "100dp",
     height: "100dp",
-    backgroundImage: "/images/playground-logo.png",
+    backgroundImage: "/images/cot-logo.png",
     borderRadius: "5dp",
-    opacity: 0.8,
+    opacity: 0.8
 },
 "#logoWrapper":{
-    height: "110dp",
+	top: '10dp',
+    height: "110dp"
 },
 ".TfLogin":{
     height: "40dp",
@@ -37,6 +40,7 @@
     borderWidth: 0,
     backgroundImage: "none",
     color: "#423f37",
+    hintTextColor: '#C9C9C9'
 },
 ".TfLogin[platform=ios]":{
     keyboardToolbarColor: "#999",
@@ -44,7 +48,7 @@
 },
 "#TfUsername":{
     hintText: L( "emailTextFieldHint"),
-    keyboardType: Titanium.UI.KEYBOARD_EMAIL,
+    keyboardType: Titanium.UI.KEYBOARD_EMAIL
 },
 "#TfUsernameWrapper": {
 	top:"20dp",
@@ -58,7 +62,7 @@
 	font: {
 		fontSize: "20dp"
 	},
-	color: Alloy.Globals.CustomColor1,
+	color: "white",
 	text: L("forgotPassword")
 },
 
@@ -85,13 +89,14 @@
     backgroundSelectedColor: Alloy.Globals.CustomColor3Light
 },
 
-"#btnCreateNew":{
+"#btnRegister":{
     iconImage: "/images/icons/add-user-#ffffff.png",
     backgroundColor: Alloy.Globals.CustomColor1,
     backgroundSelectedColor: Alloy.Globals.CustomColor1Light,
-    title: L( "BtnCreateNewTitle")
+    title: L( "btnRegisterTitle")
+
 },
 "#btnLogin":{
     iconImage: "/images/icons/open-lock-#ffffff.png",
-    title: L( "BtnLoginTitle")
+    title: L( "btnLoginTitle")
 }

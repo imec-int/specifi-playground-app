@@ -4,6 +4,7 @@ header.changeTitle(L("Play_challenge"));
 
 //Libs
 var utils = require('utils');
+var cloudinary = require('cloudinaryutils');
 
 //Properties
 var args = arguments[0] || {};
@@ -11,7 +12,6 @@ var ugc = null;
 
 //Services
 var AjaxUserGeneratedContent = require('/net/ajaxusergeneratedcontent');
-var AjaxGetImage = require('/net/ajaxgetimage');
 
 /**
  * Handles successful fetch of last UGC
@@ -57,52 +57,28 @@ function parseUGC(content) {
 	}
 	
 	//If UGC is a video, set video control
-	if (ugc && ugc.content && ugc.content.videoPath !== '') {
-        var ajaxGetVideo = new AjaxGetImage({
-            onSuccess : function(localfilePath) {
-                $.ugcVideo.videoUrl = ugc.content.videoPath;
-                $.ugcVideo.filetype = ugc.content.filetype;
-                $.ugcVideoPreview.setTop("10dp");
-                $.ugcVideoPreview.setImage(ugc.content.url);
-                $.ugcVideo.setWidth(Ti.UI.FILL);
-                $.ugcVideo.setHeight(Ti.UI.SIZE);
-                $.ugcVideoPreview.setWidth(Ti.UI.SIZE);
-                $.ugcVideoPreview.setHeight(Ti.UI.SIZE);
-                $.ugcImage.setWidth(0);
-                $.ugcImage.setHeight(0);
-            },
-            onError : function(response) {
-                alert(L('ugc_load_error'));
-            },
-            image : ugc.content
-        });
-        ajaxGetVideo.fetch();
-        return;
-    }
+	if (ugc && ugc.contentVideo && ugc.contentVideo.secure_url !== '') {
+		$.ugcVideo.videoUrl = cloudinary.formatUrl(ugc.contentVideo.secure_url, 500, 250, 'c_fill');
+		$.ugcVideoPreview.setTop("10dp");
+		$.ugcVideoPreview.setImage(cloudinary.getVideoThumbnail(ugc.contentVideo.public_id, 500, 250, 'c_fill'));
+		$.ugcVideo.setWidth(Ti.UI.FILL);
+		$.ugcVideo.setHeight(Ti.UI.SIZE);
+		$.ugcVideoPreview.setWidth(Ti.UI.SIZE);
+		$.ugcVideoPreview.setHeight(Ti.UI.SIZE);
+		$.ugcImage.setWidth(0);
+		$.ugcImage.setHeight(0);
+		return;
+	}
+	
 	
 	//Show image if one exists
-    if (ugc && ugc.content && ugc.content.url !== '') {
-        var ajaxGetImage = new AjaxGetImage({
-            onSuccess : function(localfilePath) {
-                var blob = utils.resizeAndCrop({
-                    localfilePath : localfilePath,
-                    width : 500,
-                    height : 250
-                });
-                $.ugcImage.setTop("10dp");
-                $.ugcImage.setImage(blob);
-                $.ugcImage.setWidth(Ti.UI.SIZE);
-                $.ugcImage.setHeight(Ti.UI.SIZE);
-                $.ugcImageWrapper.setWidth(Ti.UI.FILL);
-                $.ugcImageWrapper.setHeight(Ti.UI.SIZE);
-                $.ugcImage.localfilePath = localfilePath;
-            },
-            onError : function(response) {
-                alert(L('ugc_load_error'));
-            },
-            image : ugc.content
-        });
-        ajaxGetImage.fetch();
+    if (ugc && ugc.contentImage && ugc.contentImage.url !== '') {
+    	$.ugcImage.setImage(cloudinary.formatUrl(ugc.contentImage.secure_url, 500, 250,'c_fill'));
+		$.ugcImage.setTop("10dp");
+        $.ugcImage.setWidth(Ti.UI.SIZE);
+        $.ugcImage.setHeight(Ti.UI.SIZE);
+        $.ugcImageWrapper.setWidth(Ti.UI.FILL);
+        $.ugcImageWrapper.setHeight(Ti.UI.SIZE);
         return;
     }
     
@@ -119,10 +95,8 @@ function parseUGC(content) {
  * Handles video click
  */
 function videoClick(e) {
-    var videoUrl = e.source.videoUrl;
-    var filetype = e.source.filetype;
     var videoView = Alloy.createController('ui/videoplayer', {
-        videoUrl : videoUrl
+        videoUrl : ugc.contentVideo.secure_url
     }).getView();
     if (OS_IOS)
         Alloy.Globals.index.add(videoView);
@@ -132,9 +106,8 @@ function videoClick(e) {
  * Handles image click
  */
 function imageClick(e) {
-    var url = e.source.localfilePath;
     var pictureViewer = Alloy.createController('ui/pictureviewer', {
-        url : url
+        url : ugc.contentImage.secure_url
     }).getView();
     pictureViewer.open();
 }
@@ -183,16 +156,29 @@ function completeUserChallenge(data) {
 /**
  * Navigates to next waypoint
  */
-function nextWaypoint(data){
+function nextWaypoint(data) {
 	if(data.complete)
 		return completeUserChallenge(data);
-	Alloy.Globals.pushPath({
+		
+	if(data.randomOrder) {
+		Alloy.Globals.pushPath({
+			viewId : 'challenge/waypoint/random',
+			data : {
+				id : args.id
+			},
+			resetPath: true
+		});
+	}
+	else {
+		Alloy.Globals.pushPath({
 		viewId : 'challenge/waypoint/info',
 		data : {
 			id : args.id
 		},
 		resetPath: true
 	});
+	}
+	
 }
 
 

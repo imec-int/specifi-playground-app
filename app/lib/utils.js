@@ -18,14 +18,6 @@ exports.testPropertyExists = function(obj, prop) {
 };
 
 /**
- * Converts the Mediahaven url to one that gets the thumbnail
- */
-exports.thumbFromMediaHaven = function(url) {
-	var newUrl = String(url).replace("browse", "browse-thumb");
-	return newUrl;
-};
-
-/**
  * Resizes an image to a given size and returns a blob
  */
 exports.resizeAndCrop = function(args) {
@@ -87,6 +79,7 @@ exports.noCoverageAlert = function(args) {
 	dialog.show();
 }; 
 
+
 exports.creacityAjaxCall = function(args) {
 	var connection = Alloy.Globals.appConfig.connection;
 	var instance = args.instance;
@@ -144,7 +137,6 @@ exports.creacityAjaxCall = function(args) {
 	}; 
 
 	xhr.onsendstream = function(e) {
-		//Ti.API.info('ajax call onSendStream');
 		if ( typeof instance.onSendStream == "function")
 			instance.onSendStream(e.progress);
 	};
@@ -155,30 +147,7 @@ exports.creacityAjaxCall = function(args) {
 		xhr.setRequestHeader('content-type', contentType);
 		toSend = null;
 	}
-	
 	xhr.send(toSend);
-};
-
-exports.getLocalUserAvatar = function(username) {
-	var userAvatarFile = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, username + '-avatar.png');
-	if (userAvatarFile.exists()) {
-		return userAvatarFile.resolve();
-	}
-	return false;
-};
-
-exports.setLocalUserAvatar = function(username, image) {
-	var oldPhoto = Ti.Filesystem.getFile(image);
-	var newPhoto = Ti.Filesystem.getFile(Ti.Filesystem.applicationDirectory, username + "-avatar.png");
-	if (newPhoto.exists()) {
-		newPhoto.open(Ti.Filesystem.MODE_WRITE);
-		if (newPhoto.write(oldPhoto.resolve()))
-			return true;
-	} else {
-		if (newPhoto.write(oldPhoto.resolve()))
-			return true;
-	}
-	return false;
 };
 
 /*
@@ -188,7 +157,7 @@ exports.serverResetError = function(response) {
 	var currentUser = JSON.parse(Ti.App.Properties.getString('currentUser'));
 	if (response && response.error && response.error == '1010' && currentUser) {
 		alert(L("no_connection"));
-		Ti.App.fireEvent('doLogin', {
+		Alloy.Globals.login({
 			user : currentUser
 		});
 		return true;
